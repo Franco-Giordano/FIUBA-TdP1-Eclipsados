@@ -10,3 +10,6 @@ Entrega: 25/9
 
 **Sonidos**:
 * https://www.bfxr.net/
+
+**Parallax**:
+* https://gamedevelopment.tutsplus.com/tutorials/parallax-scrolling-a-simple-effective-way-to-add-depth-to-a-2d-game--cms-21510
