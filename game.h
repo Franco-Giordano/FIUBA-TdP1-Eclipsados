@@ -19,7 +19,7 @@ public:
 	~Game();
 	void loop();
 	void update();
-	void input();
+	void eventHandler();
 	void render();
 	void draw(Object o);
 
@@ -27,14 +27,18 @@ private:
 	SDL_Renderer* ren;
 	SDL_Window* win;
 	bool running;
-	int count;
+	int contx, conty;
+	int FPS = 60;
 	int frameCount;
+	int frameDelay = 1000/FPS;
 	int timerFPS;
-	int lastFrame;
+	Uint32 frameStart;
 	Cody cody;
 	int caminar;
 	int parado;
+	int accionActual;
 };
 
 
 #endif /* GAME_H_ */
+

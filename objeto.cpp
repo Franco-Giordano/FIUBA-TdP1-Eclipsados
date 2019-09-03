@@ -16,7 +16,7 @@ void Object::setSource(int x, int y, int w, int h){
 }
 void Object::setImage(string arch, SDL_Renderer* ren){
 
-	SDL_Surface* surf = IMG_Load("/home/notebook/eclipse-workspace/TP_Taller/src/Cody.png");
+	SDL_Surface* surf = IMG_Load("Cody.png");
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }

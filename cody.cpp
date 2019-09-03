@@ -14,8 +14,12 @@ int Cody::crearCiclo(int c, int w, int h, int cant, int vel){
 void Cody::updateAnim(){
 	setSource(animaciones[animActual].w*animaciones[animActual].tick, animaciones[animActual].colu*animaciones[animActual].h, animaciones[animActual].w, animaciones[animActual].h);
 	if(empezar>animaciones[animActual].vel){
-		if(!rev)animaciones[animActual].tick++;
-		if(rev)animaciones[animActual].tick--;
+		if(!rev){
+			animaciones[animActual].tick++;
+			}
+		if(rev){
+			animaciones[animActual].tick--;
+			}
 		empezar=0;
 	}
 	empezar++;
@@ -32,6 +36,8 @@ void Cody::updateAnim(){
 		}
 	}
 }
+
+
 
 
 
