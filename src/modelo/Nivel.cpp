@@ -1,6 +1,6 @@
 
 
-#include "nivel.h"
+#include "Nivel.h"
 
 Nivel::Nivel() {
 	// TODO Auto-generated constructor stub
@@ -12,6 +12,6 @@ Nivel::~Nivel() {
 }
 
 void Nivel::inicializarObjetos(){
-	cody = Cody();
+	//cody = Cody();
 }
 

@@ -3,7 +3,8 @@
 #define ADMINISTRADORDENIVELES_H_
 
 #include <stdio.h>
-#include "nivel.h"
+
+#include "Nivel.h"
 
 class AdministradorDeNiveles {
 public:

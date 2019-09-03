@@ -1,6 +1,6 @@
 
 
-#include "administradorDeNiveles.h"
+#include "AdministradorDeNiveles.h"
 
 AdministradorDeNiveles::AdministradorDeNiveles() {
 

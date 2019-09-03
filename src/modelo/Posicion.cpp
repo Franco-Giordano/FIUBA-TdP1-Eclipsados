@@ -1,6 +1,6 @@
 
 
-#include "posicion.h"
+#include "Posicion.h"
 
 Posicion::Posicion() {
 	x = 0.0;

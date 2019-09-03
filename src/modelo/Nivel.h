@@ -5,8 +5,8 @@
 
 #include <stdio.h>
 #include <vector>
-#include "objeto.h"
-#include "cody.h"
+//#include "objeto.h"
+//#include "cody.h"
 
 class Nivel {
 public:
@@ -16,8 +16,8 @@ public:
 
 
 private:
-	vector<Object> objetos;
-	Cody cody;
+	//vector<Object> objetos;
+	//Cody cody;
 
 };
 #endif /* NIVEL_H_ */
