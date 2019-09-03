@@ -7,11 +7,15 @@ using namespace  std;
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "posicion.h"
+
 class Object{
 private:
 		SDL_Rect dest;
 		SDL_Rect src;
 		SDL_Texture* tex;
+
+		Posicion posicion;
 public:
 		Object(){}
 			SDL_Rect getDest() const {return dest;}
