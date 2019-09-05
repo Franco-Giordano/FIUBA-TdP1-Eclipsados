@@ -3,6 +3,9 @@ Juego estilo ['Final Fight'](https://www.youtube.com/watch?v=KL22s0MPiA4)
 
 Entrega: 25/9
 
+### UML Global
+![uml](./umlGlobal.png)
+
 ### Recursos
 **Tutoriales**:
 * http://lazyfoo.net/tutorials/SDL/
