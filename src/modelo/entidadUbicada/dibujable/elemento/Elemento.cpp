@@ -1,18 +1,18 @@
 /*
- * Canio.cpp
+ * Objeto.cpp
  *
  *  Created on: Sep 5, 2019
  *      Author: franco
  */
 
-#include "CanioMetalico.h"
+#include "../elemento/Elemento.h"
 
-CanioMetalico::CanioMetalico() {
+Elemento::Elemento() {
 	// TODO Auto-generated constructor stub
 
 }
 
-CanioMetalico::~CanioMetalico() {
+Elemento::~Elemento() {
 	// TODO Auto-generated destructor stub
 }
 

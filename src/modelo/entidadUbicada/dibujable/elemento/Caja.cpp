@@ -5,7 +5,7 @@
  *      Author: franco
  */
 
-#include "Caja.h"
+#include "../elemento/Caja.h"
 
 Caja::Caja() {
 	// TODO Auto-generated constructor stub

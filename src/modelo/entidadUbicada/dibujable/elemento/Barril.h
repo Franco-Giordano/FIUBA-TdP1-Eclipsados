@@ -8,9 +8,9 @@
 #ifndef SRC_MODELO_BARRIL_H_
 #define SRC_MODELO_BARRIL_H_
 
-#include "Objeto.h"
+#include "../elemento/Elemento.h"
 
-class Barril : public Objeto {
+class Barril : public Elemento {
 public:
 	Barril();
 	virtual ~Barril();

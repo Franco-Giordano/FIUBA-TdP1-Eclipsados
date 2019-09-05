@@ -10,10 +10,10 @@
 
 #include "../Dibujable.h"
 
-class Objeto : Dibujable{
+class Elemento : Dibujable{
 public:
-	Objeto();
-	virtual ~Objeto();
+	Elemento();
+	virtual ~Elemento();
 };
 
 #endif /* SRC_MODELO_OBJETO_H_ */

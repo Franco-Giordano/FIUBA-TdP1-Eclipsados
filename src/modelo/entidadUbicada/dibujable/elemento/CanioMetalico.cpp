@@ -1,18 +1,18 @@
 /*
- * Cuchillo.cpp
+ * Canio.cpp
  *
  *  Created on: Sep 5, 2019
  *      Author: franco
  */
 
-#include "Cuchillo.h"
+#include "../elemento/CanioMetalico.h"
 
-Cuchillo::Cuchillo() {
+CanioMetalico::CanioMetalico() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Cuchillo::~Cuchillo() {
+CanioMetalico::~CanioMetalico() {
 	// TODO Auto-generated destructor stub
 }
 

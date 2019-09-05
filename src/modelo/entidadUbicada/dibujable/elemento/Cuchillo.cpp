@@ -1,18 +1,18 @@
 /*
- * Objeto.cpp
+ * Cuchillo.cpp
  *
  *  Created on: Sep 5, 2019
  *      Author: franco
  */
 
-#include "Objeto.h"
+#include "../elemento/Cuchillo.h"
 
-Objeto::Objeto() {
+Cuchillo::Cuchillo() {
 	// TODO Auto-generated constructor stub
 
 }
 
-Objeto::~Objeto() {
+Cuchillo::~Cuchillo() {
 	// TODO Auto-generated destructor stub
 }
 
