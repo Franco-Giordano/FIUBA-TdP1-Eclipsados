@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include <vector>
-//#include "objeto.h"
+#include "entidadUbicada/EntidadUbicada.h"
 //#include "cody.h"
 
 class Nivel {
@@ -16,7 +16,7 @@ public:
 
 
 private:
-	//vector<Object> objetos;
+	std::vector<EntidadUbicada> entidades;
 	//Cody cody;
 
 };

@@ -21,7 +21,7 @@ void Personaje::moverIzquierda() {
 	posicion-= SPEED;
 }
 
-int Personaje::posicionActual() {
+int Personaje::getPosicionGlobal() {
 	return posicion;
 }
 

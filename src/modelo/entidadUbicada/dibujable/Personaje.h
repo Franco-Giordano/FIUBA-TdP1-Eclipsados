@@ -10,7 +10,9 @@
 
 #define SPEED 10
 
-class Personaje {
+#include "Dibujable.h"
+
+class Personaje : public Dibujable {
 private:
 	int posicion;
 public:
@@ -18,7 +20,7 @@ public:
 	virtual ~Personaje();
 	void moverDerecha();
 	void moverIzquierda();
-	int posicionActual();
+	int getPosicionGlobal();
 };
 
 #endif /* PERSONAJE_H_ */

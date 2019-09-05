@@ -7,7 +7,7 @@ using namespace  std;
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "../src/modelo/Posicion.h"
+#include "../src/modelo/entidadUbicada/PosicionGlobal.h"
 
 class Object{
 private:
@@ -15,7 +15,7 @@ private:
 		SDL_Rect src;
 		SDL_Texture* tex;
 
-		Posicion posicion;
+		PosicionGlobal posicion;
 public:
 		Object(){}
 			SDL_Rect getDest() const {return dest;}

@@ -14,8 +14,8 @@
 #define WINDOW_SIZE_VERTICAL 800
 
 
-#include "Juego.h"
-#include "Controlador.h"
+#include "../modelo/Juego.h"
+#include "../controlador/Controlador.h"
 
 
 class Vista {
@@ -24,7 +24,6 @@ public:
 	virtual ~Vista();
 	void update();
 	void render();
-	void draw(Personaje p);
 	void loop();
 
 private:

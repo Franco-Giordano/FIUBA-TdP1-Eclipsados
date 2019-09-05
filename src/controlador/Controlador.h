@@ -9,7 +9,7 @@
 #define CONTROLADOR_H_
 
 
-#include "Juego.h"
+#include "../modelo/Juego.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -19,7 +19,6 @@ public:
 	Controlador(Juego* juego);
 	~Controlador();
 	bool eventHandler();
-	void loop();
 
 private:
 	Juego* juego;

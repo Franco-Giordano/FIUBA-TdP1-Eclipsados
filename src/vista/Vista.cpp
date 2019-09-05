@@ -27,7 +27,7 @@ Vista::~Vista() {
 void Vista::render() {
 
 	//fondo
-	SDL_SetRenderDrawColor(ren, 255, 0, 0, 255);
+	SDL_SetRenderDrawColor(ren, 100, 100, 100, 255);
 	SDL_Rect rect;
 	rect.x=0;
 	rect.y=0;
@@ -37,18 +37,21 @@ void Vista::render() {
 
 
 	//personaje, interactuo con modelo
-	int posicionH= juego->getPosicionJugador();
+	PosicionGlobal posicionJugador= juego->getPosicionJugador();
+
+	float posicionH = posicionJugador.getHorizontal();
+	float posicionV = posicionJugador.getVertical();
 
 	SDL_SetRenderDrawColor(ren, 0, 0, 255, 255);
 	SDL_Rect jugador;
 	jugador.h=80;
 	jugador.w=20;
 	jugador.x= WINDOW_SIZE_HORIZONTAL /2 + posicionH;
-	jugador.y= WINDOW_SIZE_VERTICAL / 2;
+	jugador.y= WINDOW_SIZE_VERTICAL / 2 + posicionV;
 	SDL_RenderFillRect(ren, &jugador);
 
 
-	//por que se necesita este loop? ya hay otro similar en update()
+	//por que se necesita este loop? ya hay otro similar en loop()
 	frameCount++;
 	int timerFPS = SDL_GetTicks()-frameStart;
 	if(timerFPS < frameDelay){

@@ -1,6 +1,6 @@
 
-#include "Vista.h"
-#include "Controlador.h"
+#include "vista/Vista.h"
+#include "controlador/Controlador.h"
 
 int main() {
 
