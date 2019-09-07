@@ -51,7 +51,7 @@ void Personaje::setSource(int x, int y, int w, int h){
 
 void Personaje::setImage(SDL_Renderer* ren){
 
-	SDL_Surface* surf = IMG_Load("/home/notebook/eclipse-workspace/TP_Taller_Eclipsados/src/Cody.png");
+	SDL_Surface* surf = IMG_Load("Cody.png");
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }
