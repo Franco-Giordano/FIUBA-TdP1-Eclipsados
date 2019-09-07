@@ -1,4 +1,3 @@
-
 #include "vista/Vista.h"
 #include "controlador/Controlador.h"
 

@@ -1,21 +1,31 @@
-/*
- * Vista.cpp
- *
- *  Created on: Sep 3, 2019
- *      Author: franco
- */
-
 #include "Vista.h"
 
 Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 	juego = modelo;
 	this->controlador = controlador;
+	this->jugador = juego->getJugador();
 
 	SDL_Init(0);
-	//SDL_CreateWindow("Primer Juego", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 360, 240, false);
+	//SDL_CreateWindow("Final Fight", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 360, 240, false);
 	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
-	SDL_SetWindowTitle(win, "Primer Juego");
+	SDL_SetWindowTitle(win, "Final Fight");
+
+	//personaje, interactua con modelo
+	PosicionGlobal posicionJugador = juego->getPosicionJugador();
+
+	posicionX = posicionJugador.getHorizontal();
+	posicionY = posicionJugador.getVertical();
+
+	jugador->setImage(ren);
+	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, 47, 98);
+	jugador->setSource(posicionX, posicionY, 47, 98);
+	parado = jugador->crearCiclo(1, 47, 98, 1, 15);
+	caminar = jugador->crearCiclo(2, 47, 98, 6, 15);
+	accionActual = parado;
+	jugador->setAnimacionActual(accionActual);
+	controlador->setAcciones(caminar, parado);
+	controlador->setAccionActual(accionActual);
 
 	loop();
 }
@@ -36,20 +46,7 @@ void Vista::render() {
 	SDL_RenderFillRect(ren, &rect);
 
 
-	//personaje, interactuo con modelo
-	PosicionGlobal posicionJugador= juego->getPosicionJugador();
-
-	float posicionH = posicionJugador.getHorizontal();
-	float posicionV = posicionJugador.getVertical();
-
-	SDL_SetRenderDrawColor(ren, 0, 0, 255, 255);
-	SDL_Rect jugador;
-	jugador.h=80;
-	jugador.w=20;
-	jugador.x= WINDOW_SIZE_HORIZONTAL /2 + posicionH;
-	jugador.y= WINDOW_SIZE_VERTICAL / 2 + posicionV;
-	SDL_RenderFillRect(ren, &jugador);
-
+	Draw();
 
 	//por que se necesita este loop? ya hay otro similar en loop()
 	frameCount++;
@@ -63,10 +60,24 @@ void Vista::render() {
 
 }
 
+void Vista::Draw(){
+
+	SDL_Rect dest = jugador->getDest();
+	SDL_Rect src = jugador->getSource();
+	SDL_RenderCopy(ren, jugador->getTexture(), &src, &dest);
+
+}
+
 
 void Vista::update(){
 	// ?????????????????????????????
 	// en este ejemplo no tiene sentido
+	PosicionGlobal posicionJugador= juego->getPosicionJugador();
+	posicionX = posicionJugador.getHorizontal();
+	posicionY = posicionJugador.getVertical();
+	jugador->setDest(posicionX, posicionY, 45, 95);
+	jugador->updateAnim();
+
 }
 
 

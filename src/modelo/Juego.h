@@ -1,10 +1,3 @@
-/*
- * Juego.h
- *
- *  Created on: Sep 3, 2019
- *      Author: franco
- */
-
 #ifndef JUEGO_H_
 #define JUEGO_H_
 
@@ -21,10 +14,13 @@ public:
 	void movimientoIzquierda();
 	void movimientoArriba();
 	void movimientoAbajo();
+	Personaje* getJugador();
 
 	PosicionGlobal getPosicionJugador();
 private:
 	EntidadUbicada* entidad;
+	Dibujable* personaje;
+	Personaje jugador;
 };
 
 #endif /* JUEGO_H_ */

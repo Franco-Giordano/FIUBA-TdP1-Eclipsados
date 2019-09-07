@@ -1,12 +1,7 @@
-/*
- * PosicionGlobal.h
- *
- *  Created on: Sep 5, 2019
- *      Author: franco
- */
-
 #ifndef SRC_MODELO_ENTIDADUBICADA_POSICIONGLOBAL_H_
 #define SRC_MODELO_ENTIDADUBICADA_POSICIONGLOBAL_H_
+#define WINDOW_SIZE_VERTICAL 800
+#define WINDOW_SIZE_HORIZONTAL 800
 
 class PosicionGlobal {
 public:
@@ -27,8 +22,8 @@ public:
 
 private:
 	float velocidad;
-	float x;
-	float y;
+	float x=0;
+	float y=0;
 };
 
 #endif /* SRC_MODELO_ENTIDADUBICADA_POSICIONGLOBAL_H_ */

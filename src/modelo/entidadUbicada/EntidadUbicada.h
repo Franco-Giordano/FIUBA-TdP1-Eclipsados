@@ -1,10 +1,3 @@
-/*
- * EntidadUbicada.h
- *
- *  Created on: Sep 5, 2019
- *      Author: franco
- */
-
 #ifndef SRC_MODELO_ENTIDADUBICADA_ENTIDADUBICADA_H_
 #define SRC_MODELO_ENTIDADUBICADA_ENTIDADUBICADA_H_
 

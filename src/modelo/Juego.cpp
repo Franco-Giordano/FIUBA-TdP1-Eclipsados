@@ -9,7 +9,8 @@
 
 Juego::Juego() {
 	// TODO Auto-generated constructor stub
-	Dibujable* personaje = new Personaje;
+
+	personaje = new Personaje;
 
 	this->entidad = new EntidadUbicada(personaje);
 
@@ -41,4 +42,8 @@ void Juego::movimientoDerecha() {
 
 void Juego::movimientoIzquierda() {
 	entidad->moverIzquierda();
+}
+
+Personaje* Juego::getJugador() {
+	return &jugador;
 }

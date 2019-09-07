@@ -1,12 +1,3 @@
-/*
- * Vista.h
- *
- *  Created on: Sep 3, 2019
- *      Author: franco
- */
-
-
-
 #ifndef VISTA_H_
 #define VISTA_H_
 
@@ -24,12 +15,14 @@ public:
 	virtual ~Vista();
 	void update();
 	void render();
+	void Draw();
 	void loop();
 
 private:
 
 	Juego* juego;
 	Controlador* controlador;
+	Personaje* jugador;
 	SDL_Renderer* ren;
 	SDL_Window* win;
 	bool running;
@@ -38,6 +31,12 @@ private:
 	int frameDelay = 1000/FPS;
 	int timerFPS;
 	Uint32 frameStart;
+	int posicionActual;
+	int accionActual;
+	int parado;
+	int caminar;
+	float posicionX;
+	float posicionY;
 };
 
 #endif /* VISTA_H_ */

@@ -9,8 +9,8 @@
 
 PosicionGlobal::PosicionGlobal() {
 	// TODO Auto-generated constructor stub
-	x = 0.0;
-	y = 0.0;
+	x = WINDOW_SIZE_VERTICAL / 6;
+	y = WINDOW_SIZE_VERTICAL / 2;
 	velocidad = 5.0;
 
 }

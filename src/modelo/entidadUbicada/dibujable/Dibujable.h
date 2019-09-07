@@ -1,10 +1,3 @@
-/*
- * Dibujable.h
- *
- *  Created on: Sep 5, 2019
- *      Author: franco
- */
-
 #ifndef SRC_MODELO_DIBUJABLE_H_
 #define SRC_MODELO_DIBUJABLE_H_
 
