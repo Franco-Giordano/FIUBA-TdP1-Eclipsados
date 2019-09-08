@@ -15,7 +15,7 @@ public:
 
 	void setDest(int x, int y, int w, int h);
 	void setSource(int x, int y, int w, int h);
-	void setImage(SDL_Renderer *ren, char* imagen);
+	void setImage(SDL_Renderer *ren, char const * imagen);
 
 private:
 	SDL_Rect dest;

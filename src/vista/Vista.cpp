@@ -31,13 +31,16 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	controlador->setAccionActual(accionActual);
 
 	capa1.setImage(ren,"Nivel1-fondo1.png");
+	capa1.setSource(50,0,WINDOW_SIZE_HORIZONTAL -350,WINDOW_SIZE_VERTICAL);
 	capa1.setDest(0,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
-	capa1.setSource(50,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
 
 	capa2.setImage(ren,"Nivel1-fondo2.png");
-	capa2.setDest(0,-450,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
-	capa2.setSource(50,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
+	capa2.setSource(50,0,WINDOW_SIZE_HORIZONTAL -350,WINDOW_SIZE_VERTICAL);
+	capa2.setDest(0,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
 
+	capa3.setImage(ren,"Nivel1-fondo3.png");
+	capa3.setSource(50,0,WINDOW_SIZE_HORIZONTAL -350,WINDOW_SIZE_VERTICAL);
+	capa3.setDest(0,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
 
 	//En el constructor se llama a una funcion interna que corre todo el tiempo?
 	loop();
@@ -76,68 +79,6 @@ void Vista::render() {
 
 void Vista::Draw(){
 
-	//Toda la parte del fondo se va a poner en un objeto externo
-/*
-	//Primera capa
-	SDL_Rect destinationFondo1;
-	destinationFondo1.x=0;
-	destinationFondo1.y= 0;
-	destinationFondo1.w= WINDOW_SIZE_HORIZONTAL;
-	destinationFondo1.h= WINDOW_SIZE_VERTICAL;
-
-	SDL_Rect sourceFondo1;
-	sourceFondo1.x=50;
-	sourceFondo1.y=0;
-	sourceFondo1.w= WINDOW_SIZE_HORIZONTAL -350;
-	sourceFondo1.h= WINDOW_SIZE_VERTICAL;
-
-	SDL_Texture * fondoTexture1;
-	SDL_Surface* tmpsurf1 = IMG_Load("Nivel1-fondo1.png");
-	fondoTexture1 = SDL_CreateTextureFromSurface(ren, tmpsurf1);
-	SDL_FreeSurface(tmpsurf1);
-*/
-/*
-
-	//Segunda capa
-	SDL_Rect destinationFondo2;
-	destinationFondo2.x=0;
-	destinationFondo2.y= 0;
-	destinationFondo2.w= WINDOW_SIZE_HORIZONTAL;
-	destinationFondo2.h= WINDOW_SIZE_VERTICAL;
-
-	SDL_Rect sourceFondo2;
-	sourceFondo2.x=50;
-	sourceFondo2.y=0;
-	sourceFondo2.w= WINDOW_SIZE_HORIZONTAL -350;
-	sourceFondo2.h= WINDOW_SIZE_VERTICAL;
-
-	SDL_Texture * fondoTexture2;
-	SDL_Surface* tmpsurf2 = IMG_Load("Nivel1-fondo2.png");
-	fondoTexture2 = SDL_CreateTextureFromSurface(ren, tmpsurf2);
-	SDL_FreeSurface(tmpsurf2);
-
-
-
-	//Tercera Capa
-	SDL_Rect destinationFondo3;
-	destinationFondo3.x=0;
-	destinationFondo3.y= 0;
-	destinationFondo3.w= WINDOW_SIZE_HORIZONTAL;
-	destinationFondo3.h= WINDOW_SIZE_VERTICAL;
-
-	SDL_Rect sourceFondo3;
-	sourceFondo3.x=50;
-	sourceFondo3.y=0;
-	sourceFondo3.w= WINDOW_SIZE_HORIZONTAL -350;
-	sourceFondo3.h= WINDOW_SIZE_VERTICAL;
-
-	SDL_Texture * fondoTexture3;
-	SDL_Surface* tmpsurf3 = IMG_Load("Nivel1-fondo3.png");
-	fondoTexture3 = SDL_CreateTextureFromSurface(ren, tmpsurf3);
-	SDL_FreeSurface(tmpsurf3);
-
-*/
-
 	// Capa1
 	SDL_Rect destinationFondo1 = capa1.getDest();
 	SDL_Rect sourceFondo1 = capa1.getSource();
@@ -146,14 +87,18 @@ void Vista::Draw(){
 	SDL_Rect destinationFondo2 = capa2.getDest();
 	SDL_Rect sourceFondo2 = capa2.getSource();
 
+	// Capa3
+	SDL_Rect destinationFondo3 = capa3.getDest();
+	SDL_Rect sourceFondo3 = capa3.getSource();
+
 	// Cody
 	SDL_Rect destinationJugador = jugador->getDest();
 	SDL_Rect sourceJugador = jugador->getSource();
 
-	//SDL_RenderCopy(ren, fondoTexture3, &sourceFondo3, &destinationFondo3);
-	//SDL_RenderCopy(ren, fondoTexture2, &sourceFondo2, &destinationFondo2);
-	SDL_RenderCopy(ren, capa1.getTexture(), &sourceFondo1, &destinationFondo1);
+
+	SDL_RenderCopy(ren, capa3.getTexture(), &sourceFondo3, &destinationFondo3);
 	SDL_RenderCopy(ren, capa2.getTexture(), &sourceFondo2, &destinationFondo2);
+	SDL_RenderCopy(ren, capa1.getTexture(), &sourceFondo1, &destinationFondo1);
 	SDL_RenderCopy(ren, jugador->getTexture(), &sourceJugador, &destinationJugador);
 
 }

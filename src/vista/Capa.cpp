@@ -24,7 +24,7 @@ void Capa::setSource(int x, int y, int w, int h){
 	src.h=h;
 
 }
-void Capa::setImage(SDL_Renderer* ren, char* imagen){
+void Capa::setImage(SDL_Renderer* ren, char const * imagen){
 
 	SDL_Surface* surf = IMG_Load(imagen);
 	tex = SDL_CreateTextureFromSurface(ren, surf);
