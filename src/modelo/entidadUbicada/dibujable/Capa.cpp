@@ -30,3 +30,4 @@ void Capa::setImage(SDL_Renderer* ren, char const * imagen){
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }
+

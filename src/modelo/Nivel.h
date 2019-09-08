@@ -5,6 +5,8 @@
 
 #include <stdio.h>
 #include <vector>
+
+
 #include "entidadUbicada/EntidadUbicada.h"
 //#include "cody.h"
 
@@ -18,6 +20,7 @@ public:
 private:
 	std::vector<EntidadUbicada> entidades;
 	//Cody cody;
+
 
 };
 #endif /* NIVEL_H_ */

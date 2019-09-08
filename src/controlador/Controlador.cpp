@@ -11,6 +11,7 @@ Controlador::Controlador(Juego* juego) {
 	// TODO Auto-generated constructor stub
 	this->juego = juego;
 	jugador = juego->getJugador();
+
 }
 
 Controlador::~Controlador() {

@@ -9,7 +9,7 @@
 
 #include "../modelo/Juego.h"
 #include "../controlador/Controlador.h"
-#include "Capa.h"
+#include "../modelo/entidadUbicada/dibujable/Capa.h"
 
 class Vista {
 public:
