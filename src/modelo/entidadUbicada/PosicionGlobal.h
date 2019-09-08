@@ -1,7 +1,11 @@
 #ifndef SRC_MODELO_ENTIDADUBICADA_POSICIONGLOBAL_H_
 #define SRC_MODELO_ENTIDADUBICADA_POSICIONGLOBAL_H_
-#define WINDOW_SIZE_VERTICAL 800
+
+// Los mismos includes en PosicionGlobal y Vista !!!! arreglar posque puden quedar distintos
+
 #define WINDOW_SIZE_HORIZONTAL 800
+#define WINDOW_SIZE_VERTICAL 500
+
 
 class PosicionGlobal {
 public:

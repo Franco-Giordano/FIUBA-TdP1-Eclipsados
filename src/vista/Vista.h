@@ -2,7 +2,9 @@
 #define VISTA_H_
 
 #define WINDOW_SIZE_HORIZONTAL 800
-#define WINDOW_SIZE_VERTICAL 800
+#define WINDOW_SIZE_VERTICAL 300
+#define JUGADOR_SIZE_HORIZONTAL 100
+#define JUGADOR_SIZE_VERTICAL 200
 
 
 #include "../modelo/Juego.h"

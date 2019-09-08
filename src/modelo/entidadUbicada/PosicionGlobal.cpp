@@ -8,9 +8,9 @@
 #include "PosicionGlobal.h"
 
 PosicionGlobal::PosicionGlobal() {
-	// TODO Auto-generated constructor stub
-	x = WINDOW_SIZE_VERTICAL / 6;
-	y = WINDOW_SIZE_VERTICAL / 2;
+	// Inicializacion harcodeada para tamaño de cody
+	x = 0;
+	y = WINDOW_SIZE_VERTICAL - 200;
 	velocidad = 5.0;
 
 }
@@ -28,20 +28,30 @@ PosicionGlobal::~PosicionGlobal() {
 	// TODO Auto-generated destructor stub
 }
 
+// Todos los valores fueron calculados para el tamaño que ocupa Cody
+
 void PosicionGlobal::moverArriba(){
-	y -= velocidad;
+	if(y > WINDOW_SIZE_VERTICAL - 280){
+		y -= velocidad;
+	}
 }
 
 void PosicionGlobal::moverAbajo(){
-	y += velocidad;
+	if(y < WINDOW_SIZE_VERTICAL - 200){
+		y += velocidad;
+	}
 }
 
 void PosicionGlobal::moverIzquierda(){
-	x -= velocidad;
+	if(x > 100){
+		x -= velocidad;
+	}
 }
 
 void PosicionGlobal::moverDerecha(){
-	x += velocidad;
+	if(x < WINDOW_SIZE_HORIZONTAL - 200){
+		x += velocidad;
+	}
 }
 
 float PosicionGlobal::getVertical() {

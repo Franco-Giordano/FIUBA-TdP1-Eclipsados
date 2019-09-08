@@ -41,6 +41,11 @@ void Personaje::setDest(int x, int y, int w, int h){
 	dest.h=h;
 
 }
+
+void Personaje::updateDest(int x, int y){
+	dest.x=x;
+	dest.y=y;
+}
 void Personaje::setSource(int x, int y, int w, int h){
 	src.x=x;
 	src.y=y;
