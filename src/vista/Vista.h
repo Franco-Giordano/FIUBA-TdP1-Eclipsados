@@ -9,7 +9,7 @@
 
 #include "../modelo/Juego.h"
 #include "../controlador/Controlador.h"
-
+#include "Capa.h"
 
 class Vista {
 public:
@@ -39,6 +39,10 @@ private:
 	int caminar;
 	float posicionX;
 	float posicionY;
+
+	Capa capa1;
+	Capa capa2;
+	Capa capa3;
 };
 
 #endif /* VISTA_H_ */

@@ -30,6 +30,15 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	controlador->setAcciones(caminar, parado);
 	controlador->setAccionActual(accionActual);
 
+	capa1.setImage(ren,"Nivel1-fondo1.png");
+	capa1.setDest(0,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
+	capa1.setSource(50,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
+
+	capa2.setImage(ren,"Nivel1-fondo2.png");
+	capa2.setDest(0,-450,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
+	capa2.setSource(50,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
+
+
 	//En el constructor se llama a una funcion interna que corre todo el tiempo?
 	loop();
 }
@@ -68,7 +77,7 @@ void Vista::render() {
 void Vista::Draw(){
 
 	//Toda la parte del fondo se va a poner en un objeto externo
-
+/*
 	//Primera capa
 	SDL_Rect destinationFondo1;
 	destinationFondo1.x=0;
@@ -86,8 +95,7 @@ void Vista::Draw(){
 	SDL_Surface* tmpsurf1 = IMG_Load("Nivel1-fondo1.png");
 	fondoTexture1 = SDL_CreateTextureFromSurface(ren, tmpsurf1);
 	SDL_FreeSurface(tmpsurf1);
-
-
+*/
 /*
 
 	//Segunda capa
@@ -130,13 +138,22 @@ void Vista::Draw(){
 
 */
 
+	// Capa1
+	SDL_Rect destinationFondo1 = capa1.getDest();
+	SDL_Rect sourceFondo1 = capa1.getSource();
+
+	// Capa2
+	SDL_Rect destinationFondo2 = capa2.getDest();
+	SDL_Rect sourceFondo2 = capa2.getSource();
+
 	// Cody
 	SDL_Rect destinationJugador = jugador->getDest();
 	SDL_Rect sourceJugador = jugador->getSource();
 
 	//SDL_RenderCopy(ren, fondoTexture3, &sourceFondo3, &destinationFondo3);
 	//SDL_RenderCopy(ren, fondoTexture2, &sourceFondo2, &destinationFondo2);
-	SDL_RenderCopy(ren, fondoTexture1, &sourceFondo1, &destinationFondo1);
+	SDL_RenderCopy(ren, capa1.getTexture(), &sourceFondo1, &destinationFondo1);
+	SDL_RenderCopy(ren, capa2.getTexture(), &sourceFondo2, &destinationFondo2);
 	SDL_RenderCopy(ren, jugador->getTexture(), &sourceJugador, &destinationJugador);
 
 }
