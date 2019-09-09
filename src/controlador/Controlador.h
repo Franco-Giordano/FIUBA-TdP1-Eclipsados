@@ -13,13 +13,16 @@ public:
 	bool eventHandler();
 
 	void setAccionActual(int acActual);
-	void setAcciones(int c, int p);
+	void setAcciones(int c, int p, int s, int sPatada, int g);
 
 private:
 	Juego* juego;
 	Personaje* jugador;
 	int caminar;
 	int parado;
+	int salto;
+	int saltoPatada;
+	int golpear;
 	int accionActual;
 };
 

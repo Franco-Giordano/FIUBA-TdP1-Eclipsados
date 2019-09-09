@@ -1,10 +1,3 @@
-/*
- * Controlador.cpp
- *
- *  Created on: Sep 3, 2019
- *      Author: franco
- */
-
 #include "Controlador.h"
 
 Controlador::Controlador(Juego* juego) {
@@ -23,10 +16,13 @@ void Controlador::setAccionActual(int acActual){
 	accionActual = acActual;
 }
 
-void Controlador::setAcciones(int cam, int para){
+void Controlador::setAcciones(int c, int p, int s, int sPatada, int g){
 
-	caminar = cam;
-	parado = para;
+	caminar = c;
+	parado = p;
+	salto = s;
+	saltoPatada = sPatada;
+	golpear = g;
 }
 
 
@@ -71,8 +67,15 @@ bool Controlador::eventHandler(){
 		}
 	}
 
-	if(keystates[SDL_SCANCODE_ESCAPE]) {
-		running = false;
+	if(keystates[SDL_SCANCODE_DOWN]) {
+		juego->movimientoAbajo();
+		if(accionActual != caminar){
+			jugador->setAnimacionActual(caminar);
+		}
+	}
+
+	if(keystates[SDL_SCANCODE_RSHIFT]) {
+		jugador->setAnimacionActual(golpear);
 	}
 
 	if(e.type == SDL_QUIT){
