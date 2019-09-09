@@ -25,7 +25,6 @@ private:
 	SDL_Texture* tex;
 	SDL_Rect dest;
 	SDL_Rect src;
-	int posicion;
 	int animActual = 0;
 	int empezar;
 	bool rev,nAb;
@@ -34,9 +33,7 @@ private:
 public:
 	Personaje();
 	virtual ~Personaje();
-	void moverDerecha();
-	void moverIzquierda();
-	int getPosicionGlobal();
+
 	int crearCiclo(int f, int w, int h, int cant, int vel);
 	void setAnimacionActual(int c) {empezar = 0; animActual = c;}
 	void updateAnim();

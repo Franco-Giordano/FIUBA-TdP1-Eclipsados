@@ -45,5 +45,5 @@ void Juego::movimientoIzquierda() {
 }
 
 Personaje* Juego::getJugador() {
-	return &jugador;
+	return (Personaje*)personaje;
 }

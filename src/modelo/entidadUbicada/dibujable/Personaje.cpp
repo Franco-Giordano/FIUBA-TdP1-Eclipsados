@@ -2,26 +2,14 @@
 
 Personaje::Personaje() {
 	// TODO Auto-generated constructor stub
-	posicion = 0;
 
-}
-
-void Personaje::moverDerecha() {
-	posicion+= SPEED;
-}
-
-void Personaje::moverIzquierda() {
-	posicion-= SPEED;
-}
-
-int Personaje::getPosicionGlobal() {
-	return posicion;
 }
 
 
 Personaje::~Personaje() {
 	// TODO Auto-generated destructor stub
 }
+
 
 int Personaje::crearCiclo(int f, int w, int h, int cantSprites, int vel){
 	cycle tmp;
