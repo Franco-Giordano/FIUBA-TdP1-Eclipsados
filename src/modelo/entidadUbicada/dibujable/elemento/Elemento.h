@@ -10,7 +10,7 @@
 
 #include "../Dibujable.h"
 
-class Elemento : Dibujable{
+class Elemento : public Dibujable{
 public:
 	Elemento();
 	virtual ~Elemento();
