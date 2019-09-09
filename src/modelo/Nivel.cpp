@@ -4,6 +4,9 @@
 
 Nivel::Nivel() {
 
+	musicaFondo = new Sonido();
+	(*musicaFondo).play();
+
 	cody = factory.crearEntidadConPersonaje();
 
 	capa1.setVelocidad(3);
@@ -15,6 +18,7 @@ Nivel::Nivel() {
 
 Nivel::~Nivel() {
 	delete cody;
+	delete musicaFondo;
 }
 
 void Nivel::movimientoArriba(){

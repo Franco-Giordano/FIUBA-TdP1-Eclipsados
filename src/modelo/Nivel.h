@@ -1,5 +1,3 @@
-
-
 #ifndef NIVEL_H_
 #define NIVEL_H_
 
@@ -7,9 +5,7 @@
 
 #include <stdio.h>
 #include <vector>
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
-
+#include "Sonido.h"
 #include "Capa.h"
 #include "entidadUbicada/EntidadUbicada.h"
 #include "entidadUbicada/FactoryEntidadUbicada.h"
@@ -47,6 +43,8 @@ private:
 	Capa capa2;
 	Capa capa3;
 	//Cody cody;
+
+	Sonido *musicaFondo;
 
 
 };
