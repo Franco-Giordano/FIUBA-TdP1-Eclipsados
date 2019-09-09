@@ -47,7 +47,9 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 }
 
 Vista::~Vista() {
-	// TODO Auto-generated destructor stub
+	SDL_DestroyRenderer(ren);
+	SDL_DestroyWindow(win);
+	SDL_Quit();
 }
 
 void Vista::render() {

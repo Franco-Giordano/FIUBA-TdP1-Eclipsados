@@ -7,7 +7,7 @@ Personaje::Personaje() {
 
 
 Personaje::~Personaje() {
-	// TODO Auto-generated destructor stub
+	SDL_DestroyTexture(tex);
 }
 
 
