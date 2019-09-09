@@ -43,6 +43,7 @@ bool Controlador::eventHandler(){
 		juego->movimientoDerecha();
 		if(accionActual != caminar){
 			jugador->setAnimacionActual(caminar);
+			accionActual = caminar;
 		}
 	}
 
@@ -50,6 +51,7 @@ bool Controlador::eventHandler(){
 		juego->movimientoIzquierda();
 		if(accionActual != caminar){
 			jugador->setAnimacionActual(caminar);
+			accionActual = caminar;
 		}
 	}
 
@@ -57,6 +59,7 @@ bool Controlador::eventHandler(){
 		juego->movimientoArriba();
 		if(accionActual != caminar){
 			jugador->setAnimacionActual(caminar);
+			accionActual = caminar;
 		}
 	}
 
@@ -64,6 +67,7 @@ bool Controlador::eventHandler(){
 		juego->movimientoAbajo();
 		if(accionActual != caminar){
 			jugador->setAnimacionActual(caminar);
+			accionActual = caminar;
 		}
 	}
 
@@ -71,11 +75,15 @@ bool Controlador::eventHandler(){
 		juego->movimientoAbajo();
 		if(accionActual != caminar){
 			jugador->setAnimacionActual(caminar);
+			accionActual = caminar;
 		}
 	}
 
 	if(keystates[SDL_SCANCODE_RSHIFT]) {
-		jugador->setAnimacionActual(golpear);
+		if(accionActual != golpear){
+			jugador->setAnimacionActual(golpear);
+			accionActual = golpear;
+		}
 	}
 
 	if(keystates[SDL_SCANCODE_ESCAPE]) {
@@ -88,6 +96,7 @@ bool Controlador::eventHandler(){
 
 	if(e.type == SDL_KEYUP){
 		jugador->setAnimacionActual(parado);
+		accionActual = parado;
 	}
 
 	return running;

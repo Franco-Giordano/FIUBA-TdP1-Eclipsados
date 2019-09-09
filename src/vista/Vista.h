@@ -39,6 +39,9 @@ private:
 	int accionActual;
 	int parado;
 	int caminar;
+	int salto;
+	int saltoPatada;
+	int golpear;
 	float posicionX;
 	float posicionY;
 

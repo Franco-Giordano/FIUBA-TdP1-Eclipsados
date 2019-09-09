@@ -1,17 +1,10 @@
-/*
- * PosicionGlobal.cpp
- *
- *  Created on: Sep 5, 2019
- *      Author: franco
- */
-
 #include "PosicionGlobal.h"
 
 PosicionGlobal::PosicionGlobal() {
 	// Inicializacion harcodeada para tamaño de cody
 	x = 0;
 	y = WINDOW_SIZE_VERTICAL - 200;
-	velocidad = 5.0;
+	velocidad = 1.0;
 
 }
 

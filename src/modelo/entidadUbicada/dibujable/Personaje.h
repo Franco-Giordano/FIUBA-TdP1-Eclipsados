@@ -25,7 +25,7 @@ private:
 	SDL_Texture* tex;
 	SDL_Rect dest;
 	SDL_Rect src;
-	int animActual = 0;
+	int animActual;
 	int empezar;
 	bool rev,nAb;
 	int newAnim;
@@ -44,6 +44,8 @@ public:
 	void setDest(int x, int y, int w, int h);
 	void setSource(int x, int y, int w, int h);
 	void setImage(SDL_Renderer *ren);
+	//void reverse(bool reverse){rev = reverse;}
+	//void reverse(bool reverse, int animDefault){rev = reverse;}
 };
 
 #endif /* PERSONAJE_H_ */

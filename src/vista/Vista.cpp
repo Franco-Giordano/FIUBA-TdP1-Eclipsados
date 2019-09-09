@@ -24,10 +24,10 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
 	jugador->setSource(posicionX, posicionY, 47, 98);
 	parado = jugador->crearCiclo(1, 47, 98, 1, 10);
-	caminar = jugador->crearCiclo(2, 53, 98, 6, 20);
+	caminar = jugador->crearCiclo(2, 53, 98, 6, 10);
 	salto = jugador->crearCiclo(3, 63, 130, 8, 15);
 	saltoPatada = jugador->crearCiclo(4, 66, 100, 6, 15);
-	golpear = jugador->crearCiclo(5, 65, 104, 8, 20);
+	golpear = jugador->crearCiclo(5, 65, 104, 8, 10);
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual);
 	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear);
@@ -54,6 +54,7 @@ void Vista::prepararCapa(Capa* capa,char const* imagen){
 
 Vista::~Vista() {
 	// TODO Auto-generated destructor stub
+    Mix_Quit();
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
     IMG_Quit();
@@ -64,13 +65,6 @@ void Vista::render() {
 	SDL_RenderClear(ren);
 
 	Draw();
-
-	//por que se necesita este loop? ya hay otro similar en loop()
-	frameCount++;
-	int timerFPS = SDL_GetTicks()-frameStart;
-	if(timerFPS < frameDelay){
-		SDL_Delay(frameDelay-timerFPS);
-	}
 
 	SDL_RenderPresent(ren);
 
@@ -105,8 +99,7 @@ void Vista::Draw(){
 
 
 void Vista::update(){
-	// ?????????????????????????????
-	// en este ejemplo no tiene sentido
+
 	PosicionGlobal posicionJugador= juego->getPosicionJugador();
 	posicionX = posicionJugador.getHorizontal();
 	posicionY = posicionJugador.getVertical();
@@ -133,6 +126,7 @@ void Vista::loop() {
 		running = controlador->eventHandler();
 
 		update();
+
 
 		if(frameDelay > lastTime){
 			SDL_Delay(frameDelay - lastTime);

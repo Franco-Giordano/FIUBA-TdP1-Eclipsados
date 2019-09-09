@@ -53,21 +53,12 @@ void Personaje::updateAnim(){
 
 	setSource(animaciones[animActual].w*animaciones[animActual].tick, animaciones[animActual].fil*animaciones[animActual].h, animaciones[animActual].w, animaciones[animActual].h);
 	if(empezar>animaciones[animActual].vel){
+		animaciones[animActual].tick++;
 		empezar=0;
 	}
 	empezar++;
 	if(animaciones[animActual].tick >= animaciones[animActual].cantSprites) {
 		animaciones[animActual].tick = 0;
 	}
-	if(animaciones[animActual].tick <= 0){
-		if(nAb){
-			animActual = newAnim;
-			nAb = 0;
-			rev = 0;
-		}else{
-			animaciones[animActual].tick = 0;
-		}
-	}
-
 }
 
