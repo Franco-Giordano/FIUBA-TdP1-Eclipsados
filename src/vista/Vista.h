@@ -9,7 +9,8 @@
 
 #include "../modelo/Juego.h"
 #include "../controlador/Controlador.h"
-#include "../modelo/entidadUbicada/dibujable/Capa.h"
+#include "../modelo/Capa.h"
+#include "../modelo/Nivel.h"
 
 class Vista {
 public:
@@ -21,6 +22,7 @@ public:
 	void loop();
 
 private:
+	void prepararCapa(Capa* capa,char const* imagen);
 
 	Juego* juego;
 	Controlador* controlador;
@@ -40,9 +42,10 @@ private:
 	float posicionX;
 	float posicionY;
 
-	Capa capa1;
-	Capa capa2;
-	Capa capa3;
+	Capa* capa1;
+	Capa* capa2;
+	Capa* capa3;
+	Nivel* nivel;
 };
 
 #endif /* VISTA_H_ */
