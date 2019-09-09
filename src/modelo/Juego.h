@@ -3,7 +3,7 @@
 
 #include "entidadUbicada/EntidadUbicada.h"
 #include "entidadUbicada/dibujable/Personaje.h"
-
+#include "Nivel.h"
 
 class Juego {
 public:
@@ -18,9 +18,13 @@ public:
 	Personaje* getJugador();
 
 	PosicionGlobal getPosicionJugador();
+
+	Nivel* getNivel(){return nivel;}
+
 private:
 	EntidadUbicada* entidad;
 	Dibujable* personaje;
+	Nivel* nivel;
 };
 
 #endif /* JUEGO_H_ */
