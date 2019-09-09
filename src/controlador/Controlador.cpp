@@ -78,6 +78,10 @@ bool Controlador::eventHandler(){
 		jugador->setAnimacionActual(golpear);
 	}
 
+	if(keystates[SDL_SCANCODE_ESCAPE]) {
+		running = false;
+	}
+
 	if(e.type == SDL_QUIT){
 			running =false;
 	}
