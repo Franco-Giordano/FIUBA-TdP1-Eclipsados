@@ -5,7 +5,6 @@
 #include "PosicionGlobal.h"
 
 
-//TODO: se puede aplicar el patron Factory para generar Entidades a gusto
 class EntidadUbicada {
 public:
 	EntidadUbicada(Dibujable* entidad);
