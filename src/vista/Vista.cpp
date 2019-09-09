@@ -8,7 +8,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	this->controlador = controlador;
 	this->jugador = juego->getJugador();
 
-	SDL_Init(0);
+	SDL_Init(SDL_INIT_VIDEO);
 	//SDL_CreateWindow("Final Fight", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 360, 240, false);
 	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
 	SDL_SetWindowTitle(win, "Final Fight");
@@ -23,11 +23,14 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	//jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, 47, 98);
 	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
 	jugador->setSource(posicionX, posicionY, 47, 98);
-	parado = jugador->crearCiclo(1, 47, 98, 1, 15);
-	caminar = jugador->crearCiclo(2, 47, 98, 6, 15);
+	parado = jugador->crearCiclo(1, 47, 98, 1, 10);
+	caminar = jugador->crearCiclo(2, 53, 98, 6, 20);
+	salto = jugador->crearCiclo(3, 63, 130, 8, 15);
+	saltoPatada = jugador->crearCiclo(4, 66, 100, 6, 15);
+	golpear = jugador->crearCiclo(5, 65, 104, 8, 20);
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual);
-	controlador->setAcciones(caminar, parado);
+	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear);
 	controlador->setAccionActual(accionActual);
 
 	nivel = juego->getNivel();
@@ -51,20 +54,14 @@ void Vista::prepararCapa(Capa* capa,char const* imagen){
 
 Vista::~Vista() {
 	// TODO Auto-generated destructor stub
+	SDL_DestroyRenderer(ren);
+	SDL_DestroyWindow(win);
+    IMG_Quit();
+	SDL_Quit();
 }
 
 void Vista::render() {
 	SDL_RenderClear(ren);
-
-	//fondo
-	SDL_SetRenderDrawColor(ren, 100, 100, 100, 255);
-	SDL_Rect rect;
-	rect.x=0;
-	rect.y=0;
-	rect.w=WINDOW_SIZE_HORIZONTAL;
-	rect.h=WINDOW_SIZE_VERTICAL;
-	SDL_RenderFillRect(ren, &rect);
-
 
 	Draw();
 
