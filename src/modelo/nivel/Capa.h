@@ -1,5 +1,5 @@
-#ifndef SRC_MODELO_CAPA_H_
-#define SRC_MODELO_CAPA_H_
+#ifndef SRC_MODELO_NIVEL_CAPA_H_
+#define SRC_MODELO_NIVEL_CAPA_H_
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
@@ -31,4 +31,4 @@ private:
 	//char** imagenes = {"Nivel1-fondo1.png","Nivel1-fondo2.png","Nivel1-fondo3.png"};
 };
 
-#endif /* SRC_MODELO_CAPA_H_ */
+#endif /* SRC_MODELO_NIVEL_CAPA_H_ */

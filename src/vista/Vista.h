@@ -1,16 +1,12 @@
 #ifndef VISTA_H_
 #define VISTA_H_
 
-#define WINDOW_SIZE_HORIZONTAL 800
-#define WINDOW_SIZE_VERTICAL 300
-#define JUGADOR_SIZE_HORIZONTAL 100
-#define JUGADOR_SIZE_VERTICAL 200
-
+#include "../defs.h"
 
 #include "../modelo/Juego.h"
 #include "../controlador/Controlador.h"
-#include "../modelo/Capa.h"
-#include "../modelo/Nivel.h"
+#include "../modelo/nivel/Capa.h"
+#include "../modelo/nivel/Nivel.h"
 
 class Vista {
 public:

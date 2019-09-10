@@ -1,5 +1,7 @@
 #include "PosicionGlobal.h"
 
+#include <iostream>
+
 PosicionGlobal::PosicionGlobal() {
 	// Inicializacion harcodeada para tamaño de cody
 	x = 0;
@@ -45,6 +47,7 @@ void PosicionGlobal::moverDerecha(){
 	if(x < WINDOW_SIZE_HORIZONTAL - 200){
 		x += velocidad;
 	}
+
 }
 
 float PosicionGlobal::getVertical() {
@@ -55,3 +58,7 @@ float PosicionGlobal::getHorizontal() {
 	return x;
 }
 
+void PosicionGlobal::trasladarA(float horizontal, float vertical) {
+	x = horizontal;
+	y = vertical;
+}

@@ -1,0 +1,18 @@
+
+#ifndef SRC_DEFS_H_
+#define SRC_DEFS_H_
+
+
+#define WINDOW_SIZE_HORIZONTAL 800
+#define WINDOW_SIZE_VERTICAL 500
+
+
+#define JUGADOR_SIZE_HORIZONTAL 100
+#define JUGADOR_SIZE_VERTICAL 200
+
+
+
+
+
+
+#endif /* SRC_DEFS_H_ */

@@ -3,9 +3,7 @@
 
 // Los mismos includes en PosicionGlobal y Vista !!!! arreglar posque puden quedar distintos
 
-#define WINDOW_SIZE_HORIZONTAL 800
-#define WINDOW_SIZE_VERTICAL 500
-
+#include "../../defs.h"
 
 class PosicionGlobal {
 public:
@@ -23,6 +21,8 @@ public:
 	//TODO: de momento seran gets, despues se puede usar una funcion que no viole encapsulamiento
 	float getHorizontal();
 	float getVertical();
+
+	void trasladarA(float horizontal, float vertical);
 
 private:
 	float velocidad;

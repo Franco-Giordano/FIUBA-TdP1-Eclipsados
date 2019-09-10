@@ -27,6 +27,8 @@ public:
 
 	EntidadUbicada* crearEntidadConBarril();
 
+	EntidadUbicada* crearEntidadConBarril(float horizontal, float vertical);
+
 	EntidadUbicada* crearEntidadConCuchillo();
 
 	EntidadUbicada* crearEntidadConCanio();

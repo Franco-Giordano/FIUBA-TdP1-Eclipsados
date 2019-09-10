@@ -9,9 +9,17 @@
 
 
 EntidadUbicada::EntidadUbicada(Dibujable* entidad) {
-	// TODO Auto-generated constructor stub
+
 	this->entidad = entidad;
 
+}
+
+
+EntidadUbicada::EntidadUbicada(Dibujable* entidad, float horizontal, float vertical) {
+
+	this->entidad = entidad;
+
+	posicion.trasladarA(horizontal, vertical);
 }
 
 EntidadUbicada::~EntidadUbicada() {
