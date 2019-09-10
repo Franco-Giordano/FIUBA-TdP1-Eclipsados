@@ -13,12 +13,16 @@ Nivel::Nivel() {
 	capa2.setVelocidad(2);
 	capa3.setVelocidad(1);
 
-
+	this->ubicarEnemigosYElementos(8, 10);
 }
 
 Nivel::~Nivel() {
 	delete cody;
 	delete musicaFondo;
+
+	for (int i = 0; i < elementos.size(); i++) {
+		delete elementos[i];
+	}
 }
 
 void Nivel::movimientoArriba(){
@@ -61,7 +65,17 @@ void Nivel::moverCapasIzquierda(){
 	capa3.moverIzquierda();
 }
 
-void Nivel::inicializarObjetos(){
+void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
 	//cody = Cody();
+/*
+	for (int i = 0; i < (cantEnemigos + cantElementos); i++) {
+
+	}*/
+
+	FactoryEntidadUbicada factory;
+
+	EntidadUbicada* barril = factory.crearEntidadConBarril(100, 100);
+
+	elementos.push_back(barril);
 }
 

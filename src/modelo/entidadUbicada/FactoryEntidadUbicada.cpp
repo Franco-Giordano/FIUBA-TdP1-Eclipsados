@@ -32,6 +32,12 @@ EntidadUbicada* FactoryEntidadUbicada::crearEntidadConBarril() {
 	return new EntidadUbicada(barril);
 }
 
+
+EntidadUbicada* FactoryEntidadUbicada::crearEntidadConBarril(float horizontal, float vertical) {
+	Dibujable* barril = new Barril;
+	return new EntidadUbicada(barril, horizontal, vertical);
+}
+
 EntidadUbicada* FactoryEntidadUbicada::crearEntidadConCuchillo() {
 	Dibujable* cuchillo= new Cuchillo;
 	return new EntidadUbicada(cuchillo);

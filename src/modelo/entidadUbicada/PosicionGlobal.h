@@ -3,9 +3,7 @@
 
 // Los mismos includes en PosicionGlobal y Vista !!!! arreglar posque puden quedar distintos
 
-#define WINDOW_SIZE_HORIZONTAL 800
-#define WINDOW_SIZE_VERTICAL 500
-
+#include "../../defs.h"
 
 class PosicionGlobal {
 public:
@@ -26,6 +24,8 @@ public:
 	float getWindowSizeHorizontal();
 	bool llegoCodyAlBordeDerecho();
 	bool llegoCodyAlBordeIzquierdo();
+
+	void trasladarA(float horizontal, float vertical);
 
 private:
 	float velocidad;

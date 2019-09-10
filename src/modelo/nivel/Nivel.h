@@ -5,10 +5,10 @@
 
 #include <stdio.h>
 #include <vector>
-#include "Sonido.h"
-#include "Capa.h"
-#include "entidadUbicada/EntidadUbicada.h"
-#include "entidadUbicada/FactoryEntidadUbicada.h"
+#include "../Sonido.h"
+#include "../entidadUbicada/EntidadUbicada.h"
+#include "../entidadUbicada/FactoryEntidadUbicada.h"
+#include "../nivel/Capa.h"
 
 //#include "cody.h"
 
@@ -16,7 +16,7 @@ class Nivel {
 public:
 	Nivel();
 	virtual ~Nivel();
-	void inicializarObjetos();
+	void ubicarEnemigosYElementos(int cantEnemigos, int cantElementos);
 
 	void setImagesCapas(SDL_Renderer *ren, char const* imagen1, char const* imagen2, char const* imagen3);
 
@@ -32,14 +32,23 @@ public:
 private:
 	void moverCapasDerecha();
 	void moverCapasIzquierda();
+
 	void inicializarCapa(Capa capa);
 
 	FactoryEntidadUbicada factory;
-	std::vector<EntidadUbicada> entidades;
+
+	std::vector<EntidadUbicada*> enemigos;
+	std::vector<EntidadUbicada*> elementos;
+
 	EntidadUbicada* cody;
+
 	Capa capa1;
 	Capa capa2;
 	Capa capa3;
+	//Cody cody;
+
+
+
 	Sonido *musicaFondo;
 
 

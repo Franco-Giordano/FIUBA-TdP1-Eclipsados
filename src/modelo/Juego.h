@@ -3,7 +3,7 @@
 
 #include "entidadUbicada/EntidadUbicada.h"
 #include "entidadUbicada/dibujable/Personaje.h"
-#include "Nivel.h"
+#include "nivel/Nivel.h"
 
 class Juego {
 public:

@@ -4,10 +4,12 @@
 #include "dibujable/Dibujable.h"
 #include "PosicionGlobal.h"
 
-//TODO: se puede aplicar el patron Factory para generar Entidades a gusto
+
 class EntidadUbicada {
 public:
 	EntidadUbicada(Dibujable* entidad);
+	EntidadUbicada(Dibujable* entidad, float horizontal, float vertical);
+
 	virtual ~EntidadUbicada();
 
 	void moverIzquierda();

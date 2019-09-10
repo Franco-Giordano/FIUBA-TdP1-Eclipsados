@@ -13,6 +13,14 @@ EntidadUbicada::EntidadUbicada(Dibujable* entidad) {
 
 }
 
+
+EntidadUbicada::EntidadUbicada(Dibujable* entidad, float horizontal, float vertical) {
+
+	this->entidad = entidad;
+
+	posicion.trasladarA(horizontal, vertical);
+}
+
 EntidadUbicada::~EntidadUbicada() {
 	delete this->entidad;
 }

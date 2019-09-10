@@ -55,8 +55,8 @@ void Vista::prepararCapa(Capa* capa,char const* imagen){
 }
 
 Vista::~Vista() {
-	// TODO Auto-generated destructor stub
-    Mix_Quit();
+
+	Mix_Quit();
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
     IMG_Quit();
@@ -64,12 +64,12 @@ Vista::~Vista() {
 }
 
 void Vista::render() {
+
 	SDL_RenderClear(ren);
 
 	Draw();
 
 	SDL_RenderPresent(ren);
-
 
 }
 
@@ -97,12 +97,15 @@ void Vista::Draw(){
 	SDL_RenderCopy(ren, capa1->getTexture(), &sourceFondo1, &destinationFondo1);
 	SDL_RenderCopy(ren, jugador->getTexture(), &sourceJugador, &destinationJugador);
 
+	//TODO: no se como meter la renderizacion de objetos/enemigos aca
+	//deberia poderse buscar que objetos estan en la vista actual, y renderizarse solo esos
+
 }
 
 
 void Vista::update(){
 
-	PosicionGlobal posicionJugador= juego->getPosicionJugador();
+	PosicionGlobal posicionJugador = juego->getPosicionJugador();
 	posicionX = posicionJugador.getHorizontal();
 	posicionY = posicionJugador.getVertical();
 	//jugador->setDest(posicionX, posicionY, 45, 95);
