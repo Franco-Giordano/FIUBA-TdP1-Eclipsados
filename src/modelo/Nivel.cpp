@@ -31,12 +31,16 @@ void Nivel::movimientoAbajo(){
 
 void Nivel::movimientoIzquierda(){
 	cody->moverIzquierda();
-	moverCapasIzquierda();
+	if(cody->llegoAlBordeIzquierdo()){
+		moverCapasIzquierda();
+	}
 }
 
 void Nivel::movimientoDerecha(){
 	cody->moverDerecha();
-	moverCapasDerecha();
+	if(cody->llegoAlBordeDerecho()){
+		moverCapasDerecha();
+	}
 }
 
 void Nivel::setImagesCapas(SDL_Renderer *ren, char const* imagen1, char const* imagen2, char const* imagen3){

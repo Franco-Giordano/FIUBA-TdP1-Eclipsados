@@ -13,16 +13,19 @@ public:
 	virtual ~PosicionGlobal();
 
 	//constructor de copia, no hace falta pero por las dudas
-	PosicionGlobal(const PosicionGlobal &pos);
+	//PosicionGlobal(const PosicionGlobal &pos);
 
 	void moverArriba();
 	void moverAbajo();
 	void moverIzquierda();
 	void moverDerecha();
 
-	//TODO: de momento seran gets, despues se puede usar una funcion que no viole encapsulamiento
+	//TODO: cambiar por funciones qque no violen encapsulamiento
 	float getHorizontal();
 	float getVertical();
+	float getWindowSizeHorizontal();
+	bool llegoCodyAlBordeDerecho();
+	bool llegoCodyAlBordeIzquierdo();
 
 private:
 	float velocidad;

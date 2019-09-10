@@ -32,18 +32,14 @@ public:
 private:
 	void moverCapasDerecha();
 	void moverCapasIzquierda();
-
 	void inicializarCapa(Capa capa);
 
 	FactoryEntidadUbicada factory;
-
 	std::vector<EntidadUbicada> entidades;
 	EntidadUbicada* cody;
 	Capa capa1;
 	Capa capa2;
 	Capa capa3;
-	//Cody cody;
-
 	Sonido *musicaFondo;
 
 

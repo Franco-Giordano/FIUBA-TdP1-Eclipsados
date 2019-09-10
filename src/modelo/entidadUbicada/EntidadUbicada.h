@@ -4,7 +4,6 @@
 #include "dibujable/Dibujable.h"
 #include "PosicionGlobal.h"
 
-
 //TODO: se puede aplicar el patron Factory para generar Entidades a gusto
 class EntidadUbicada {
 public:
@@ -18,7 +17,11 @@ public:
 
 	PosicionGlobal getPosicionGlobal();
 
+	bool llegoAlBordeDerecho();
+	bool llegoAlBordeIzquierdo();
+
 private:
+
 	Dibujable* entidad;
 	PosicionGlobal posicion;
 };

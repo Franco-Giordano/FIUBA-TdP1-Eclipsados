@@ -4,11 +4,11 @@ PosicionGlobal::PosicionGlobal() {
 	// Inicializacion harcodeada para tamaño de cody
 	x = 0;
 	y = WINDOW_SIZE_VERTICAL - 200;
-	velocidad = 1.0;
+	velocidad = 2.0;
 
 }
 
-
+/*
 PosicionGlobal::PosicionGlobal(const PosicionGlobal &pos) {
 
 	x = pos.x;
@@ -16,6 +16,7 @@ PosicionGlobal::PosicionGlobal(const PosicionGlobal &pos) {
 	velocidad = pos.velocidad;
 
 }
+*/
 
 PosicionGlobal::~PosicionGlobal() {
 	// TODO Auto-generated destructor stub
@@ -25,13 +26,13 @@ PosicionGlobal::~PosicionGlobal() {
 
 void PosicionGlobal::moverArriba(){
 	if(y > WINDOW_SIZE_VERTICAL - 280){
-		y -= velocidad;
+		y -= velocidad/2;
 	}
 }
 
 void PosicionGlobal::moverAbajo(){
 	if(y < WINDOW_SIZE_VERTICAL - 200){
-		y += velocidad;
+		y += velocidad/2;
 	}
 }
 
@@ -53,5 +54,17 @@ float PosicionGlobal::getVertical() {
 
 float PosicionGlobal::getHorizontal() {
 	return x;
+}
+
+float PosicionGlobal::getWindowSizeHorizontal(){
+	return WINDOW_SIZE_HORIZONTAL;
+
+}
+bool PosicionGlobal::llegoCodyAlBordeDerecho(){
+	return (x >= WINDOW_SIZE_HORIZONTAL - 200);
+}
+
+bool PosicionGlobal::llegoCodyAlBordeIzquierdo(){
+	return (x <= 100);
 }
 

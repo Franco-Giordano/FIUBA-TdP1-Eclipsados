@@ -62,3 +62,15 @@ void Personaje::updateAnim(){
 	}
 }
 
+bool Personaje::llegoAlBorde(int Xpos, int WindowSizeHorizontal){
+	bool llegoAlBorde = false;
+
+	if(Xpos <= 100){
+		llegoAlBorde = false;
+	}
+	else if(Xpos >= WindowSizeHorizontal - 200 ){
+		llegoAlBorde = false;
+	}
+
+	return llegoAlBorde;
+}

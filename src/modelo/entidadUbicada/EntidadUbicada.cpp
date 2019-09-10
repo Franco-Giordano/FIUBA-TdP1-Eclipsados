@@ -9,13 +9,11 @@
 
 
 EntidadUbicada::EntidadUbicada(Dibujable* entidad) {
-	// TODO Auto-generated constructor stub
 	this->entidad = entidad;
 
 }
 
 EntidadUbicada::~EntidadUbicada() {
-	// TODO Auto-generated destructor stub
 	delete this->entidad;
 }
 
@@ -37,4 +35,13 @@ void EntidadUbicada::moverAbajo() {
 
 PosicionGlobal EntidadUbicada::getPosicionGlobal() {
 	return posicion;
+}
+
+//Las siguientes dos funciones estan diseñadas solo para Cody --> generalizar
+bool EntidadUbicada::llegoAlBordeDerecho(){
+	return posicion.llegoCodyAlBordeDerecho();
+}
+
+bool EntidadUbicada::llegoAlBordeIzquierdo(){
+	return posicion.llegoCodyAlBordeIzquierdo();
 }

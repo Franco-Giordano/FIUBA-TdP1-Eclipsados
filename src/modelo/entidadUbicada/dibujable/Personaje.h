@@ -7,7 +7,8 @@ using namespace  std;
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
-#define SPEED 10
+
+//#define SPEED 10
 
 #include "Dibujable.h"
 
@@ -44,6 +45,7 @@ public:
 	void setDest(int x, int y, int w, int h);
 	void setSource(int x, int y, int w, int h);
 	void setImage(SDL_Renderer *ren);
+	bool llegoAlBorde(int Xpos, int WindowSizeHorizontal);
 	//void reverse(bool reverse){rev = reverse;}
 	//void reverse(bool reverse, int animDefault){rev = reverse;}
 };

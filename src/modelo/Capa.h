@@ -4,6 +4,8 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 
+#define ANCHO_CAPA_PIXELES 900
+
 class Capa {
 public:
 	Capa();

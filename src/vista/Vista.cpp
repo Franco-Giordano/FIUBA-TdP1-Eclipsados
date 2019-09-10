@@ -1,7 +1,6 @@
 #include "Vista.h"
 
 
-
 Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 	juego = modelo;
@@ -23,13 +22,16 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	//jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, 47, 98);
 	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
 	jugador->setSource(posicionX, posicionY, 47, 98);
+
 	parado = jugador->crearCiclo(1, 47, 98, 1, 10);
-	caminar = jugador->crearCiclo(2, 53, 98, 6, 10);
+	caminar = jugador->crearCiclo(2, 53, 98, 6, 8);
 	salto = jugador->crearCiclo(3, 63, 130, 8, 15);
 	saltoPatada = jugador->crearCiclo(4, 66, 100, 6, 15);
 	golpear = jugador->crearCiclo(5, 65, 104, 8, 10);
+
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual);
+
 	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear);
 	controlador->setAccionActual(accionActual);
 
@@ -48,7 +50,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 void Vista::prepararCapa(Capa* capa,char const* imagen){
 	capa->setImage(ren,imagen);
-	capa->setSource(50,0,WINDOW_SIZE_HORIZONTAL -350,WINDOW_SIZE_VERTICAL);
+	capa->setSource(0,0,WINDOW_SIZE_HORIZONTAL -350,WINDOW_SIZE_VERTICAL);
 	capa->setDest(0,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
 }
 

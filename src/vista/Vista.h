@@ -2,7 +2,7 @@
 #define VISTA_H_
 
 #define WINDOW_SIZE_HORIZONTAL 800
-#define WINDOW_SIZE_VERTICAL 300
+#define WINDOW_SIZE_VERTICAL 500
 #define JUGADOR_SIZE_HORIZONTAL 100
 #define JUGADOR_SIZE_VERTICAL 200
 
@@ -49,6 +49,7 @@ private:
 	Capa* capa2;
 	Capa* capa3;
 	Nivel* nivel;
+
 };
 
 #endif /* VISTA_H_ */
