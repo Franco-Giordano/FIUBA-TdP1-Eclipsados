@@ -2,3 +2,9 @@
 .project
 Debug/
 .settings/
+
+# Ignore the build dir
+build
+
+# Ignore any executables
+bin/*
