@@ -23,11 +23,12 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
 	jugador->setSource(posicionX, posicionY, 47, 98);
 
-	parado = jugador->crearCiclo(1, 47, 98, 1, 10);
-	caminar = jugador->crearCiclo(2, 53, 98, 6, 8);
-	salto = jugador->crearCiclo(3, 63, 130, 8, 15);
-	saltoPatada = jugador->crearCiclo(4, 66, 100, 6, 15);
-	golpear = jugador->crearCiclo(5, 65, 104, 8, 10);
+	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
+	caminar = jugador->crearCiclo(2, 85, 120, 12, 5);
+	salto = jugador->crearCiclo(3, 85, 120, 8, 15);
+	golpear = jugador->crearCiclo(4, 110, 120, 10, 10);
+	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 15);
+
 
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual);

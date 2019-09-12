@@ -5,7 +5,7 @@ PosicionGlobal::PosicionGlobal() {
 	// Inicializacion harcodeada para tamaño de cody
 	x = 0;
 	y = WINDOW_SIZE_VERTICAL - 200;
-	velocidad = 2.0;
+	velocidad = 3.0;
 
 }
 
@@ -26,13 +26,13 @@ PosicionGlobal::~PosicionGlobal() {
 // Todos los valores fueron calculados para el tamaño que ocupa Cody
 
 void PosicionGlobal::moverArriba(){
-	if(y > WINDOW_SIZE_VERTICAL - 280){
+	if(y > WINDOW_SIZE_VERTICAL - 365){
 		y -= velocidad/2;
 	}
 }
 
 void PosicionGlobal::moverAbajo(){
-	if(y < WINDOW_SIZE_VERTICAL - 200){
+	if(y < WINDOW_SIZE_VERTICAL - 245){
 		y += velocidad/2;
 	}
 }

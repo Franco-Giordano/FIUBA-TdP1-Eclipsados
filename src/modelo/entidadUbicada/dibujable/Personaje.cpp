@@ -18,6 +18,7 @@ int Personaje::crearCiclo(int f, int w, int h, int cantSprites, int vel){
 	tmp.cantSprites=cantSprites;
 	tmp.vel=vel;
 	tmp.tick=0;
+	tmp.h = h;
 	animaciones.push_back(tmp);
 	return animaciones.size()-1;
 }
@@ -44,7 +45,7 @@ void Personaje::setSource(int x, int y, int w, int h){
 
 void Personaje::setImage(SDL_Renderer* ren){
 
-	SDL_Surface* surf = IMG_Load("Cody.png");
+	SDL_Surface* surf = IMG_Load("SpriteCodyCompleto.png");
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }
