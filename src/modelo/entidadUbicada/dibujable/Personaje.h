@@ -26,6 +26,7 @@ private:
 	SDL_Texture* tex;
 	SDL_Rect dest;
 	SDL_Rect src;
+	SDL_RendererFlip spriteFlip;
 	int animActual;
 	int empezar;
 	bool rev,nAb;
@@ -36,18 +37,17 @@ public:
 	virtual ~Personaje();
 
 	int crearCiclo(int f, int w, int h, int cant, int vel);
-	void setAnimacionActual(int c) {empezar = 0; animActual = c;}
+	void setAnimacionActual(int c, SDL_RendererFlip flip);
 	void updateAnim();
 	void updateDest(int x, int y);
 	SDL_Rect getDest() const {return dest;}
 	SDL_Rect getSource() const {return src;}
 	SDL_Texture* getTexture() const {return tex;}
+	SDL_RendererFlip getFlip() const {return spriteFlip;}
 	void setDest(int x, int y, int w, int h);
 	void setSource(int x, int y, int w, int h);
 	void setImage(SDL_Renderer *ren);
 	bool llegoAlBorde(int Xpos, int WindowSizeHorizontal);
-	//void reverse(bool reverse){rev = reverse;}
-	//void reverse(bool reverse, int animDefault){rev = reverse;}
 };
 
 #endif /* PERSONAJE_H_ */

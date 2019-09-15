@@ -18,6 +18,7 @@ public:
 private:
 	Juego* juego;
 	Personaje* jugador;
+	SDL_RendererFlip spriteFlip;
 	int caminar;
 	int parado;
 	int salto;

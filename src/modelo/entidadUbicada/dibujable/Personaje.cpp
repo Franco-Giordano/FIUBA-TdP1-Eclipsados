@@ -2,7 +2,6 @@
 
 Personaje::Personaje() {
 	// TODO Auto-generated constructor stub
-
 }
 
 
@@ -61,6 +60,13 @@ void Personaje::updateAnim(){
 	if(animaciones[animActual].tick >= animaciones[animActual].cantSprites) {
 		animaciones[animActual].tick = 0;
 	}
+}
+
+void Personaje::setAnimacionActual(int c, SDL_RendererFlip flip) {
+	empezar = 0;
+	animaciones[c].tick = 0;
+	animActual = c;
+	spriteFlip = flip;
 }
 
 bool Personaje::llegoAlBorde(int Xpos, int WindowSizeHorizontal){

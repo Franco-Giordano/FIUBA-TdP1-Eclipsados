@@ -8,7 +8,6 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	this->jugador = juego->getJugador();
 
 	SDL_Init(SDL_INIT_VIDEO);
-	//SDL_CreateWindow("Final Fight", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 360, 240, false);
 	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
 	SDL_SetWindowTitle(win, "Final Fight");
 
@@ -19,19 +18,18 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	posicionY = posicionJugador.getVertical();
 
 	jugador->setImage(ren);
-	//jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, 47, 98);
 	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
 	jugador->setSource(posicionX, posicionY, 47, 98);
 
 	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
 	caminar = jugador->crearCiclo(2, 85, 120, 12, 5);
-	salto = jugador->crearCiclo(3, 85, 120, 8, 15);
-	golpear = jugador->crearCiclo(4, 110, 120, 10, 10);
-	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 15);
+	salto = jugador->crearCiclo(3, 85, 120, 8, 5);
+	golpear = jugador->crearCiclo(4, 110, 120, 10, 5);
+	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 5);
 
 
 	accionActual = parado;
-	jugador->setAnimacionActual(accionActual);
+	jugador->setAnimacionActual(accionActual, SDL_FLIP_NONE);
 
 	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear);
 	controlador->setAccionActual(accionActual);
@@ -96,7 +94,7 @@ void Vista::Draw(){
 	SDL_RenderCopy(ren, capa3->getTexture(), &sourceFondo3, &destinationFondo3);
 	SDL_RenderCopy(ren, capa2->getTexture(), &sourceFondo2, &destinationFondo2);
 	SDL_RenderCopy(ren, capa1->getTexture(), &sourceFondo1, &destinationFondo1);
-	SDL_RenderCopy(ren, jugador->getTexture(), &sourceJugador, &destinationJugador);
+	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, NULL, NULL, jugador->getFlip());
 
 	//TODO: no se como meter la renderizacion de objetos/enemigos aca
 	//deberia poderse buscar que objetos estan en la vista actual, y renderizarse solo esos
@@ -109,7 +107,6 @@ void Vista::update(){
 	PosicionGlobal posicionJugador = juego->getPosicionJugador();
 	posicionX = posicionJugador.getHorizontal();
 	posicionY = posicionJugador.getVertical();
-	//jugador->setDest(posicionX, posicionY, 45, 95);
 	jugador->updateDest(posicionX, posicionY);
 	jugador->updateAnim();
 
