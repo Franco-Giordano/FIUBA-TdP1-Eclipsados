@@ -2,12 +2,12 @@
 
 #include "Nivel.h"
 
-Nivel::Nivel() {
+Nivel::Nivel(EntidadUbicada* jugador) {
 
 	musicaFondo = new Sonido();
-	(*musicaFondo).play();
+//	(*musicaFondo).play();
 
-	cody = factory.crearEntidadConPersonaje();
+	cody = jugador;
 
 	capa1.setVelocidad(3);
 	capa2.setVelocidad(2);

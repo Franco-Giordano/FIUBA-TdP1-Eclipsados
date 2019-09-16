@@ -19,7 +19,10 @@ public:
 
 	PosicionGlobal getPosicionJugador();
 
-	Nivel* getNivel(){return nivel;}
+
+	Capa* getCapa1(){return nivel->getCapa1();}
+	Capa* getCapa2(){return nivel->getCapa2();}
+	Capa* getCapa3(){return nivel->getCapa3();}
 
 private:
 	EntidadUbicada* entidad;

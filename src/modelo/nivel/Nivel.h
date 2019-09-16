@@ -14,7 +14,7 @@
 
 class Nivel {
 public:
-	Nivel();
+	Nivel(EntidadUbicada* jugador);
 	virtual ~Nivel();
 	void ubicarEnemigosYElementos(int cantEnemigos, int cantElementos);
 

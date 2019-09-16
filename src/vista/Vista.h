@@ -43,7 +43,7 @@ private:
 	Capa* capa1;
 	Capa* capa2;
 	Capa* capa3;
-	Nivel* nivel;
+	//Nivel* nivel;
 
 };
 

@@ -34,11 +34,11 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear);
 	controlador->setAccionActual(accionActual);
 
-	nivel = juego->getNivel();
+	//nivel = juego->getNivel();
 
-	capa1 = nivel->getCapa1();
-	capa2 = nivel->getCapa2();
-	capa3 = nivel->getCapa3();
+	capa1 = juego->getCapa1();
+	capa2 = juego->getCapa2();
+	capa3 = juego->getCapa3();
 
 	prepararCapa(capa1,"Nivel1-fondo1.png");
 	prepararCapa(capa2,"Nivel1-fondo2.png");

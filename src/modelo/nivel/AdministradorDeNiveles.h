@@ -13,7 +13,7 @@ public:
 	void cambiarNivel();
 
 private:
-	Nivel nivelActual;
+	//Nivel nivelActual;
 };
 
 #endif /* ADMINISTRADORDENIVELES_H_ */

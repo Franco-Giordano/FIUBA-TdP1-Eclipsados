@@ -11,9 +11,8 @@ Juego::Juego() {
 	// TODO Auto-generated constructor stub
 
 	personaje = new Personaje;
-	nivel = new Nivel;
 	this->entidad = new EntidadUbicada(personaje);
-
+	nivel = new Nivel(entidad);
 
 }
 
@@ -28,24 +27,20 @@ PosicionGlobal Juego::getPosicionJugador() {
 }
 
 void Juego::movimientoArriba() {
-	entidad->moverArriba();
 	nivel->movimientoArriba();
 }
 
 
 void Juego::movimientoAbajo() {
-	entidad->moverAbajo();
 	nivel->movimientoAbajo();
 }
 
 void Juego::movimientoDerecha() {
-	entidad->moverDerecha();
 	nivel->movimientoDerecha();
 }
 
 
 void Juego::movimientoIzquierda() {
-	entidad->moverIzquierda();
 	nivel->movimientoIzquierda();
 }
 
