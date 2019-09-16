@@ -19,7 +19,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 	jugador->setImage(ren);
 	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
-	jugador->setSource(posicionX, posicionY, 47, 98);
+	//jugador->setSource(posicionX, posicionY, 47, 98);
 
 	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
 	caminar = jugador->crearCiclo(2, 85, 120, 12, 5);

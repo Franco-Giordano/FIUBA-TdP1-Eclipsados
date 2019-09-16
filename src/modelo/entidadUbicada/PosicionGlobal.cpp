@@ -59,10 +59,6 @@ float PosicionGlobal::getHorizontal() {
 }
 
 
-float PosicionGlobal::getWindowSizeHorizontal(){
-	return WINDOW_SIZE_HORIZONTAL;
-
-}
 bool PosicionGlobal::llegoCodyAlBordeDerecho(){
 	return (x >= WINDOW_SIZE_HORIZONTAL - 200);
 }

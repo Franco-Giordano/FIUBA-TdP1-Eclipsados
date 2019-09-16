@@ -18,10 +18,9 @@ public:
 	void moverIzquierda();
 	void moverDerecha();
 
-	//TODO: cambiar por funciones qque no violen encapsulamiento
 	float getHorizontal();
 	float getVertical();
-	float getWindowSizeHorizontal();
+
 	bool llegoCodyAlBordeDerecho();
 	bool llegoCodyAlBordeIzquierdo();
 
