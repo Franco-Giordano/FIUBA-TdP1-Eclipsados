@@ -1,9 +1,28 @@
 #ifndef SRC_MODELO_DIBUJABLE_H_
 #define SRC_MODELO_DIBUJABLE_H_
 
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+
 class Dibujable {
 public:
+	Dibujable();
 	virtual ~Dibujable() {};
+
+	SDL_Rect getDest() const {return dest;}
+	SDL_Rect getSource() const {return src;}
+	SDL_Texture* getTexture() const {return tex;}
+
+	void setDest(int x, int y, int w, int h);
+	void setSource(int x, int y, int w, int h);
+	void setImage(SDL_Renderer *ren);
+	void updateDest(int x, int y);
+
+protected:
+	SDL_Texture* tex;
+	SDL_Rect dest;
+	SDL_Rect src;
+	//char*const imagen;
 };
 
 #endif /* SRC_MODELO_DIBUJABLE_H_ */

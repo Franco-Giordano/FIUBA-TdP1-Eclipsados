@@ -21,7 +21,7 @@ int Personaje::crearCiclo(int f, int w, int h, int cantSprites, int vel){
 	animaciones.push_back(tmp);
 	return animaciones.size()-1;
 }
-
+/*
 void Personaje::setDest(int x, int y, int w, int h){
 	dest.x=x;
 	dest.y=y;
@@ -48,7 +48,7 @@ void Personaje::setImage(SDL_Renderer* ren){
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }
-
+*/
 void Personaje::updateAnim(){
 
 	setSource(animaciones[animActual].w*animaciones[animActual].tick, animaciones[animActual].fil*animaciones[animActual].h, animaciones[animActual].w, animaciones[animActual].h);

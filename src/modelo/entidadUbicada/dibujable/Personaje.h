@@ -39,14 +39,14 @@ public:
 	int crearCiclo(int f, int w, int h, int cant, int vel);
 	void setAnimacionActual(int c, SDL_RendererFlip flip);
 	void updateAnim();
-	void updateDest(int x, int y);
-	SDL_Rect getDest() const {return dest;}
-	SDL_Rect getSource() const {return src;}
-	SDL_Texture* getTexture() const {return tex;}
+	//void updateDest(int x, int y);
+	//SDL_Rect getDest() const {return dest;}
+	//SDL_Rect getSource() const {return src;}
+	//SDL_Texture* getTexture() const {return tex;}
 	SDL_RendererFlip getFlip() const {return spriteFlip;}
-	void setDest(int x, int y, int w, int h);
-	void setSource(int x, int y, int w, int h);
-	void setImage(SDL_Renderer *ren);
+	//void setDest(int x, int y, int w, int h);
+	//void setSource(int x, int y, int w, int h);
+	//void setImage(SDL_Renderer *ren);
 	bool llegoAlBorde(int Xpos, int WindowSizeHorizontal);
 };
 

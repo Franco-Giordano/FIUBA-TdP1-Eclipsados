@@ -43,6 +43,7 @@ private:
 	Capa* capa1;
 	Capa* capa2;
 	Capa* capa3;
+	vector<EntidadUbicada*> elementos;
 	//Nivel* nivel;
 
 };

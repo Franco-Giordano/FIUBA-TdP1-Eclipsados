@@ -14,6 +14,8 @@ class Elemento : public Dibujable{
 public:
 	Elemento();
 	virtual ~Elemento();
+
+
 };
 
 #endif /* SRC_MODELO_OBJETO_H_ */

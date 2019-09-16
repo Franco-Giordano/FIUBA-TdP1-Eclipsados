@@ -29,6 +29,8 @@ public:
 	Capa* getCapa2(){return &capa2;}
 	Capa* getCapa3(){return &capa3;}
 
+	vector<EntidadUbicada*> getElementos(){return elementos;}
+
 private:
 	void moverCapasDerecha();
 	void moverCapasIzquierda();

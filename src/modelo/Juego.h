@@ -24,6 +24,8 @@ public:
 	Capa* getCapa2(){return nivel->getCapa2();}
 	Capa* getCapa3(){return nivel->getCapa3();}
 
+	vector<EntidadUbicada*> getElementos(){return nivel->getElementos();}
+
 private:
 	EntidadUbicada* entidad;
 	Dibujable* personaje;

@@ -20,7 +20,7 @@ Nivel::~Nivel() {
 	delete cody;
 	delete musicaFondo;
 
-	for (int i = 0; i < elementos.size(); i++) {
+	for (uint i = 0; i < elementos.size(); i++) {
 		delete elementos[i];
 	}
 }
@@ -79,6 +79,7 @@ void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
 	FactoryEntidadUbicada factory;
 
 	EntidadUbicada* barril = factory.crearEntidadConBarril(100, 100);
+	EntidadUbicada* barril2 = factory.crearEntidadConBarril(75, 100);
 
 	elementos.push_back(barril);
 }

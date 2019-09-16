@@ -22,6 +22,8 @@ public:
 	bool llegoAlBordeDerecho();
 	bool llegoAlBordeIzquierdo();
 
+	Dibujable* getDibujable(){return entidad;}
+
 private:
 
 	Dibujable* entidad;

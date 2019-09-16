@@ -8,7 +8,6 @@
 #include "../elemento/Barril.h"
 
 Barril::Barril() {
-	// TODO Auto-generated constructor stub
 
 }
 

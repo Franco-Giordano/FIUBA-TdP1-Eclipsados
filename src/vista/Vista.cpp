@@ -44,6 +44,19 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	prepararCapa(capa2,"Nivel1-fondo2.png");
 	prepararCapa(capa3,"Nivel1-fondo3.png");
 
+
+	for (uint i = 0; i < elementos.size(); i++) {
+		Dibujable* dibujable = elementos[i]->getDibujable();
+		PosicionGlobal posicion = elementos[i]->getPosicionGlobal();
+
+		posicionX = posicion.getHorizontal();
+		posicionY = posicion.getVertical();
+
+		dibujable->setImage(ren);
+		dibujable->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
+		dibujable->setSource(posicionX, posicionY, 100, 120);
+	}
+
 	loop();
 }
 
@@ -96,6 +109,12 @@ void Vista::Draw(){
 	SDL_RenderCopy(ren, capa1->getTexture(), &sourceFondo1, &destinationFondo1);
 	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, NULL, NULL, jugador->getFlip());
 
+	for (uint i = 0; i < elementos.size(); i++) {
+		Dibujable* dibujable = elementos[i]->getDibujable();
+		SDL_Rect destinationElemento = dibujable->getDest();
+		SDL_Rect sourceElemento = dibujable->getSource();
+		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceElemento, &destinationElemento);
+	}
 	//TODO: no se como meter la renderizacion de objetos/enemigos aca
 	//deberia poderse buscar que objetos estan en la vista actual, y renderizarse solo esos
 
