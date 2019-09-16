@@ -1,4 +1,3 @@
-
 #ifndef SRC_DEFS_H_
 #define SRC_DEFS_H_
 
@@ -11,7 +10,7 @@
 #define JUGADOR_SIZE_VERTICAL 250
 
 
-#define ANCHO_CAPA_PIXELES 900
+#define ANCHO_CAPA_PIXELES 850
 
 
 

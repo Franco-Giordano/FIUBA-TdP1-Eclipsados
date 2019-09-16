@@ -24,7 +24,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
 	caminar = jugador->crearCiclo(2, 85, 120, 12, 5);
 	salto = jugador->crearCiclo(3, 85, 120, 8, 5);
-	golpear = jugador->crearCiclo(4, 110, 120, 10, 5);
+	golpear = jugador->crearCiclo(4, 110, 120, 2, 5);
 	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 5);
 
 

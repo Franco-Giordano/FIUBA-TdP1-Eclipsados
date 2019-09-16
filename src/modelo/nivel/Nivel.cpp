@@ -55,14 +55,18 @@ void Nivel::setImagesCapas(SDL_Renderer *ren, char const* imagen1, char const* i
 
 
 void Nivel::moverCapasDerecha(){
-	capa1.moverDerecha();
-	capa2.moverDerecha();
-	capa3.moverDerecha();
+	if(!capa1.llegoAlBordeDerecho()){
+		capa1.moverDerecha();
+		capa2.moverDerecha();
+		capa3.moverDerecha();
+	}
 }
 void Nivel::moverCapasIzquierda(){
-	capa1.moverIzquierda();
-	capa2.moverIzquierda();
-	capa3.moverIzquierda();
+	if(!capa1.llegoAlBordeIzquierdo()){
+		capa1.moverIzquierda();
+		capa2.moverIzquierda();
+		capa3.moverIzquierda();
+	}
 }
 
 void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){

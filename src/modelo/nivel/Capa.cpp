@@ -31,12 +31,22 @@ void Capa::setImage(SDL_Renderer* ren, char const * imagen){
 }
 
 void Capa::moverDerecha(){
-	if(src.x < ANCHO_CAPA_PIXELES){
 		src.x +=  velocidad;
-	}
 }
 void Capa::moverIzquierda(){
-	if(src.x > 0){
 		src.x -=  velocidad;
+}
+
+bool Capa::llegoAlBordeDerecho(){
+	if(src.x >= ANCHO_CAPA_PIXELES){
+		return true;
 	}
+	return false;
+
+}
+bool Capa::llegoAlBordeIzquierdo(){
+	if(src.x <= 0){
+		return true;
+	}
+	return false;
 }

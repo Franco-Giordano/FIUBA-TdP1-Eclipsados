@@ -60,7 +60,7 @@ bool Controlador::eventHandler(){
 
 	if(keystates[SDL_SCANCODE_UP]) {
 		juego->movimientoArriba();
-		spriteFlip = SDL_FLIP_NONE;
+		//spriteFlip = SDL_FLIP_NONE;
 		if(accionActual != caminar){
 			jugador->setAnimacionActual(caminar, spriteFlip);
 			accionActual = caminar;
@@ -69,6 +69,7 @@ bool Controlador::eventHandler(){
 
 	if(keystates[SDL_SCANCODE_DOWN]) {
 		juego->movimientoAbajo();
+		//spriteFlip = SDL_FLIP_NONE;
 		if(accionActual != caminar){
 			jugador->setAnimacionActual(caminar, spriteFlip);
 			accionActual = caminar;
@@ -130,6 +131,7 @@ bool Controlador::eventHandler(){
 		jugador->setAnimacionActual(parado, spriteFlip);
 		accionActual = parado;
 	}
+
 
 	return running;
 }

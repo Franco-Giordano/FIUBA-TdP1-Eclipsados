@@ -4,7 +4,7 @@
 PosicionGlobal::PosicionGlobal() {
 	// Inicializacion harcodeada para tamaño de cody
 	x = 0;
-	y = WINDOW_SIZE_VERTICAL - 200;
+	y = WINDOW_SIZE_VERTICAL - JUGADOR_SIZE_VERTICAL;
 	velocidad = 3.0;
 
 }

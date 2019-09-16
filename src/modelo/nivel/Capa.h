@@ -23,6 +23,9 @@ public:
 
 	void setVelocidad(int velocidad){this->velocidad = velocidad;} //HAGO ESTA LINEA PORQUE NO PUDE HACERLO EN EL CONSTRUCTOR XD
 
+	bool llegoAlBordeIzquierdo();
+	bool llegoAlBordeDerecho();
+
 private:
 	SDL_Rect dest;
 	SDL_Rect src;
