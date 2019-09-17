@@ -21,13 +21,12 @@ public:
 	float getHorizontal();
 	float getVertical();
 
-	bool llegoCodyAlBordeDerecho();
-	bool llegoCodyAlBordeIzquierdo();
+	bool estaBordeDerecho(){return x >= ANCHO_CAPA_PIXELES-MARGEN_DERECHO;}
+	bool estaBordeIzquierdo(){return x <= MARGEN_IZQUIERDO;}
 
 	void trasladarA(float horizontal, float vertical);
 
 private:
-	float velocidad;
 	float x=0;
 	float y=0;
 };

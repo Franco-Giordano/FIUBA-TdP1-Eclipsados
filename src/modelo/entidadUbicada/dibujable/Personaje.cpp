@@ -6,7 +6,7 @@ Personaje::Personaje() {
 
 
 Personaje::~Personaje() {
-	SDL_DestroyTexture(tex);
+	//SDL_DestroyTexture(tex); Lo saco porque lo hice en dibujable
 }
 
 

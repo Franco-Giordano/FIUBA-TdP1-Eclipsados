@@ -1,7 +1,8 @@
 #include "Dibujable.h"
 
 Dibujable::Dibujable() {
-	// TODO Auto-generated constructor stub
+	dest.x = JUGADOR_POSICION_HORIZONTAL_INICIAL;
+	dest.y = JUGADOR_POSICION_VERTICAL_INICIAL;
 
 }
 
@@ -32,4 +33,23 @@ void Dibujable::setImage(SDL_Renderer* ren){
 	SDL_Surface* surf = IMG_Load("SpriteCodyCompleto.png");
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
+}
+
+void Dibujable::moverArriba(){
+	if(dest.y > WINDOW_SIZE_VERTICAL - 365){
+		dest.y -= VELOCIDAD_CODY/2;
+	}
+}
+
+void Dibujable::moverAbajo(){
+	if(dest.y < WINDOW_SIZE_VERTICAL - 245){
+		dest.y += VELOCIDAD_CODY/2;
+	}
+}
+
+bool Dibujable::estaBordeDerecho(){
+	return (dest.x >= WINDOW_SIZE_HORIZONTAL - MARGEN_DERECHO);
+}
+bool Dibujable::estaBordeIzquierdo(){
+	return (dest.x <= MARGEN_IZQUIERDO);
 }

@@ -31,10 +31,10 @@ void Capa::setImage(SDL_Renderer* ren, char const * imagen){
 }
 
 void Capa::moverDerecha(){
-		src.x +=  velocidad;
+		dest.x +=  velocidad;
 }
 void Capa::moverIzquierda(){
-		src.x -=  velocidad;
+		dest.x -=  velocidad;
 }
 
 bool Capa::llegoAlBordeDerecho(){

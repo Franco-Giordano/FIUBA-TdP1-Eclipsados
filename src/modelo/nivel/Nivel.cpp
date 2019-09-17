@@ -9,7 +9,7 @@ Nivel::Nivel(EntidadUbicada* jugador) {
 
 	cody = jugador;
 
-	capa1.setVelocidad(3);
+	capa1.setVelocidad(VELOCIDAD_CODY);
 	capa2.setVelocidad(2);
 	capa3.setVelocidad(1);
 
@@ -25,26 +25,66 @@ Nivel::~Nivel() {
 	}
 }
 
+void Nivel::moverElementosDerecha(){
+
+	for (uint i = 0; i < elementos.size(); i++){
+		int horizontal = elementos[i]->getHorizontalGlobal();
+		if (horizontal <= pos_borde_derecha && horizontal >= pos_borde_izquierda){
+			elementos[i]->moverLocalDerecha();
+		}
+	}
+}
+void Nivel::moverElementosIzquierda(){
+
+	for (uint i = 0; i < elementos.size(); i++){
+		int horizontal = elementos[i]->getHorizontalGlobal();
+		if (horizontal <= pos_borde_derecha && horizontal >= pos_borde_izquierda){
+			elementos[i]->moverLocalIzquierda();
+		}
+	}
+}
+
 void Nivel::movimientoArriba(){
-	cody->moverArriba();
+	cody->moverLocalArriba();
+	cody->moverGlobalArriba();
 }
 
 void Nivel::movimientoAbajo(){
-	cody->moverAbajo();
+	cody->moverLocalAbajo();
+	cody->moverGlobalAbajo();
 }
 
 void Nivel::movimientoIzquierda(){
-	cody->moverIzquierda();
-	if(cody->llegoAlBordeIzquierdo()){
-		moverCapasIzquierda();
+	if (!cody->llegoBordeGlobalIzquierdo()){
+		if (cody->llegoBordeLocalIzquierdo()){
+			pos_borde_izquierda -= VELOCIDAD_CODY;
+			moverCapasDerecha();
+			moverElementosDerecha();
+		}else{
+			cody->moverLocalIzquierda();
+		}
+		cody->moverGlobalIzquierda();
+
+
 	}
+
 }
 
 void Nivel::movimientoDerecha(){
-	cody->moverDerecha();
-	if(cody->llegoAlBordeDerecho()){
-		moverCapasDerecha();
+	if (!cody->llegoBordeGlobalDerecho()){
+		if (cody->llegoBordeLocalDerecho()){
+			pos_borde_derecha += VELOCIDAD_CODY;
+			moverCapasIzquierda();
+			moverElementosIzquierda();
+		}else{
+			cody->moverLocalDerecha();
+		}
+
+		cody->moverGlobalDerecha();
+
+
 	}
+
 }
 
 void Nivel::setImagesCapas(SDL_Renderer *ren, char const* imagen1, char const* imagen2, char const* imagen3){
@@ -55,18 +95,16 @@ void Nivel::setImagesCapas(SDL_Renderer *ren, char const* imagen1, char const* i
 
 
 void Nivel::moverCapasDerecha(){
-	if(!capa1.llegoAlBordeDerecho()){
-		capa1.moverDerecha();
-		capa2.moverDerecha();
-		capa3.moverDerecha();
-	}
+	capa1.moverDerecha();
+	capa2.moverDerecha();
+	capa3.moverDerecha();
+
 }
 void Nivel::moverCapasIzquierda(){
-	if(!capa1.llegoAlBordeIzquierdo()){
-		capa1.moverIzquierda();
-		capa2.moverIzquierda();
-		capa3.moverIzquierda();
-	}
+	capa1.moverIzquierda();
+	capa2.moverIzquierda();
+	capa3.moverIzquierda();
+
 }
 
 void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
@@ -78,9 +116,10 @@ void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
 
 	FactoryEntidadUbicada factory;
 
-	EntidadUbicada* barril = factory.crearEntidadConBarril(100, 100);
-	EntidadUbicada* barril2 = factory.crearEntidadConBarril(75, 100);
+	EntidadUbicada* barril = factory.crearEntidadConBarril(1000, JUGADOR_POSICION_VERTICAL_INICIAL);
+	EntidadUbicada* barril2 = factory.crearEntidadConBarril(175, JUGADOR_POSICION_VERTICAL_INICIAL);
 
 	elementos.push_back(barril);
+	elementos.push_back(barril2);
 }
 

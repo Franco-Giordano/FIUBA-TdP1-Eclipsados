@@ -34,6 +34,8 @@ public:
 private:
 	void moverCapasDerecha();
 	void moverCapasIzquierda();
+	void moverElementosIzquierda();
+	void moverElementosDerecha();
 
 	void inicializarCapa(Capa capa);
 
@@ -49,7 +51,8 @@ private:
 	Capa capa3;
 	//Cody cody;
 
-
+	int pos_borde_izquierda = 0;
+	int pos_borde_derecha = WINDOW_SIZE_HORIZONTAL;
 
 	Sonido *musicaFondo;
 

@@ -3,9 +3,8 @@
 
 PosicionGlobal::PosicionGlobal() {
 	// Inicializacion harcodeada para tamaño de cody
-	x = 0;
-	y = WINDOW_SIZE_VERTICAL - JUGADOR_SIZE_VERTICAL;
-	velocidad = 3.0;
+	x = JUGADOR_POSICION_HORIZONTAL_INICIAL;
+	y = JUGADOR_POSICION_VERTICAL_INICIAL;
 
 }
 
@@ -27,27 +26,22 @@ PosicionGlobal::~PosicionGlobal() {
 
 void PosicionGlobal::moverArriba(){
 	if(y > WINDOW_SIZE_VERTICAL - 365){
-		y -= velocidad/2;
+		y -= VELOCIDAD_CODY/2;
 	}
 }
 
 void PosicionGlobal::moverAbajo(){
 	if(y < WINDOW_SIZE_VERTICAL - 245){
-		y += velocidad/2;
+		y += VELOCIDAD_CODY/2;
 	}
 }
 
 void PosicionGlobal::moverIzquierda(){
-	if(x > 100){
-		x -= velocidad;
-	}
+	x -= VELOCIDAD_CODY;
 }
 
 void PosicionGlobal::moverDerecha(){
-	if(x < WINDOW_SIZE_HORIZONTAL - 200){
-		x += velocidad;
-	}
-
+	x += VELOCIDAD_CODY;
 }
 
 float PosicionGlobal::getVertical() {
@@ -59,13 +53,6 @@ float PosicionGlobal::getHorizontal() {
 }
 
 
-bool PosicionGlobal::llegoCodyAlBordeDerecho(){
-	return (x >= WINDOW_SIZE_HORIZONTAL - 200);
-}
-
-bool PosicionGlobal::llegoCodyAlBordeIzquierdo(){
-	return (x <= 100);
-}
 
 
 void PosicionGlobal::trasladarA(float horizontal, float vertical) {

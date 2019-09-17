@@ -18,7 +18,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	posicionY = posicionJugador.getVertical();
 
 	jugador->setImage(ren);
-	jugador->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
+	jugador->setDest(posicionX, posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL); //TODO
 	//jugador->setSource(posicionX, posicionY, 47, 98);
 
 	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
@@ -44,7 +44,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	prepararCapa(capa2,"Nivel1-fondo2.png");
 	prepararCapa(capa3,"Nivel1-fondo3.png");
 
-
+	elementos = juego->getElementos();
 	for (uint i = 0; i < elementos.size(); i++) {
 		Dibujable* dibujable = elementos[i]->getDibujable();
 		PosicionGlobal posicion = elementos[i]->getPosicionGlobal();
@@ -53,8 +53,8 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 		posicionY = posicion.getVertical();
 
 		dibujable->setImage(ren);
-		dibujable->setDest(posicionX, WINDOW_SIZE_VERTICAL / 3 + posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
-		dibujable->setSource(posicionX, posicionY, 100, 120);
+		dibujable->setDest(posicionX, posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
+		dibujable->setSource(0, 0, 85, 120);
 	}
 
 	loop();
@@ -62,8 +62,8 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 void Vista::prepararCapa(Capa* capa,char const* imagen){
 	capa->setImage(ren,imagen);
-	capa->setSource(0,0,WINDOW_SIZE_HORIZONTAL -350,WINDOW_SIZE_VERTICAL);
-	capa->setDest(0,0,WINDOW_SIZE_HORIZONTAL,WINDOW_SIZE_VERTICAL);
+	capa->setSource(0,0,ANCHO_CAPA_PIXELES,WINDOW_SIZE_VERTICAL+10);
+	capa->setDest(0,0,ANCHO_CAPA_PIXELES,WINDOW_SIZE_VERTICAL+10);
 }
 
 Vista::~Vista() {
@@ -123,10 +123,10 @@ void Vista::Draw(){
 
 void Vista::update(){
 
-	PosicionGlobal posicionJugador = juego->getPosicionJugador();
-	posicionX = posicionJugador.getHorizontal();
-	posicionY = posicionJugador.getVertical();
-	jugador->updateDest(posicionX, posicionY);
+	//PosicionGlobal posicionJugador = juego->getPosicionJugador();
+	//posicionX = posicionJugador.getHorizontal();
+	//posicionY = posicionJugador.getVertical();
+	//jugador->updateDest(posicionX, posicionY);
 	jugador->updateAnim();
 
 }
