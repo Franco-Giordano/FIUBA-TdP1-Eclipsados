@@ -28,19 +28,13 @@ Nivel::~Nivel() {
 void Nivel::moverElementosDerecha(){
 
 	for (uint i = 0; i < elementos.size(); i++){
-		int horizontal = elementos[i]->getHorizontalGlobal();
-		if (horizontal <= pos_borde_derecha && horizontal >= pos_borde_izquierda){
-			elementos[i]->moverLocalDerecha();
-		}
+		elementos[i]->moverLocalDerecha();
 	}
 }
 void Nivel::moverElementosIzquierda(){
 
 	for (uint i = 0; i < elementos.size(); i++){
-		int horizontal = elementos[i]->getHorizontalGlobal();
-		if (horizontal <= pos_borde_derecha && horizontal >= pos_borde_izquierda){
-			elementos[i]->moverLocalIzquierda();
-		}
+		elementos[i]->moverLocalIzquierda();
 	}
 }
 
@@ -58,6 +52,7 @@ void Nivel::movimientoIzquierda(){
 	if (!cody->llegoBordeGlobalIzquierdo()){
 		if (cody->llegoBordeLocalIzquierdo()){
 			pos_borde_izquierda -= VELOCIDAD_CODY;
+			pos_borde_derecha -= VELOCIDAD_CODY;
 			moverCapasDerecha();
 			moverElementosDerecha();
 		}else{
@@ -74,6 +69,7 @@ void Nivel::movimientoDerecha(){
 	if (!cody->llegoBordeGlobalDerecho()){
 		if (cody->llegoBordeLocalDerecho()){
 			pos_borde_derecha += VELOCIDAD_CODY;
+			pos_borde_izquierda += VELOCIDAD_CODY;
 			moverCapasIzquierda();
 			moverElementosIzquierda();
 		}else{

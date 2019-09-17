@@ -18,7 +18,7 @@
 #define MARGEN_IZQUIERDO 50
 #define MARGEN_DERECHO 250
 
-#define VELOCIDAD_CODY 4
+#define VELOCIDAD_CODY 10
 
 
 

@@ -113,6 +113,7 @@ void Vista::Draw(){
 		Dibujable* dibujable = elementos[i]->getDibujable();
 		SDL_Rect destinationElemento = dibujable->getDest();
 		SDL_Rect sourceElemento = dibujable->getSource();
+
 		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceElemento, &destinationElemento);
 	}
 	//TODO: no se como meter la renderizacion de objetos/enemigos aca
