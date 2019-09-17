@@ -53,8 +53,8 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 		posicionY = posicion.getVertical();
 
 		dibujable->setImage(ren);
-		dibujable->setDest(posicionX, posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL);
-		dibujable->setSource(0, 0, 85, 120);
+		dibujable->setDest(posicionX, posicionY, 90, 130);
+		dibujable->setSource(15, 732, 60, 75);
 	}
 
 	loop();

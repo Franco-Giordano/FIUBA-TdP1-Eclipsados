@@ -8,6 +8,7 @@
 #include "../elemento/Barril.h"
 
 Barril::Barril() {
+	this->imagen = "objetos.png";
 
 }
 

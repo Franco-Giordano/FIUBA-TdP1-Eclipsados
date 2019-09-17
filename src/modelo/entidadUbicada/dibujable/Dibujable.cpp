@@ -30,7 +30,7 @@ void Dibujable::setSource(int x, int y, int w, int h){
 
 void Dibujable::setImage(SDL_Renderer* ren){
 
-	SDL_Surface* surf = IMG_Load("SpriteCodyCompleto.png");
+	SDL_Surface* surf = IMG_Load(imagen);
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }

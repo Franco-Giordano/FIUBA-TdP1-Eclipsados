@@ -1,7 +1,7 @@
 #include "Personaje.h"
 
 Personaje::Personaje() {
-	// TODO Auto-generated constructor stub
+	this->imagen = "SpriteCodyCompleto.png";
 }
 
 

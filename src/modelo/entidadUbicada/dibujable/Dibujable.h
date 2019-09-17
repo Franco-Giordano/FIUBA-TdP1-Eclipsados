@@ -31,7 +31,7 @@ protected:
 	SDL_Texture* tex;
 	SDL_Rect dest;
 	SDL_Rect src;
-	//char*const imagen;
+	char const* imagen;
 };
 
 #endif /* SRC_MODELO_DIBUJABLE_H_ */
