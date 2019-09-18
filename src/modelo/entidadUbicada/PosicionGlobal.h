@@ -21,7 +21,7 @@ public:
 	float getHorizontal();
 	float getVertical();
 
-	bool estaBordeDerecho(){return x >= ANCHO_CAPA_PIXELES-MARGEN_DERECHO;}
+	bool estaBordeDerecho(){return x >= (ANCHO_CAPA_PIXELES_ESCALADA)- (MARGEN_DERECHO + 150);}
 	bool estaBordeIzquierdo(){return x <= MARGEN_IZQUIERDO;}
 
 	void trasladarA(float horizontal, float vertical);

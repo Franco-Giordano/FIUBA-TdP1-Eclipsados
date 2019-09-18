@@ -29,11 +29,11 @@ public:
 
 	EntidadUbicada* crearEntidadConBarril(float horizontal, float vertical);
 
-	EntidadUbicada* crearEntidadConCuchillo();
+	EntidadUbicada* crearEntidadConCuchillo(float horizontal, float vertical);
 
-	EntidadUbicada* crearEntidadConCanio();
+	EntidadUbicada* crearEntidadConCanio(float horizontal, float vertical);
 
-	EntidadUbicada* crearEntidadConCaja();
+	EntidadUbicada* crearEntidadConCaja(float horizontal, float vertical);
 
 };
 

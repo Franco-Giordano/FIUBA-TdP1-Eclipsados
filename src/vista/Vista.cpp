@@ -6,6 +6,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	juego = modelo;
 	this->controlador = controlador;
 	this->jugador = juego->getJugador();
+	this->running = true;
 
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
@@ -40,9 +41,9 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 	capa2 = juego->getCapa2();
 	capa3 = juego->getCapa3();
 
-	prepararCapa(capa1,"Nivel1-fondo1.png");
-	prepararCapa(capa2,"Nivel1-fondo2.png");
-	prepararCapa(capa3,"Nivel1-fondo3.png");
+	prepararCapa(capa1,"sprites/Nivel1-fondo1-XL.png");
+	prepararCapa(capa2,"sprites/Nivel1-fondo2-XL.png");
+	prepararCapa(capa3,"sprites/Nivel1-fondo3-XL.png");
 
 	elementos = juego->getElementos();
 	for (uint i = 0; i < elementos.size(); i++) {
@@ -53,8 +54,11 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 		posicionY = posicion.getVertical();
 
 		dibujable->setImage(ren);
-		dibujable->setDest(posicionX, posicionY, 90, 130);
-		dibujable->setSource(15, 732, 60, 75);
+
+//-->> Ojo que no todos van a tener las mismas dimensiones (source y dest cambian de acuredo al obj)
+// -> solucion: cada objeto setea su source y se le pide el ancho y el alto para dibujarlo
+		dibujable->setDest(posicionX, posicionY, dibujable->getWidth(),dibujable->getHeight());
+		//dibujable->setSource(200, 190, 100, 100);
 	}
 
 	loop();
@@ -62,8 +66,8 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 void Vista::prepararCapa(Capa* capa,char const* imagen){
 	capa->setImage(ren,imagen);
-	capa->setSource(0,0,ANCHO_CAPA_PIXELES,WINDOW_SIZE_VERTICAL+10);
-	capa->setDest(0,0,ANCHO_CAPA_PIXELES,WINDOW_SIZE_VERTICAL+10);
+	capa->setSource(0,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
+	capa->setDest(0,0,ANCHO_CAPA_PIXELES_ESCALADA,WINDOW_SIZE_VERTICAL+10);
 }
 
 Vista::~Vista() {

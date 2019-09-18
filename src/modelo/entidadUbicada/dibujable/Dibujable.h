@@ -27,6 +27,9 @@ public:
 	bool estaBordeDerecho();
 	bool estaBordeIzquierdo();
 
+	int getWidth(){return src.w;}
+	int getHeight(){return src.h;}
+
 protected:
 	SDL_Texture* tex;
 	SDL_Rect dest;

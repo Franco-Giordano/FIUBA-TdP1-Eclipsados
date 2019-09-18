@@ -112,10 +112,14 @@ void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
 
 	FactoryEntidadUbicada factory;
 
-	EntidadUbicada* barril = factory.crearEntidadConBarril(1025, JUGADOR_POSICION_VERTICAL_INICIAL+100);
-	EntidadUbicada* barril2 = factory.crearEntidadConBarril(300, JUGADOR_POSICION_VERTICAL_INICIAL+100);
+	EntidadUbicada* barril = factory.crearEntidadConBarril(300, JUGADOR_POSICION_VERTICAL_INICIAL+140);
+	EntidadUbicada* caja = factory.crearEntidadConCaja(500, JUGADOR_POSICION_VERTICAL_INICIAL+140);
+	EntidadUbicada* canio = factory.crearEntidadConCanio(700, JUGADOR_POSICION_VERTICAL_INICIAL+190);
+	EntidadUbicada* cuchillo = factory.crearEntidadConCuchillo(900, JUGADOR_POSICION_VERTICAL_INICIAL+190);
 
 	elementos.push_back(barril);
-	elementos.push_back(barril2);
+	elementos.push_back(caja);
+	elementos.push_back(canio);
+	elementos.push_back(cuchillo);
 }
 

@@ -8,8 +8,8 @@
 #include "../elemento/Cuchillo.h"
 
 Cuchillo::Cuchillo() {
-	// TODO Auto-generated constructor stub
-
+	this->imagen = "sprites/objetos_varios.png";
+	setSource(0,0,70,70);
 }
 
 Cuchillo::~Cuchillo() {

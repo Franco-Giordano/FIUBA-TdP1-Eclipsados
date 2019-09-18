@@ -38,18 +38,18 @@ EntidadUbicada* FactoryEntidadUbicada::crearEntidadConBarril(float horizontal, f
 	return new EntidadUbicada(barril, horizontal, vertical);
 }
 
-EntidadUbicada* FactoryEntidadUbicada::crearEntidadConCuchillo() {
+EntidadUbicada* FactoryEntidadUbicada::crearEntidadConCuchillo(float horizontal, float vertical) {
 	Dibujable* cuchillo= new Cuchillo;
-	return new EntidadUbicada(cuchillo);
+	return new EntidadUbicada(cuchillo, horizontal, vertical);
 }
 
-EntidadUbicada* FactoryEntidadUbicada::crearEntidadConCanio() {
+EntidadUbicada* FactoryEntidadUbicada::crearEntidadConCanio(float horizontal, float vertical) {
 	Dibujable* canio = new CanioMetalico;
-	return new EntidadUbicada(canio);
+	return new EntidadUbicada(canio, horizontal, vertical);
 }
 
 
-EntidadUbicada* FactoryEntidadUbicada::crearEntidadConCaja() {
+EntidadUbicada* FactoryEntidadUbicada::crearEntidadConCaja(float horizontal, float vertical) {
 	Dibujable* caja = new Caja;
-	return new EntidadUbicada(caja);
+	return new EntidadUbicada(caja, horizontal, vertical);
 }

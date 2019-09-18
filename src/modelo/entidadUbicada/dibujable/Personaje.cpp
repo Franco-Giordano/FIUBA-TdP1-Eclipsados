@@ -1,7 +1,7 @@
 #include "Personaje.h"
 
 Personaje::Personaje() {
-	this->imagen = "SpriteCodyCompleto.png";
+	this->imagen = "sprites/SpriteCodyCompleto.png";
 }
 
 

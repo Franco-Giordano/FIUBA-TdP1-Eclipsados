@@ -8,8 +8,8 @@
 #include "../elemento/CanioMetalico.h"
 
 CanioMetalico::CanioMetalico() {
-	// TODO Auto-generated constructor stub
-
+	this->imagen = "sprites/objetos_varios.png";
+	setSource(140,70,70,70);
 }
 
 CanioMetalico::~CanioMetalico() {

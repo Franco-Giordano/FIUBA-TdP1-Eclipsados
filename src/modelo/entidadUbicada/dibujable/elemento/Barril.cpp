@@ -8,8 +8,8 @@
 #include "../elemento/Barril.h"
 
 Barril::Barril() {
-	this->imagen = "objetos.png";
-
+	this->imagen = "sprites/objetos_varios.png";
+	setSource(200,190,100,100);
 }
 
 Barril::~Barril() {

@@ -8,8 +8,8 @@
 #include "../elemento/Caja.h"
 
 Caja::Caja() {
-	// TODO Auto-generated constructor stub
-
+	this->imagen = "sprites/objetos_varios.png";
+	setSource(0,190,100,100);
 }
 
 Caja::~Caja() {

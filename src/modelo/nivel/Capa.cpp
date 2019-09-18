@@ -37,6 +37,7 @@ void Capa::moverIzquierda(){
 		dest.x -=  velocidad;
 }
 
+/*
 bool Capa::llegoAlBordeDerecho(){
 	if(src.x >= ANCHO_CAPA_PIXELES){
 		return true;
@@ -50,3 +51,4 @@ bool Capa::llegoAlBordeIzquierdo(){
 	}
 	return false;
 }
+*/
