@@ -13,7 +13,7 @@ public:
 	bool eventHandler();
 
 	void setAccionActual(int acActual);
-	void setAcciones(int c, int p, int s, int sPatada, int g);
+	void setAcciones(int c, int p, int s, int sPatada, int g, int a);
 
 private:
 	Juego* juego;
@@ -24,7 +24,14 @@ private:
 	int salto;
 	int saltoPatada;
 	int golpear;
+	int agachado;
 	int accionActual;
+	bool saltando;
+	bool saltandoDerecha;
+	float alturaActualSalto;
+	float alturaActualCaida;
+	float alturaMaximaSalto;
+	float alturaMaximaCaida;
 };
 
 #endif /* CONTROLADOR_H_ */

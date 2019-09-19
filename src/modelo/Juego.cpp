@@ -30,9 +30,16 @@ void Juego::movimientoArriba() {
 	nivel->movimientoArriba();
 }
 
+void Juego::movimientoSalto() {
+	nivel->movimientoSalto();
+}
 
 void Juego::movimientoAbajo() {
 	nivel->movimientoAbajo();
+}
+
+void Juego::movimientoCaida() {
+	nivel->movimientoCaida();
 }
 
 void Juego::movimientoDerecha() {

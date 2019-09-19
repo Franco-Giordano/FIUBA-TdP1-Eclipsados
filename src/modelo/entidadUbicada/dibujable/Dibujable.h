@@ -23,6 +23,8 @@ public:
 	void moverAbajo();
 	void moverIzquierda(){dest.x -= VELOCIDAD_CODY;}
 	void moverDerecha(){dest.x += VELOCIDAD_CODY;}
+	void moverSalto(){dest.y -= VELOCIDAD_CODY/2;}
+	void moverCaida(){dest.y += VELOCIDAD_CODY/2;}
 
 	bool estaBordeDerecho();
 	bool estaBordeIzquierdo();

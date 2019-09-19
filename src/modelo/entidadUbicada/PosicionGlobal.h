@@ -17,6 +17,8 @@ public:
 	void moverAbajo();
 	void moverIzquierda();
 	void moverDerecha();
+	void moverSalto();
+	void moverCaida();
 
 	float getHorizontal();
 	float getVertical();

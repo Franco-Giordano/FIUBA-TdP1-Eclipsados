@@ -20,19 +20,19 @@ Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 	jugador->setImage(ren);
 	jugador->setDest(posicionX, posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL); //TODO
-	//jugador->setSource(posicionX, posicionY, 47, 98);
 
 	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
 	caminar = jugador->crearCiclo(2, 85, 120, 12, 5);
-	salto = jugador->crearCiclo(3, 85, 120, 8, 5);
+	salto = jugador->crearCiclo(3, 85, 120, 8, 7);
 	golpear = jugador->crearCiclo(4, 110, 120, 2, 5);
-	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 5);
+	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 10);
+	agachado = jugador->crearCiclo(1,85,120,2,10);
 
 
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual, SDL_FLIP_NONE);
 
-	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear);
+	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear, agachado);
 	controlador->setAccionActual(accionActual);
 
 	//nivel = juego->getNivel();
@@ -77,6 +77,7 @@ Vista::~Vista() {
 	SDL_DestroyWindow(win);
     IMG_Quit();
 	SDL_Quit();
+
 }
 
 void Vista::render() {
@@ -111,7 +112,6 @@ void Vista::Draw(){
 	SDL_RenderCopy(ren, capa3->getTexture(), &sourceFondo3, &destinationFondo3);
 	SDL_RenderCopy(ren, capa2->getTexture(), &sourceFondo2, &destinationFondo2);
 	SDL_RenderCopy(ren, capa1->getTexture(), &sourceFondo1, &destinationFondo1);
-	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, NULL, NULL, jugador->getFlip());
 
 	for (uint i = 0; i < elementos.size(); i++) {
 		Dibujable* dibujable = elementos[i]->getDibujable();
@@ -120,6 +120,8 @@ void Vista::Draw(){
 
 		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceElemento, &destinationElemento);
 	}
+
+	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, NULL, NULL, jugador->getFlip());
 	//TODO: no se como meter la renderizacion de objetos/enemigos aca
 	//deberia poderse buscar que objetos estan en la vista actual, y renderizarse solo esos
 

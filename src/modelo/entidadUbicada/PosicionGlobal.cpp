@@ -30,10 +30,18 @@ void PosicionGlobal::moverArriba(){
 	}
 }
 
+void PosicionGlobal::moverSalto(){
+	y -= (VELOCIDAD_CODY);
+}
+
 void PosicionGlobal::moverAbajo(){
 	if(y < WINDOW_SIZE_VERTICAL - 245){
 		y += VELOCIDAD_CODY/2;
 	}
+}
+
+void PosicionGlobal::moverCaida(){
+	y += (VELOCIDAD_CODY);
 }
 
 void PosicionGlobal::moverIzquierda(){

@@ -14,6 +14,8 @@ public:
 	void movimientoIzquierda();
 	void movimientoArriba();
 	void movimientoAbajo();
+	void movimientoSalto();
+	void movimientoCaida();
 
 	Personaje* getJugador();
 
