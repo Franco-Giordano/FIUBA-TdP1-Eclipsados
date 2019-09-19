@@ -48,6 +48,9 @@ public:
 	//void setSource(int x, int y, int w, int h);
 	//void setImage(SDL_Renderer *ren);
 	bool llegoAlBorde(int Xpos, int WindowSizeHorizontal);
+
+
+	void setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren);
 };
 
 #endif /* PERSONAJE_H_ */

@@ -1,0 +1,30 @@
+<configuracion>
+	<debugLevel>ERROR</debugLevel>
+	<escenario>
+		<cantidades>
+			<cuchillo>7</cuchillo>
+			<barril>7</barril>
+			<canio>5</canio>
+			<caja>4</caja>
+			<enemigo>6</enemigo>
+		</cantidades>
+		<niveles>
+			<nivel1>
+				<fondo>sprites/Nivel1-fondo1-XL.png</fondo>
+				<fondo>sprites/Nivel1-fondo2-XL.png</fondo>
+				<fondo>sprites/Nivel1-fondo3-XL.png</fondo>
+			</nivel1>
+			<nivel2>
+				<fondo>sprites/Nivel2-fondo1-XL.png</fondo>
+				<fondo>sprites/Nivel2-fondo2-XL.png</fondo>
+				<fondo>sprites/Nivel2-fondo3-XL.png</fondo>
+			</nivel2>
+		</niveles>
+	</escenario>
+	<sprites>
+		<sprite>sprites/SpriteCodyCompleto.png</sprite>
+		<sprite>sprites/objetos_varios.png</sprite>
+		<sprite>sprites/Dug.png</sprite>
+		<sprite>sprites/AndoreJr.png</sprite>
+	</sprites>
+</configuracion>

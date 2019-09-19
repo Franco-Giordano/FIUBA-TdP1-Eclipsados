@@ -2,7 +2,7 @@
 
 #include "Nivel.h"
 
-Nivel::Nivel(EntidadUbicada* jugador) {
+Nivel::Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos) {
 
 	musicaFondo = new Sonido();
 //	(*musicaFondo).play();
@@ -13,7 +13,7 @@ Nivel::Nivel(EntidadUbicada* jugador) {
 	capa2.setVelocidad(2);
 	capa3.setVelocidad(1);
 
-	this->ubicarEnemigosYElementos(8, 10);
+	this->ubicarEnemigosYElementos(cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 }
 
 Nivel::~Nivel() {
@@ -113,12 +113,7 @@ void Nivel::moverCapasIzquierda(){
 
 }
 
-void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
-	//cody = Cody();
-/*
-	for (int i = 0; i < (cantEnemigos + cantElementos); i++) {
-
-	}*/
+void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos){
 
 	FactoryEntidadUbicada factory;
 
@@ -133,3 +128,6 @@ void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
 	elementos.push_back(cuchillo);
 }
 
+Personaje* Nivel::getPersonaje() {
+	return (Personaje*)this->cody->getDibujable();
+}

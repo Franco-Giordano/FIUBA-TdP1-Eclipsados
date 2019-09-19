@@ -1,0 +1,18 @@
+<configuracion>
+	<debugLevel>ERRasd</debugLevel>
+	<escenario>
+		<cantidadObjetos>
+			<cuchillo>2</cuchillo>
+			<barril>7.3</barril>
+			<canio>a</canio>
+			<caja>1</caja>
+		</cantidadObjetos>
+		<niveles>
+			<nivel1>
+				<fondo1>Nivel1-fondo1.png</fondo1>
+				<fondo2>dnasnks-fondo2.png</fondo2>
+				<fondo3>Nivel1-fondo3.png</fondo3>
+			</nivel1>
+		</niveles>
+	</escenario>
+</configuracion>

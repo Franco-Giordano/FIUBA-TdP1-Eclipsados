@@ -5,6 +5,10 @@
 #include "SDL2/SDL_image.h"
 #include "../../../defs.h"
 
+#include "../../../AsignadorDeTexturas.h"
+
+#include <string>
+
 class Dibujable {
 public:
 	Dibujable();
@@ -16,7 +20,7 @@ public:
 
 	void setDest(int x, int y, int w, int h);
 	void setSource(int x, int y, int w, int h);
-	void setImage(SDL_Renderer *ren);
+	void setImage(SDL_Renderer *ren, std::string imagen);
 	void updateDest(int x, int y);
 
 	void moverArriba();
@@ -31,6 +35,8 @@ public:
 
 	int getWidth(){return src.w;}
 	int getHeight(){return src.h;}
+
+	virtual void setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) = 0;
 
 protected:
 	SDL_Texture* tex;

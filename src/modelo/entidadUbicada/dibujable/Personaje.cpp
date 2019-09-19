@@ -81,3 +81,8 @@ bool Personaje::llegoAlBorde(int Xpos, int WindowSizeHorizontal){
 
 	return llegoAlBorde;
 }
+
+void Personaje::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
+	asignador.setTexture(*this, ren);
+}
+

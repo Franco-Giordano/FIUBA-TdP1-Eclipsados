@@ -28,9 +28,11 @@ void Dibujable::setSource(int x, int y, int w, int h){
 
 }
 
-void Dibujable::setImage(SDL_Renderer* ren){
+void Dibujable::setImage(SDL_Renderer* ren, std::string imagen){
 
-	SDL_Surface* surf = IMG_Load(imagen);
+	this->imagen = imagen.c_str();
+
+	SDL_Surface* surf = IMG_Load(this->imagen);
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }
@@ -53,3 +55,4 @@ bool Dibujable::estaBordeDerecho(){
 bool Dibujable::estaBordeIzquierdo(){
 	return (dest.x <= MARGEN_IZQUIERDO);
 }
+
