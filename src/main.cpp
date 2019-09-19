@@ -16,9 +16,6 @@ int main() {
         logger.log(LogLevel::INFO, "Test INFO: nivel incluido se logea");
         logger.log(LogLevel::DEBUG, "Test DEBUG: nivel excluido no se logea");
 
-	//juego no hace mucho, solo encapsula Personaje
-	Juego g;
-
 
 	int cantCuchillos = 0, cantBarriles = 0, cantEnemigos = 0, cantCanios = 0, cantCajas = 0;
 
