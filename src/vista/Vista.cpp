@@ -25,13 +25,14 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asign
 	salto = jugador->crearCiclo(3, 85, 120, 8, 8);
 	golpear = jugador->crearCiclo(4, 110, 120, 2, 5);
 	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 12);
-	agachado = jugador->crearCiclo(1,85,120,2,10);
+	agachado = jugador->crearCiclo(1, 85, 120, 2, 5);
+	saltoVertical = jugador->crearCiclo(6, 85, 120, 6, 12);
 
 
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual, SDL_FLIP_NONE);
 
-	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear, agachado);
+	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear, agachado, saltoVertical);
 	controlador->setAccionActual(accionActual);
 
 	//nivel = juego->getNivel();

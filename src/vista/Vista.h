@@ -39,6 +39,7 @@ private:
 	int saltoPatada;
 	int golpear;
 	int agachado;
+	int saltoVertical;
 	float posicionX;
 	float posicionY;
 
