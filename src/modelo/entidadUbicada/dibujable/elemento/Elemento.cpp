@@ -16,3 +16,7 @@ Elemento::~Elemento() {
 	// TODO Auto-generated destructor stub
 }
 
+
+void Elemento::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
+	asignador.setTexture(*this, ren);
+}

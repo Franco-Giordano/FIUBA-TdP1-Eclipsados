@@ -2,10 +2,10 @@
 
 #include "Nivel.h"
 
-Nivel::Nivel(EntidadUbicada* jugador) {
+Nivel::Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos) {
 
 	musicaFondo = new Sonido();
-	(*musicaFondo).play();
+//	(*musicaFondo).play();
 
 	cody = jugador;
 
@@ -13,7 +13,7 @@ Nivel::Nivel(EntidadUbicada* jugador) {
 	capa2.setVelocidad(2);
 	capa3.setVelocidad(1);
 
-	this->ubicarEnemigosYElementos(8, 10);
+	this->ubicarEnemigosYElementos(cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 }
 
 Nivel::~Nivel() {
@@ -48,45 +48,15 @@ void Nivel::movimientoSalto(){
 	cody->moverGlobalSalto();
 }
 
-/*void Nivel::movimientoSalto(bool saltandoDerecha){
-	switch(saltandoDerecha){
-	case true:	if (!cody->llegoBordeGlobalDerecho()){
-					if (cody->llegoBordeLocalDerecho()){
-						pos_borde_derecha += VELOCIDAD_CODY;
-						pos_borde_izquierda += VELOCIDAD_CODY;
-						moverCapasIzquierda();
-						moverElementosIzquierda();
-					}else{
-						cody->moverLocalSalto(saltandoDerecha);
-					}
-					cody->moverGlobalSalto(saltandoDerecha);
-				}
-	break;
-	case false:		if (!cody->llegoBordeGlobalIzquierdo()){
-						if (cody->llegoBordeLocalIzquierdo()){
-							pos_borde_izquierda -= VELOCIDAD_CODY;
-							pos_borde_derecha -= VELOCIDAD_CODY;
-							moverCapasDerecha();
-							moverElementosDerecha();
-						}else{
-							cody->moverLocalSalto(saltandoDerecha);
-						}
-						cody->moverGlobalSalto(saltandoDerecha);
-					}
-	break;
-	}
-}*/
-
-void Nivel::terminoSalto(){
-	cody->terminoSaltoLocal();
-	cody->terminoSaltoGlobal();
-}
-
 void Nivel::movimientoAbajo(){
 	cody->moverLocalAbajo();
 	cody->moverGlobalAbajo();
 }
 
+void Nivel::movimientoCaida(){
+	cody->moverLocalCaida();
+	cody->moverGlobalCaida();
+}
 
 void Nivel::movimientoIzquierda(){
 	if (!cody->llegoBordeGlobalIzquierdo()){
@@ -115,7 +85,10 @@ void Nivel::movimientoDerecha(){
 		}else{
 			cody->moverLocalDerecha();
 		}
+
 		cody->moverGlobalDerecha();
+
+
 	}
 
 }
@@ -140,12 +113,7 @@ void Nivel::moverCapasIzquierda(){
 
 }
 
-void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
-	//cody = Cody();
-/*
-	for (int i = 0; i < (cantEnemigos + cantElementos); i++) {
-
-	}*/
+void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos){
 
 	FactoryEntidadUbicada factory;
 
@@ -160,3 +128,6 @@ void Nivel::ubicarEnemigosYElementos(int cantEnemigos, int cantElementos){
 	elementos.push_back(cuchillo);
 }
 
+Personaje* Nivel::getPersonaje() {
+	return (Personaje*)this->cody->getDibujable();
+}

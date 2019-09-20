@@ -7,12 +7,11 @@
 
 #include "Juego.h"
 
-Juego::Juego() {
-	// TODO Auto-generated constructor stub
+Juego::Juego(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos) {
 
-	personaje = new Personaje;
+	Dibujable*  personaje = new Personaje;
 	this->entidad = new EntidadUbicada(personaje);
-	nivel = new Nivel(entidad);
+	nivel = new Nivel(entidad, cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 
 }
 
@@ -38,8 +37,8 @@ void Juego::movimientoAbajo() {
 	nivel->movimientoAbajo();
 }
 
-void Juego::terminadoSalto() {
-	nivel->terminoSalto();
+void Juego::movimientoCaida() {
+	nivel->movimientoCaida();
 }
 
 void Juego::movimientoDerecha() {
@@ -52,5 +51,5 @@ void Juego::movimientoIzquierda() {
 }
 
 Personaje* Juego::getJugador() {
-	return (Personaje*)personaje;
+	return nivel->getPersonaje();
 }

@@ -18,7 +18,7 @@ public:
 	void moverIzquierda();
 	void moverDerecha();
 	void moverSalto();
-	void terminoSalto(){velocidadSalto = VELOCIDAD_SALTO_INICIAL;};
+	void moverCaida();
 
 	float getHorizontal();
 	float getVertical();
@@ -31,7 +31,6 @@ public:
 private:
 	float x=0;
 	float y=0;
-	float velocidadSalto;
 };
 
 #endif /* SRC_MODELO_ENTIDADUBICADA_POSICIONGLOBAL_H_ */

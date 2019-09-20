@@ -3,7 +3,7 @@
 Dibujable::Dibujable() {
 	dest.x = JUGADOR_POSICION_HORIZONTAL_INICIAL;
 	dest.y = JUGADOR_POSICION_VERTICAL_INICIAL;
-	velocidadSalto = VELOCIDAD_SALTO_INICIAL;
+
 }
 
 
@@ -28,9 +28,11 @@ void Dibujable::setSource(int x, int y, int w, int h){
 
 }
 
-void Dibujable::setImage(SDL_Renderer* ren){
+void Dibujable::setImage(SDL_Renderer* ren, std::string imagen){
 
-	SDL_Surface* surf = IMG_Load(imagen);
+	this->imagen = imagen.c_str();
+
+	SDL_Surface* surf = IMG_Load(this->imagen);
 	tex = SDL_CreateTextureFromSurface(ren, surf);
 
 }
@@ -47,14 +49,10 @@ void Dibujable::moverAbajo(){
 	}
 }
 
-void Dibujable::moverSalto(){
-	dest.y = dest.y - velocidadSalto * DELTA_T;
-	velocidadSalto = velocidadSalto + DELTA_T * GRAVEDAD;
-}
-
 bool Dibujable::estaBordeDerecho(){
 	return (dest.x >= WINDOW_SIZE_HORIZONTAL - MARGEN_DERECHO);
 }
 bool Dibujable::estaBordeIzquierdo(){
 	return (dest.x <= MARGEN_IZQUIERDO);
 }
+

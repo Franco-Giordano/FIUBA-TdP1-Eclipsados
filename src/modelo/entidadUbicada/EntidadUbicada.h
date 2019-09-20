@@ -18,14 +18,14 @@ public:
 	void moverGlobalArriba(){posicion.moverArriba();}
 	void moverGlobalAbajo(){posicion.moverAbajo();}
 	void moverGlobalSalto(){posicion.moverSalto();}
-	void terminoSaltoGlobal(){posicion.terminoSalto();}
+	void moverGlobalCaida(){posicion.moverCaida();}
 
 	void moverLocalIzquierda(){entidad->moverIzquierda();}
 	void moverLocalDerecha(){entidad->moverDerecha();}
 	void moverLocalArriba(){entidad->moverArriba();}
 	void moverLocalAbajo(){entidad->moverAbajo();}
 	void moverLocalSalto(){entidad->moverSalto();}
-	void terminoSaltoLocal(){entidad->terminoSalto();}
+	void moverLocalCaida(){entidad->moverCaida();}
 
 	PosicionGlobal getPosicionGlobal();
 
