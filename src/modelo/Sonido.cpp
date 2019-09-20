@@ -5,7 +5,7 @@ Sonido::Sonido() {
 
 		SDL_Init(SDL_INIT_AUDIO);
 		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-		musicaFondoNivel1 = Mix_LoadMUS( "musica de fondo nivel 1.mp3" );
+		//musicaFondoNivel1 = Mix_LoadMUS( "musica de fondo nivel 1.mp3" );
 
 }
 

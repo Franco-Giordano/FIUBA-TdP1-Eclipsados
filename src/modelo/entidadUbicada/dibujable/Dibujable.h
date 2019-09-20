@@ -5,10 +5,6 @@
 #include "SDL2/SDL_image.h"
 #include "../../../defs.h"
 
-#include "../../../AsignadorDeTexturas.h"
-
-#include <string>
-
 class Dibujable {
 public:
 	Dibujable();
@@ -20,15 +16,15 @@ public:
 
 	void setDest(int x, int y, int w, int h);
 	void setSource(int x, int y, int w, int h);
-	void setImage(SDL_Renderer *ren, std::string imagen);
+	void setImage(SDL_Renderer *ren);
 	void updateDest(int x, int y);
 
 	void moverArriba();
 	void moverAbajo();
-	void moverIzquierda(){dest.x -= VELOCIDAD_CODY;}
-	void moverDerecha(){dest.x += VELOCIDAD_CODY;}
-	void moverSalto(){dest.y -= VELOCIDAD_CODY/2;}
-	void moverCaida(){dest.y += VELOCIDAD_CODY/2;}
+	void moverIzquierda(){dest.x -= VELOCIDAD_CODY/2;}
+	void moverDerecha(){dest.x += VELOCIDAD_CODY/2;}
+	void moverSalto();
+	void terminoSalto(){velocidadSalto = VELOCIDAD_SALTO_INICIAL;}
 
 	bool estaBordeDerecho();
 	bool estaBordeIzquierdo();
@@ -36,13 +32,12 @@ public:
 	int getWidth(){return src.w;}
 	int getHeight(){return src.h;}
 
-	virtual void setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) = 0;
-
 protected:
 	SDL_Texture* tex;
 	SDL_Rect dest;
 	SDL_Rect src;
 	char const* imagen;
+	float velocidadSalto;
 };
 
 #endif /* SRC_MODELO_DIBUJABLE_H_ */

@@ -24,8 +24,6 @@ private:
 	};
 	vector<cycle> animaciones;
 	SDL_Texture* tex;
-	SDL_Rect dest;
-	SDL_Rect src;
 	SDL_RendererFlip spriteFlip;
 	int animActual;
 	int empezar;
@@ -48,9 +46,6 @@ public:
 	//void setSource(int x, int y, int w, int h);
 	//void setImage(SDL_Renderer *ren);
 	bool llegoAlBorde(int Xpos, int WindowSizeHorizontal);
-
-
-	void setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren);
 };
 
 #endif /* PERSONAJE_H_ */

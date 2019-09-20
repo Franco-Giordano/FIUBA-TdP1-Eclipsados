@@ -16,8 +16,3 @@ Enemigo::~Enemigo() {
 	// TODO Auto-generated destructor stub
 }
 
-void Enemigo::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
-	asignador.setTexture(*this, ren);
-}
-
-

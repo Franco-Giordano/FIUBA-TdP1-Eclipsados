@@ -6,11 +6,10 @@
 #include "../controlador/Controlador.h"
 #include "../modelo/nivel/Capa.h"
 #include "../modelo/nivel/Nivel.h"
-#include "../AsignadorDeTexturas.h"
 
 class Vista {
 public:
-	Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asignador);
+	Vista(Juego* modelo, Controlador* controlador);
 	virtual ~Vista();
 	void update();
 	void render();

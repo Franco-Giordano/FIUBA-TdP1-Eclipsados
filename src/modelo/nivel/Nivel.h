@@ -14,8 +14,9 @@
 
 class Nivel {
 public:
-	Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos);
+	Nivel(EntidadUbicada* jugador);
 	virtual ~Nivel();
+	void ubicarEnemigosYElementos(int cantEnemigos, int cantElementos);
 
 	void setImagesCapas(SDL_Renderer *ren, char const* imagen1, char const* imagen2, char const* imagen3);
 
@@ -24,7 +25,7 @@ public:
 	void movimientoIzquierda();
 	void movimientoDerecha();
 	void movimientoSalto();
-	void movimientoCaida();
+	void terminoSalto();
 
 	Capa* getCapa1(){return &capa1;}
 	Capa* getCapa2(){return &capa2;}
@@ -32,16 +33,11 @@ public:
 
 	vector<EntidadUbicada*> getElementos(){return elementos;}
 
-	Personaje* getPersonaje();
-
 private:
 	void moverCapasDerecha();
 	void moverCapasIzquierda();
 	void moverElementosIzquierda();
 	void moverElementosDerecha();
-
-	void ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos);
-
 
 	void inicializarCapa(Capa capa);
 

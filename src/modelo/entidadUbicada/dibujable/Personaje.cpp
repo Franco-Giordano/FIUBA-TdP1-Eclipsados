@@ -21,34 +21,7 @@ int Personaje::crearCiclo(int f, int w, int h, int cantSprites, int vel){
 	animaciones.push_back(tmp);
 	return animaciones.size()-1;
 }
-/*
-void Personaje::setDest(int x, int y, int w, int h){
-	dest.x=x;
-	dest.y=y;
-	dest.w=w;
-	dest.h=h;
 
-}
-
-void Personaje::updateDest(int x, int y){
-	dest.x=x;
-	dest.y=y;
-}
-void Personaje::setSource(int x, int y, int w, int h){
-	src.x=x;
-	src.y=y;
-	src.w=w;
-	src.h=h;
-
-}
-
-void Personaje::setImage(SDL_Renderer* ren){
-
-	SDL_Surface* surf = IMG_Load("SpriteCodyCompleto.png");
-	tex = SDL_CreateTextureFromSurface(ren, surf);
-
-}
-*/
 void Personaje::updateAnim(){
 
 	setSource(animaciones[animActual].w*animaciones[animActual].tick, animaciones[animActual].fil*animaciones[animActual].h, animaciones[animActual].w, animaciones[animActual].h);
@@ -81,8 +54,3 @@ bool Personaje::llegoAlBorde(int Xpos, int WindowSizeHorizontal){
 
 	return llegoAlBorde;
 }
-
-void Personaje::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
-	asignador.setTexture(*this, ren);
-}
-

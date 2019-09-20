@@ -7,7 +7,7 @@
 
 class Juego {
 public:
-	Juego(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos);
+	Juego();
 	virtual ~Juego();
 
 	void movimientoDerecha();
@@ -15,7 +15,7 @@ public:
 	void movimientoArriba();
 	void movimientoAbajo();
 	void movimientoSalto();
-	void movimientoCaida();
+	void terminadoSalto();
 
 	Personaje* getJugador();
 
@@ -30,6 +30,7 @@ public:
 
 private:
 	EntidadUbicada* entidad;
+	Dibujable* personaje;
 	Nivel* nivel;
 };
 

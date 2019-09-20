@@ -15,7 +15,7 @@ public:
 	Elemento();
 	virtual ~Elemento();
 
-	void setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren);
+
 };
 
 #endif /* SRC_MODELO_OBJETO_H_ */

@@ -28,10 +28,8 @@ private:
 	int accionActual;
 	bool saltando;
 	bool saltandoDerecha;
-	float alturaActualSalto;
-	float alturaActualCaida;
-	float alturaMaximaSalto;
-	float alturaMaximaCaida;
+	int alturaActualSalto;
+	int alturaMaximaSalto;
 };
 
 #endif /* CONTROLADOR_H_ */

@@ -1,6 +1,7 @@
 #include "Vista.h"
 
-Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asignador) {
+
+Vista::Vista(Juego* modelo, Controlador* controlador) {
 
 	juego = modelo;
 	this->controlador = controlador;
@@ -17,14 +18,14 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asign
 	posicionX = posicionJugador.getHorizontal();
 	posicionY = posicionJugador.getVertical();
 
-	jugador->setImageWith(asignador,ren);
+	jugador->setImage(ren);
 	jugador->setDest(posicionX, posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL); //TODO
 
 	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
 	caminar = jugador->crearCiclo(2, 85, 120, 12, 5);
 	salto = jugador->crearCiclo(3, 85, 120, 8, 7);
 	golpear = jugador->crearCiclo(4, 110, 120, 2, 5);
-	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 10);
+	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 12);
 	agachado = jugador->crearCiclo(1,85,120,2,10);
 
 
@@ -40,13 +41,9 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asign
 	capa2 = juego->getCapa2();
 	capa3 = juego->getCapa3();
 
-	prepararCapa(capa2, asignador.getNivel1()->at(1).c_str());
-	prepararCapa(capa3, asignador.getNivel1()->at(2).c_str());
-	prepararCapa(capa1, asignador.getNivel1()->at(0).c_str());
-
-
-
-	//TODO: aca se preparia el segundo nivel? o donde
+	prepararCapa(capa1,"sprites/Nivel1-fondo1-XL.png");
+	prepararCapa(capa2,"sprites/Nivel1-fondo2-XL.png");
+	prepararCapa(capa3,"sprites/Nivel1-fondo3-XL.png");
 
 	elementos = juego->getElementos();
 	for (uint i = 0; i < elementos.size(); i++) {
@@ -56,7 +53,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asign
 		posicionX = posicion.getHorizontal();
 		posicionY = posicion.getVertical();
 
-		dibujable->setImageWith(asignador, ren);
+		dibujable->setImage(ren);
 
 //-->> Ojo que no todos van a tener las mismas dimensiones (source y dest cambian de acuredo al obj)
 // -> solucion: cada objeto setea su source y se le pide el ancho y el alto para dibujarlo
