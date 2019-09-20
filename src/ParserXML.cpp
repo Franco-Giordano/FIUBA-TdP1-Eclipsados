@@ -105,7 +105,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 	if (sprites->size() != CANT_SPRITES) {
 		//TODO: no existe <sprites>, o se pasaron sprites de menos o de mas! avisar por log
 		sprites->clear();
-		asignarLista(nivel2, pEscenarioDEFAULT->FirstChildElement("niveles")->FirstChildElement("nivel2"), "sprite");
+		asignarLista(sprites, configDefault.FirstChildElement("configuracion")->FirstChildElement("sprites"), "sprite");
 	}
 
 }

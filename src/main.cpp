@@ -19,15 +19,9 @@ int main() {
 
 	int cantCuchillos = 0, cantBarriles = 0, cantEnemigos = 0, cantCanios = 0, cantCajas = 0;
 
-	ParserXML parser("xmlDefault.xml");
+	ParserXML parser("xmlCustom.xml");
 
 	parser.parsearConfig(&cantEnemigos, &cantCuchillos, &cantCajas, &cantCanios, &cantBarriles);
-
-
-	//********** TESTEO
-	std::cout << cantBarriles << cantCajas << cantCanios << cantCuchillos << cantEnemigos << std::endl;
-	//********* FIN TESTEO
-
 
 	Juego g(cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 

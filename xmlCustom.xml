@@ -1,18 +1,24 @@
 <configuracion>
 	<debugLevel>ERRasd</debugLevel>
 	<escenario>
-		<cantidadObjetos>
+		<cantidades>
 			<cuchillo>2</cuchillo>
 			<barril>7.3</barril>
 			<canio>a</canio>
 			<caja>1</caja>
-		</cantidadObjetos>
+		</cantidades>
 		<niveles>
 			<nivel1>
-				<fondo1>Nivel1-fondo1.png</fondo1>
-				<fondo2>dnasnks-fondo2.png</fondo2>
-				<fondo3>Nivel1-fondo3.png</fondo3>
+				<fondo>spritesAlt/puente-fondo1.png</fondo>
+				<fondo>spritesAlt/puente-fondo2.png</fondo>
+				<fondo>spritesAlt/puente-fondo2.png</fondo>
 			</nivel1>
 		</niveles>
 	</escenario>
+	<sprites>
+		<sprite>sprites/SpriteCodyCompleto.png</sprite>
+		<sprite>sprites/objetos_varios.png</sprite>
+		<sprite>sprites/Dug.png</sprite>
+		<sprite>sprites/AndoreJr.png</sprite>
+	</sprites>
 </configuracion>
