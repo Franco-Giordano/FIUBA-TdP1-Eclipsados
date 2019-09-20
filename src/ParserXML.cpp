@@ -27,6 +27,7 @@ ParserXML::ParserXML(std::string rutaConfig){
 	XMLError eDefault = configDefault.LoadFile("xmlDefault.xml");
 
 	if (eArchivo != XML_SUCCESS) {
+		Logger::getInstance()->log(ERROR, "Archivo XML personalizado no encontrado, utilizando el defecto...");
 		//usar default, en vez de custom
 		pConfig = &configDefault;
 	}
@@ -79,6 +80,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 	if (nivel1->size() != CANT_CAPAS) {
 		//TODO: no existe <nivel1>, o se pasaron fondos de menos o de mas! avisar por log
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel1> (se esperban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
 		nivel1->clear();
 		asignarLista(nivel1, pEscenarioDEFAULT->FirstChildElement("niveles")->FirstChildElement("nivel1"), "fondo");
 	}
@@ -91,6 +93,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 	if (nivel2->size() != CANT_CAPAS) {
 		//TODO: no existe <nivel2>, o se pasaron fondos de menos o de mas! avisar por log
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel2> (se esperban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
 		nivel2->clear();
 		asignarLista(nivel2, pEscenarioDEFAULT->FirstChildElement("niveles")->FirstChildElement("nivel2"), "fondo");
 	}
@@ -104,6 +107,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 	}
 	if (sprites->size() != CANT_SPRITES) {
 		//TODO: no existe <sprites>, o se pasaron sprites de menos o de mas! avisar por log
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <spirtes> (se esperban 4), o etiqueta no existente. Se utilizaran sprites predeterminados.");
 		sprites->clear();
 		asignarLista(sprites, configDefault.FirstChildElement("configuracion")->FirstChildElement("sprites"), "sprite");
 	}
@@ -130,6 +134,7 @@ void ParserXML::asignarValor(int* variable, const char* nombre, XMLHandle base, 
 	if (!pElemento || error != XML_SUCCESS) {
 
 		//TODO: avisar por log que no esta la categoria/no es de tipo int/no contiene texto
+		Logger::getInstance()->log(ERROR, "Etiqueta <" + std::string(nombre) + "> inexistente o con datos erroneos/nulos. Utilizando valor predeterminado.");
 		backup->FirstChildElement(nombre)->QueryIntText(variable);
 	}
 

@@ -1,0 +1,4 @@
+[INFO]: LOGGER EN MODO: DEBUG
+[ERROR]: Etiqueta <canio> inexistente o con datos erroneos/nulos. Utilizando valor predeterminado.
+[ERROR]: Etiqueta <enemigo> inexistente o con datos erroneos/nulos. Utilizando valor predeterminado.
+[ERROR]: Cantidad insuficiente de items en <nivel2> (se esperban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.

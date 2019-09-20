@@ -11,11 +11,7 @@ using namespace tinyxml2;
 
 int main() {
 
-	Logger logger(LogLevel::INFO);
-        logger.log(LogLevel::ERROR, "Test ERROR: nivel incluido se logea");
-        logger.log(LogLevel::INFO, "Test INFO: nivel incluido se logea");
-        logger.log(LogLevel::DEBUG, "Test DEBUG: nivel excluido no se logea");
-
+	Logger::getInstance()->setLevel(DEBUG);
 
 	int cantCuchillos = 0, cantBarriles = 0, cantEnemigos = 0, cantCanios = 0, cantCajas = 0;
 
@@ -28,7 +24,7 @@ int main() {
 	Controlador controlador(&g);
 
 	AsignadorDeTexturas asignador = parser.getAsignador();
-	//vista se crea (ventana) y comienza a loopear para renderizar
+
 	Vista vista(&g, &controlador, asignador);
 
 	return 0;

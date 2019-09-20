@@ -20,6 +20,8 @@
 #include "tinyxml2/tinyxml2.h"
 #include "AsignadorDeTexturas.h"
 
+#include "Logger.h"
+
 class ParserXML {
 public:
 	ParserXML(std::string rutaConfig);
