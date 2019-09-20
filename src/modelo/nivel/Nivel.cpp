@@ -48,14 +48,14 @@ void Nivel::movimientoSalto(){
 	cody->moverGlobalSalto();
 }
 
+void Nivel::terminoSalto(){
+	cody->terminoLocalSalto();
+	cody->terminoGlobalSalto();
+}
+
 void Nivel::movimientoAbajo(){
 	cody->moverLocalAbajo();
 	cody->moverGlobalAbajo();
-}
-
-void Nivel::movimientoCaida(){
-	cody->moverLocalCaida();
-	cody->moverGlobalCaida();
 }
 
 void Nivel::movimientoIzquierda(){

@@ -24,8 +24,6 @@ private:
 	};
 	vector<cycle> animaciones;
 	SDL_Texture* tex;
-	SDL_Rect dest;
-	SDL_Rect src;
 	SDL_RendererFlip spriteFlip;
 	int animActual;
 	int empezar;

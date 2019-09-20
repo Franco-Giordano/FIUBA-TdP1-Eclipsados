@@ -25,10 +25,11 @@ public:
 
 	void moverArriba();
 	void moverAbajo();
-	void moverIzquierda(){dest.x -= VELOCIDAD_CODY;}
-	void moverDerecha(){dest.x += VELOCIDAD_CODY;}
-	void moverSalto(){dest.y -= VELOCIDAD_CODY/2;}
-	void moverCaida(){dest.y += VELOCIDAD_CODY/2;}
+	void moverIzquierda(){dest.x -= VELOCIDAD_CODY/2;}
+	void moverDerecha(){dest.x += VELOCIDAD_CODY/2;}
+	void moverSalto();
+	void terminoSalto(){velocidadSalto = VELOCIDAD_SALTO_INICIAL;}
+
 
 	bool estaBordeDerecho();
 	bool estaBordeIzquierdo();
@@ -43,6 +44,7 @@ protected:
 	SDL_Rect dest;
 	SDL_Rect src;
 	char const* imagen;
+	float velocidadSalto;
 };
 
 #endif /* SRC_MODELO_DIBUJABLE_H_ */

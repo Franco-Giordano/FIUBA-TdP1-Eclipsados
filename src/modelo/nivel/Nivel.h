@@ -24,7 +24,7 @@ public:
 	void movimientoIzquierda();
 	void movimientoDerecha();
 	void movimientoSalto();
-	void movimientoCaida();
+	void terminoSalto();
 
 	Capa* getCapa1(){return &capa1;}
 	Capa* getCapa2(){return &capa2;}

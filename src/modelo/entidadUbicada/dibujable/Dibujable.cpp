@@ -3,7 +3,7 @@
 Dibujable::Dibujable() {
 	dest.x = JUGADOR_POSICION_HORIZONTAL_INICIAL;
 	dest.y = JUGADOR_POSICION_VERTICAL_INICIAL;
-
+	velocidadSalto = VELOCIDAD_SALTO_INICIAL;
 }
 
 
@@ -47,6 +47,11 @@ void Dibujable::moverAbajo(){
 	if(dest.y < WINDOW_SIZE_VERTICAL - 245){
 		dest.y += VELOCIDAD_CODY/2;
 	}
+}
+
+void Dibujable::moverSalto(){
+	dest.y = dest.y - velocidadSalto * DELTA_T;
+	velocidadSalto = velocidadSalto + DELTA_T * GRAVEDAD;
 }
 
 bool Dibujable::estaBordeDerecho(){

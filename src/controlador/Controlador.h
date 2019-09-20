@@ -29,9 +29,7 @@ private:
 	bool saltando;
 	bool saltandoDerecha;
 	float alturaActualSalto;
-	float alturaActualCaida;
 	float alturaMaximaSalto;
-	float alturaMaximaCaida;
 };
 
 #endif /* CONTROLADOR_H_ */

@@ -21,7 +21,10 @@
 #define MARGEN_DERECHO 200
 
 #define VELOCIDAD_CODY 6
+#define VELOCIDAD_SALTO_INICIAL 30
 #define ALTURA_MAXIMA 200 //Lo maximo que puede saltar cody
+#define GRAVEDAD -5
+#define DELTA_T 0.16
 
 
 #endif /* SRC_DEFS_H_ */

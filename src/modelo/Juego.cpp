@@ -33,12 +33,12 @@ void Juego::movimientoSalto() {
 	nivel->movimientoSalto();
 }
 
-void Juego::movimientoAbajo() {
-	nivel->movimientoAbajo();
+void Juego::terminadoSalto() {
+	nivel->terminoSalto();
 }
 
-void Juego::movimientoCaida() {
-	nivel->movimientoCaida();
+void Juego::movimientoAbajo() {
+	nivel->movimientoAbajo();
 }
 
 void Juego::movimientoDerecha() {
