@@ -1,49 +1,55 @@
+#include <ctime>
 #include <iostream>
 #include <fstream>
 #include "Logger.h"
 
-#include <chrono>
-#include <ctime>
-
-
-
 using namespace std;
 
-ofstream archivoRegistro;
-
+ofstream logFile;
 Logger* Logger::instance = nullptr;
 
 Logger* Logger::getInstance() {
 
-  if (instance == nullptr)
-    instance = new Logger;
+    if (instance == nullptr)
+        instance = new Logger;
 
-  return instance;
+    return instance;
 }
 
 void Logger::setLevel(LogLevel level) {
 
-/*	PRIMERAS PRUEBAS AGREGANDO FECHA Y HORA
-	std::chrono::time_point<std::chrono::system_clock> dateTime = std::chrono::system_clock::now();
-	std::time_t dateTime_t = std::chrono::system_clock::to_time_t(dateTime);*/
+    Errorlevel = level;
 
-	Errorlevel = level;
-	archivoRegistro.open("logs/log.txt", ios::out);
+    string logfilename = "logs/logfile_" + datetime();
+    logFile.open(logfilename, ios::out);
 
-	if (Errorlevel <= INFO) {
-		archivoRegistro << "[" << LogLevelNames[INFO] << "]: "<< "LOGGER EN MODO: " << LogLevelNames[Errorlevel] << std::endl;
-	}
+    if (Errorlevel <= INFO)
+        logFile << datetime() << " - [" << LogLevelNames[INFO] << "] - "<< "LOGGER INICIADO: " << LogLevelNames[Errorlevel] << std::endl;
 }
 
 Logger::~Logger() {
-	if (Errorlevel <= INFO) {
-		archivoRegistro << "[" << LogLevelNames[INFO] << "]: " << "LOGGER DESTRUIDO" << std::endl;
-	}
-	archivoRegistro.close();
+
+    if (Errorlevel <= INFO)
+        logFile << datetime() << " - [" << LogLevelNames[INFO] << "] - " << "LOGGER DESTRUIDO" << std::endl;
+
+    logFile.close();
 }
 
 void Logger::log(LogLevel level, string message) {
-		if (Errorlevel <= level) {
-			archivoRegistro << "[" << LogLevelNames[level] << "]: " << message << std::endl;
-	}
+
+    if (Errorlevel <= level)
+        logFile << datetime() << " - [" << LogLevelNames[level] << "] - " << message << std::endl;
  }
+
+string Logger::datetime() {
+
+    time_t rawtime;
+    struct tm * timeinfo;
+    char buffer[80];
+
+    time (&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer,80,"%Y-%m-%dT%H-%M-%S",timeinfo);
+    return std::string(buffer);
+}
