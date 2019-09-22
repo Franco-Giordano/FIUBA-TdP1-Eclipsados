@@ -18,7 +18,6 @@ Juego::Juego(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles,
 Juego::~Juego() {
 	// TODO Auto-generated destructor stub
 	delete entidad;
-	delete nivel;
 }
 
 PosicionGlobal Juego::getPosicionJugador() {
