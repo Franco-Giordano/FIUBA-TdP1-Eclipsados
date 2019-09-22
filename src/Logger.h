@@ -4,13 +4,13 @@
 #include <string>
 using std::string;
 
-enum LogLevel { DEBUG, INFO, ERROR };
+enum LogLevel { ERROR, INFO, DEBUG };
 
 class Logger {
 
 public:
     static Logger* getInstance();
-    string LogLevelNames[3] = { "DEBUG", "INFO", "ERROR" };
+    string LogLevelNames[3] = { "ERROR", "INFO", "DEBUG" };
     ~Logger();
     void setLevel(LogLevel level);
     void log(LogLevel level, string message);

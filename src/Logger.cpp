@@ -23,13 +23,13 @@ void Logger::setLevel(LogLevel level) {
     string logfilename = "logs/logfile_" + datetime();
     logFile.open(logfilename, ios::out);
 
-    if (Errorlevel <= INFO)
+    if (Errorlevel >= INFO)
         logFile << datetime() << " - [" << LogLevelNames[INFO] << "] - "<< "LOGGER INICIADO: " << LogLevelNames[Errorlevel] << std::endl;
 }
 
 Logger::~Logger() {
 
-    if (Errorlevel <= INFO)
+    if (Errorlevel >= INFO)
         logFile << datetime() << " - [" << LogLevelNames[INFO] << "] - " << "LOGGER DESTRUIDO" << std::endl;
 
     logFile.close();
@@ -37,7 +37,7 @@ Logger::~Logger() {
 
 void Logger::log(LogLevel level, string message) {
 
-    if (Errorlevel <= level)
+    if (Errorlevel >= level)
         logFile << datetime() << " - [" << LogLevelNames[level] << "] - " << message << std::endl;
  }
 
