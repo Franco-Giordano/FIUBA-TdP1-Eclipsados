@@ -27,6 +27,8 @@ int main() {
 
 	Vista vista(&g, &controlador, asignador);
 
+	delete Logger::getInstance();
+
 	return 0;
 }
 
