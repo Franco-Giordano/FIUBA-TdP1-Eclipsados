@@ -125,7 +125,7 @@ void Vista::Draw(){
 		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceElemento, &destinationElemento);
 	}
 
-	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, NULL, NULL, jugador->getFlip());
+	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, 0, NULL, jugador->getFlip());
 	//TODO: no se como meter la renderizacion de objetos/enemigos aca
 	//deberia poderse buscar que objetos estan en la vista actual, y renderizarse solo esos
 
