@@ -41,8 +41,8 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asign
 	capa2 = juego->getCapa2();
 	capa3 = juego->getCapa3();
 
-	prepararCapa(capa2, asignador.getNivel1()->at(1).c_str());
 	prepararCapa(capa3, asignador.getNivel1()->at(2).c_str());
+	prepararCapa(capa2, asignador.getNivel1()->at(1).c_str());
 	prepararCapa(capa1, asignador.getNivel1()->at(0).c_str());
 
 

@@ -9,9 +9,9 @@
 		</cantidades>
 		<niveles>
 			<nivel1>
-				<fondo>spritesAlt/puente-fondo1.png</fondo>
-				<fondo>spritesAlt/puente-fondo2.png</fondo>
-				<fondo>spritesAlt/puente-fondo2.png</fondo>
+				<fondo>sprites/Nivel1-fondo1-XL.png</fondo>
+				<fondo>sprites/Nivel1-fondo2-XL.png</fondo>
+				<fondo>sprites/Nivel1-fondo3-XL.png</fondo>
 			</nivel1>
 		</niveles>
 	</escenario>
