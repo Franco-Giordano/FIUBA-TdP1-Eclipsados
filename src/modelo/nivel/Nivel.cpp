@@ -13,11 +13,12 @@ Nivel::Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cant
 	capa2.setVelocidad(2);
 	capa3.setVelocidad(1);
 
+
 	this->ubicarEnemigosYElementos(cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 }
 
 Nivel::~Nivel() {
-	delete cody;
+	//delete cody;
 	delete musicaFondo;
 
 	for (uint i = 0; i < elementos.size(); i++) {
@@ -69,8 +70,6 @@ void Nivel::movimientoIzquierda(){
 			cody->moverLocalIzquierda();
 		}
 		cody->moverGlobalIzquierda();
-
-
 	}
 
 }
@@ -87,8 +86,6 @@ void Nivel::movimientoDerecha(){
 		}
 
 		cody->moverGlobalDerecha();
-
-
 	}
 
 }
@@ -116,7 +113,7 @@ void Nivel::moverCapasIzquierda(){
 void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos){
 
 	FactoryEntidadUbicada factory;
-
+/*
 	EntidadUbicada* barril = factory.crearEntidadConBarril(300, JUGADOR_POSICION_VERTICAL_INICIAL+140);
 	EntidadUbicada* caja = factory.crearEntidadConCaja(500, JUGADOR_POSICION_VERTICAL_INICIAL+140);
 	EntidadUbicada* canio = factory.crearEntidadConCanio(700, JUGADOR_POSICION_VERTICAL_INICIAL+190);
@@ -126,8 +123,34 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 	elementos.push_back(caja);
 	elementos.push_back(canio);
 	elementos.push_back(cuchillo);
+*/
+	for(int i=0; i<cantCuchillos; i++){
+		EntidadUbicada* cuchillo = factory.crearEntidadConCuchillo((200 + 20*i), JUGADOR_POSICION_VERTICAL_INICIAL+190);
+		elementos.push_back(cuchillo);
+	}
+	for(int i=0; i<cantCanios; i++){
+		EntidadUbicada* canio = factory.crearEntidadConCanio((400 + 20*i), JUGADOR_POSICION_VERTICAL_INICIAL+190);
+		elementos.push_back(canio);
+	}
+	for(int i=0; i<cantCajas; i++){
+		EntidadUbicada* caja = factory.crearEntidadConCaja((800 + 110*i), JUGADOR_POSICION_VERTICAL_INICIAL+140);
+		elementos.push_back(caja);
+	}
+
+	for(int i=0; i<cantBarriles; i++){
+		EntidadUbicada* barril = factory.crearEntidadConBarril((1500 + 110*i), JUGADOR_POSICION_VERTICAL_INICIAL+140);
+		elementos.push_back(barril);
+	}
+
+	for(int i=0; i<cantEnemigos; i++){
+	}
 }
 
 Personaje* Nivel::getPersonaje() {
 	return (Personaje*)this->cody->getDibujable();
 }
+
+bool Nivel::terminoElNivel(){
+	return cody->llegoBordeGlobalDerecho();
+}
+

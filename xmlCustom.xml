@@ -3,9 +3,9 @@
 	<escenario>
 		<cantidades>
 			<cuchillo>2</cuchillo>
-			<barril>7.3</barril>
-			<canio>a</canio>
-			<caja>1</caja>
+			<barril>3</barril>
+			<canio>5</canio>
+			<caja>2</caja>
 		</cantidades>
 		<niveles>
 			<nivel1>
@@ -13,7 +13,10 @@
 				<fondo>sprites/Nivel1-fondo2-XL.png</fondo>
 				<fondo>sprites/Nivel1-fondo3-XL.png</fondo>
 			</nivel1>
-		</niveles>
+			<nivel2>
+				<fondo>sprites/Nivel2-fondo1.png</fondo>
+				<fondo>sprites/Nivel2-fondo2.png</fondo>
+				<fondo>sprites/Nivel2-fondo3.png</fondo></nivel2></niveles>
 	</escenario>
 	<sprites>
 		<sprite>sprites/SpriteCodyCompleto.png</sprite>

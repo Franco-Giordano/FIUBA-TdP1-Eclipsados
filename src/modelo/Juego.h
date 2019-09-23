@@ -16,6 +16,7 @@ public:
 	void movimientoAbajo();
 	void movimientoSalto();
 	void terminadoSalto();
+	bool terminoElNivel();
 
 	Personaje* getJugador();
 
@@ -31,6 +32,11 @@ public:
 private:
 	EntidadUbicada* entidad;
 	Nivel* nivel;
+	Dibujable* personaje;
+	int cajas,barriles,canios,cuchillos,enemigos;
+
+
+
 };
 
 #endif /* JUEGO_H_ */

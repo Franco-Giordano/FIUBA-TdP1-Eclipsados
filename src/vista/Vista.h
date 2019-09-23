@@ -19,6 +19,7 @@ public:
 
 private:
 	void prepararCapa(Capa* capa,char const* imagen);
+	void prepararSegundaCapa(Capa* capa,char const* imagen);
 
 	Juego* juego;
 	Controlador* controlador;
@@ -47,6 +48,7 @@ private:
 	Capa* capa2;
 	Capa* capa3;
 	vector<EntidadUbicada*> elementos;
+	AsignadorDeTexturas asignador;
 	//Nivel* nivel;
 
 };

@@ -25,8 +25,12 @@ public:
 
 	void moverArriba();
 	void moverAbajo();
-	void moverIzquierda(){dest.x -= VELOCIDAD_CODY/2;}
-	void moverDerecha(){dest.x += VELOCIDAD_CODY/2;}
+
+//-L-> cambio velocidad_cody/2 para que los objetos se muevan con la primer capa
+	//void moverIzquierda(){dest.x -= VELOCIDAD_CODY/2;}
+	//void moverDerecha(){dest.x += VELOCIDAD_CODY/2;}
+	void moverIzquierda(){dest.x -= VELOCIDAD_CODY;}
+	void moverDerecha(){dest.x += VELOCIDAD_CODY;}
 	void moverSalto();
 	void terminoSalto(){velocidadSalto = VELOCIDAD_SALTO_INICIAL;}
 

@@ -43,11 +43,13 @@ void PosicionGlobal::moverAbajo(){
 }
 
 void PosicionGlobal::moverIzquierda(){
-	x -= VELOCIDAD_CODY/2;
+	//x -= VELOCIDAD_CODY/2;
+	x -= VELOCIDAD_CODY;
 }
 
 void PosicionGlobal::moverDerecha(){
-	x += VELOCIDAD_CODY/2;
+	//x += VELOCIDAD_CODY/2;
+	x += VELOCIDAD_CODY;
 }
 
 float PosicionGlobal::getVertical() {

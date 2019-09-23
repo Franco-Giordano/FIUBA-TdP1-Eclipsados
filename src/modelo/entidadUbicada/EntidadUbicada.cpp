@@ -15,7 +15,7 @@ EntidadUbicada::EntidadUbicada(Dibujable* entidad, float horizontal, float verti
 }
 
 EntidadUbicada::~EntidadUbicada() {
-	delete this->entidad;
+	//delete this->entidad;
 }
 
 

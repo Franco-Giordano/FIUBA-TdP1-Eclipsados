@@ -19,13 +19,14 @@ int main() {
 
 	parser.parsearConfig(&cantEnemigos, &cantCuchillos, &cantCajas, &cantCanios, &cantBarriles);
 
-	Juego g(cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
+	Juego game(cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 
-	Controlador controlador(&g);
+	Controlador controlador(&game);
 
 	AsignadorDeTexturas asignador = parser.getAsignador();
 
-	Vista vista(&g, &controlador, asignador);
+	Vista vista(&game, &controlador, asignador);
+
 
 	delete Logger::getInstance();
 

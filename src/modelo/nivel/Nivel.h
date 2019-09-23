@@ -25,6 +25,7 @@ public:
 	void movimientoDerecha();
 	void movimientoSalto();
 	void terminoSalto();
+	bool terminoElNivel();
 
 	Capa* getCapa1(){return &capa1;}
 	Capa* getCapa2(){return &capa2;}

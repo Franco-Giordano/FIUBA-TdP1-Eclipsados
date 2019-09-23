@@ -1,11 +1,12 @@
 #include "Vista.h"
 
-Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asignador) {
+Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& unAsignador) {
 
 	juego = modelo;
 	this->controlador = controlador;
 	this->jugador = juego->getJugador();
 	this->running = true;
+	this->asignador = unAsignador;
 
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
@@ -45,9 +46,8 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& asign
 	prepararCapa(capa2, asignador.getNivel1()->at(1).c_str());
 	prepararCapa(capa1, asignador.getNivel1()->at(0).c_str());
 
-
-
 	//TODO: aca se preparia el segundo nivel? o donde
+
 
 	elementos = juego->getElementos();
 	for (uint i = 0; i < elementos.size(); i++) {
@@ -72,6 +72,11 @@ void Vista::prepararCapa(Capa* capa,char const* imagen){
 	capa->setImage(ren,imagen);
 	capa->setSource(0,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
 	capa->setDest(0,0,ANCHO_CAPA_PIXELES_ESCALADA,WINDOW_SIZE_VERTICAL+10);
+}
+void Vista::prepararSegundaCapa(Capa* capa,char const* imagen){
+	capa->setImage(ren,imagen);
+	capa->setSource(0,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
+	capa->setDest(-1500,0,ANCHO_CAPA_PIXELES_ESCALADA,WINDOW_SIZE_VERTICAL+10);
 }
 
 Vista::~Vista() {
@@ -145,8 +150,6 @@ void Vista::update(){
 
 void Vista::loop() {
 
-	//El loop deberia estar fuera de su propia clase!!! -> la clase se 'automaneja'
-
 	//ciclo infinito de renderizacion
 	while(running){
 
@@ -158,6 +161,12 @@ void Vista::loop() {
 		//llamo a controlador a ver si toco alguna tecla
 		running = controlador->eventHandler();
 
+	/*	if(juego->terminoElNivel()){
+			prepararSegundaCapa(capa3, asignador.getNivel2()->at(2).c_str());
+			prepararSegundaCapa(capa2, asignador.getNivel2()->at(1).c_str());
+			prepararSegundaCapa(capa1, asignador.getNivel2()->at(0).c_str());
+		}
+*/
 		update();
 
 
@@ -167,5 +176,3 @@ void Vista::loop() {
 
 	}
 }
-
-
