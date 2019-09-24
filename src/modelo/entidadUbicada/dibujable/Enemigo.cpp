@@ -8,8 +8,6 @@
 #include "Enemigo.h"
 
 Enemigo::Enemigo() {
-	// TODO Auto-generated constructor stub
-
 }
 
 Enemigo::~Enemigo() {
@@ -19,6 +17,38 @@ Enemigo::~Enemigo() {
 void Enemigo::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
 	asignador.setTexture(*this, ren);
 	setSource(0,0,100,100);
+}
+
+int Enemigo::crearCiclo(int f, int w, int h, int cantSprites, int vel){
+	cycle tmp;
+	tmp.fil=f-1;
+	tmp.w=w;
+	tmp.cantSprites=cantSprites;
+	tmp.vel=vel;
+	tmp.tick=0;
+	tmp.h = h;
+	animaciones.push_back(tmp);
+	return animaciones.size()-1;
+}
+
+void Enemigo::updateAnim(){
+
+	setSource(animaciones[animActual].w*animaciones[animActual].tick, animaciones[animActual].fil*animaciones[animActual].h, animaciones[animActual].w, animaciones[animActual].h);
+	if(empezar>animaciones[animActual].vel){
+		animaciones[animActual].tick++;
+		empezar=0;
+	}
+	empezar++;
+	if(animaciones[animActual].tick >= animaciones[animActual].cantSprites) {
+		animaciones[animActual].tick = 0;
+	}
+}
+
+void Enemigo::setAnimacionActual(int c, SDL_RendererFlip flip) {
+	empezar = 0;
+	animaciones[c].tick = 0;
+	animActual = c;
+	spriteFlip = flip;
 }
 
 

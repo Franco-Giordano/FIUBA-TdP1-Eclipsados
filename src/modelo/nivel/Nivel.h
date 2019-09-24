@@ -27,6 +27,8 @@ public:
 	void terminoSalto();
 	bool terminoElNivel();
 
+	void moverEnemigos();
+
 	Capa* getCapa1(){return &capa1;}
 	Capa* getCapa2(){return &capa2;}
 	Capa* getCapa3(){return &capa3;}
@@ -43,6 +45,8 @@ private:
 	void moverElementosDerecha();
 	void moverEnemigosIzquierda();
 	void moverEnemigosDerecha();
+
+	int movimientoEnemigos;
 
 	void ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos);
 

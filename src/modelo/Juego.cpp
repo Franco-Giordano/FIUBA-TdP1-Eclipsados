@@ -31,6 +31,10 @@ PosicionGlobal* Juego::getPosicionJugador() {
 	return entidad->getPosicionGlobal();
 }
 
+void Juego::moverEnemigos(){
+	nivel->moverEnemigos();
+}
+
 void Juego::movimientoArriba() {
 	nivel->movimientoArriba();
 }

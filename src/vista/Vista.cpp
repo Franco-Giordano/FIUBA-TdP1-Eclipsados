@@ -40,6 +40,8 @@ void Vista::inicializarVistaParaNivel(){
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual, SDL_FLIP_NONE);
 
+
+
 	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear, agachado, saltoVertical);
 	controlador->setAccionActual(accionActual);
 
@@ -87,6 +89,12 @@ void Vista::inicializarVistaParaNivel(){
 // -> solucion: cada objeto setea su source y se le pide el ancho y el alto para dibujarlo
 		dibujable->setDest(posicionX, posicionY, dibujable->getWidth()*2.2,dibujable->getHeight()*2.2);
 		//dibujable->setSource(200, 190, 100, 100);
+
+		Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
+
+		int caminarEnemigo = enemigoActual->crearCiclo(2, 100, 100, 6, 5);
+
+		enemigoActual->setAnimacionActual(caminarEnemigo, SDL_FLIP_NONE);
 	}
 }
 
@@ -174,6 +182,10 @@ void Vista::update(){
 	//posicionY = posicionJugador.getVertical();
 	//jugador->updateDest(posicionX, posicionY);
 	jugador->updateAnim();
+	for (uint i = 0; i<enemigos.size();i++){
+		Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
+		enemigoActual->updateAnim();
+	}
 
 }
 
@@ -190,6 +202,7 @@ void Vista::loop() {
 
 		//llamo a controlador a ver si toco alguna tecla
 		running = controlador->eventHandler();
+		juego->moverEnemigos();
 
 		if(juego->terminoElNivel()){
 
@@ -199,12 +212,9 @@ void Vista::loop() {
 			prepararSegundaCapa(capa2, asignador.getNivel2()->at(1).c_str());
 			prepararSegundaCapa(capa1, asignador.getNivel2()->at(0).c_str());
 
-
-
 		}
 
 		update();
-
 
 		if(frameDelay > lastTime){
 			SDL_Delay(frameDelay - lastTime);

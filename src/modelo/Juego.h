@@ -18,6 +18,7 @@ public:
 	void terminadoSalto();
 	bool terminoElNivel();
 	void cambiarDeNivel();
+	void moverEnemigos();
 
 	Personaje* getJugador();
 

@@ -7,6 +7,7 @@
 #include "../modelo/nivel/Capa.h"
 #include "../modelo/nivel/Nivel.h"
 #include "../AsignadorDeTexturas.h"
+#include "../modelo/entidadUbicada/dibujable/Enemigo.h"
 
 class Vista {
 public:

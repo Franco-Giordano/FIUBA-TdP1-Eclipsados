@@ -13,6 +13,8 @@ Nivel::Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cant
 	capa2.setVelocidad(2);
 	capa3.setVelocidad(1);
 
+	this->movimientoEnemigos = 0;
+
 
 	this->ubicarEnemigosYElementos(cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 }
@@ -162,6 +164,40 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 	}
 }
 
+void Nivel::moverEnemigos(){
+	if (movimientoEnemigos < 100){
+		for (int i =0; i<enemigos.size(); i++){
+			if (!enemigos[i]->llegoBordeGlobalIzquierdo()){
+
+				enemigos[i]->moverGlobalIzquierda();
+				enemigos[i]->moverLocalIzquierda();
+			}
+		}
+		movimientoEnemigos+=1;
+		std::cout << movimientoEnemigos;
+
+	}
+	else{
+		if(movimientoEnemigos >=100 && movimientoEnemigos <200){
+
+			for (int i =0; i<enemigos.size(); i++){
+				if (!enemigos[i]->llegoBordeGlobalDerecho()){
+
+					enemigos[i]->moverGlobalDerecha();
+					enemigos[i]->moverLocalDerecha();
+				}
+			}
+			movimientoEnemigos++;
+			}
+		else{
+			movimientoEnemigos = 0;
+		}
+
+	}
+
+
+
+}
 Personaje* Nivel::getPersonaje() {
 	return (Personaje*)this->cody->getDibujable();
 }
