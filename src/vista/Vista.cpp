@@ -1,22 +1,29 @@
 #include "Vista.h"
 
 Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& unAsignador) {
-
-	juego = modelo;
+	this->juego = modelo;
 	this->controlador = controlador;
-	this->jugador = juego->getJugador();
-	this->running = true;
 	this->asignador = unAsignador;
-
+	this->running = true;
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
 	SDL_SetWindowTitle(win, "Final Fight");
 
-	//personaje, interactua con modelo
-	PosicionGlobal posicionJugador = juego->getPosicionJugador();
+	inicializarVistaParaNivel();
 
-	posicionX = posicionJugador.getHorizontal();
-	posicionY = posicionJugador.getVertical();
+	loop();
+}
+
+void Vista::inicializarVistaParaNivel(){
+
+	this->jugador = juego->getJugador();
+
+
+	//personaje, interactua con modelo
+	PosicionGlobal* posicionJugador = juego->getPosicionJugador();
+
+	posicionX = posicionJugador->getHorizontal();
+	posicionY = posicionJugador->getVertical();
 
 	jugador->setImageWith(asignador,ren);
 	jugador->setDest(posicionX, posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL); //TODO
@@ -52,10 +59,10 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& unAsi
 	elementos = juego->getElementos();
 	for (uint i = 0; i < elementos.size(); i++) {
 		Dibujable* dibujable = elementos[i]->getDibujable();
-		PosicionGlobal posicion = elementos[i]->getPosicionGlobal();
+		PosicionGlobal* posicion = elementos[i]->getPosicionGlobal();
 
-		posicionX = posicion.getHorizontal();
-		posicionY = posicion.getVertical();
+		posicionX = posicion->getHorizontal();
+		posicionY = posicion->getVertical();
 
 		dibujable->setImageWith(asignador, ren);
 
@@ -64,8 +71,6 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& unAsi
 		dibujable->setDest(posicionX, posicionY, dibujable->getWidth(),dibujable->getHeight());
 		//dibujable->setSource(200, 190, 100, 100);
 	}
-
-	loop();
 }
 
 void Vista::prepararCapa(Capa* capa,char const* imagen){
@@ -76,7 +81,7 @@ void Vista::prepararCapa(Capa* capa,char const* imagen){
 void Vista::prepararSegundaCapa(Capa* capa,char const* imagen){
 	capa->setImage(ren,imagen);
 	capa->setSource(0,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
-	capa->setDest(-1500,0,ANCHO_CAPA_PIXELES_ESCALADA,WINDOW_SIZE_VERTICAL+10);
+	capa->setDest(0,0,ANCHO_CAPA_PIXELES_ESCALADA,WINDOW_SIZE_VERTICAL+10);
 }
 
 Vista::~Vista() {
@@ -161,12 +166,18 @@ void Vista::loop() {
 		//llamo a controlador a ver si toco alguna tecla
 		running = controlador->eventHandler();
 
-	/*	if(juego->terminoElNivel()){
+		if(juego->terminoElNivel()){
+
+			juego->cambiarDeNivel();
+			inicializarVistaParaNivel();
 			prepararSegundaCapa(capa3, asignador.getNivel2()->at(2).c_str());
 			prepararSegundaCapa(capa2, asignador.getNivel2()->at(1).c_str());
 			prepararSegundaCapa(capa1, asignador.getNivel2()->at(0).c_str());
+
+
+
 		}
-*/
+
 		update();
 
 

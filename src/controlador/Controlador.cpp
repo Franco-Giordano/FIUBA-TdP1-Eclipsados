@@ -82,8 +82,8 @@ bool Controlador::eventHandler(){
 		if(keystates[SDL_SCANCODE_SPACE]) {
 			saltando = true;
 			tipoSalto = 0;
-			alturaActualSalto = juego->getPosicionJugador().getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador().getVertical()+40;
+			alturaActualSalto = juego->getPosicionJugador()->getVertical();
+			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+40;
 			if(accionActual != saltoVertical){
 				jugador->setAnimacionActual(saltoVertical, spriteFlip);
 				accionActual = saltoVertical;
@@ -93,8 +93,8 @@ bool Controlador::eventHandler(){
 		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_SPACE] && !(keystates[SDL_SCANCODE_RCTRL])) {
 			saltando = true;
 			tipoSalto = 1;
-			alturaActualSalto = juego->getPosicionJugador().getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador().getVertical()+40;
+			alturaActualSalto = juego->getPosicionJugador()->getVertical();
+			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+40;
 			spriteFlip = SDL_FLIP_NONE;
 			if(accionActual != salto){
 				jugador->setAnimacionActual(salto, spriteFlip);
@@ -105,8 +105,8 @@ bool Controlador::eventHandler(){
 		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_SPACE] && keystates[SDL_SCANCODE_RCTRL]) {
 			saltando = true;
 			tipoSalto = 1;
-			alturaActualSalto = juego->getPosicionJugador().getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador().getVertical()+40;
+			alturaActualSalto = juego->getPosicionJugador()->getVertical();
+			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+40;
 			spriteFlip = SDL_FLIP_NONE;
 			if(accionActual != saltoPatada){
 				jugador->setAnimacionActual(saltoPatada, spriteFlip);
@@ -117,8 +117,8 @@ bool Controlador::eventHandler(){
 		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_SPACE] && !(keystates[SDL_SCANCODE_RCTRL])) {
 			saltando = true;
 			tipoSalto = 2;
-			alturaActualSalto = juego->getPosicionJugador().getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador().getVertical()+40;
+			alturaActualSalto = juego->getPosicionJugador()->getVertical();
+			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+40;
 			spriteFlip = SDL_FLIP_HORIZONTAL;
 			if(accionActual != salto){
 				jugador->setAnimacionActual(salto, spriteFlip);
@@ -129,8 +129,8 @@ bool Controlador::eventHandler(){
 		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_SPACE] && keystates[SDL_SCANCODE_RCTRL]) {
 			saltando = true;
 			tipoSalto = 2;
-			alturaActualSalto = juego->getPosicionJugador().getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador().getVertical()+40;
+			alturaActualSalto = juego->getPosicionJugador()->getVertical();
+			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+40;
 			spriteFlip = SDL_FLIP_HORIZONTAL;
 			if(accionActual != saltoPatada){
 				jugador->setAnimacionActual(saltoPatada, spriteFlip);
@@ -170,7 +170,7 @@ bool Controlador::eventHandler(){
 	}
 	if(alturaActualSalto < alturaMaximaSalto ){
 		juego->movimientoSalto();
-		alturaActualSalto = juego->getPosicionJugador().getVertical();
+		alturaActualSalto = juego->getPosicionJugador()->getVertical();
 		switch(tipoSalto){
 			case 0: return running;
 			break;

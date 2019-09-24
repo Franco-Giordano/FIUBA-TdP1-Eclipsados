@@ -20,6 +20,7 @@ public:
 private:
 	void prepararCapa(Capa* capa,char const* imagen);
 	void prepararSegundaCapa(Capa* capa,char const* imagen);
+	void inicializarVistaParaNivel();
 
 	Juego* juego;
 	Controlador* controlador;

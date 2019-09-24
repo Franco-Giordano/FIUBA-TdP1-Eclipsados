@@ -28,7 +28,7 @@ Juego::~Juego() {
 	delete personaje;
 }
 
-PosicionGlobal Juego::getPosicionJugador() {
+PosicionGlobal* Juego::getPosicionJugador() {
 	return entidad->getPosicionGlobal();
 }
 
@@ -63,6 +63,13 @@ Personaje* Juego::getJugador() {
 
 bool Juego::terminoElNivel(){
 	return this->nivel->terminoElNivel();
+}
+
+void Juego::cambiarDeNivel(){
+	entidad->seCambioElNivel(personaje);
+	delete(nivel);
+	nivel = new Nivel(entidad, cuchillos, cajas, canios, barriles, enemigos);
+
 }
 
 

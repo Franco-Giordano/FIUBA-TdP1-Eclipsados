@@ -17,10 +17,11 @@ public:
 	void movimientoSalto();
 	void terminadoSalto();
 	bool terminoElNivel();
+	void cambiarDeNivel();
 
 	Personaje* getJugador();
 
-	PosicionGlobal getPosicionJugador();
+	PosicionGlobal* getPosicionJugador();
 
 
 	Capa* getCapa1(){return nivel->getCapa1();}
