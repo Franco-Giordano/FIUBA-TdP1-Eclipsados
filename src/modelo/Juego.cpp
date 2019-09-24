@@ -67,6 +67,8 @@ bool Juego::terminoElNivel(){
 void Juego::cambiarDeNivel(){
 	entidad->seCambioElNivel(personaje);
 	delete(nivel);
+	//delete(entidad);
+	//entidad = new EntidadUbicada(personaje);
 	nivel = new Nivel(entidad, cuchillos, cajas, canios, barriles, enemigos);
 
 }

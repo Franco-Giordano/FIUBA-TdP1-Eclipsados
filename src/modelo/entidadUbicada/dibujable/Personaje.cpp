@@ -41,7 +41,7 @@ void Personaje::setAnimacionActual(int c, SDL_RendererFlip flip) {
 	animActual = c;
 	spriteFlip = flip;
 }
-
+/*
 bool Personaje::llegoAlBorde(int Xpos, int WindowSizeHorizontal){
 	bool llegoAlBorde = false;
 
@@ -54,7 +54,7 @@ bool Personaje::llegoAlBorde(int Xpos, int WindowSizeHorizontal){
 
 	return llegoAlBorde;
 }
-
+*/
 void Personaje::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
 	asignador.setTexture(*this, ren);
 }
