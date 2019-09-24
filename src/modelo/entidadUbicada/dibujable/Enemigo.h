@@ -39,7 +39,8 @@ public:
 	int crearCiclo(int f, int w, int h, int cant, int vel);
 	void setAnimacionActual(int c, SDL_RendererFlip flip);
 	void updateAnim();
-
+	void setFlip(SDL_RendererFlip flip);
+	SDL_RendererFlip getFlip(){return spriteFlip;}
 	void setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren);
 };
 

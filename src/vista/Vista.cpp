@@ -164,8 +164,9 @@ void Vista::Draw(){
 		Dibujable* dibujable = enemigos[i]->getDibujable();
 		SDL_Rect destinationEnemigo = dibujable->getDest();
 		SDL_Rect sourceEnemigo = dibujable->getSource();
+		Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
 
-		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceEnemigo, &destinationEnemigo);
+		SDL_RenderCopyEx(ren, dibujable->getTexture(), &sourceEnemigo, &destinationEnemigo, 0, NULL, enemigoActual->getFlip());
 	}
 
 	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, 0, NULL, jugador->getFlip());

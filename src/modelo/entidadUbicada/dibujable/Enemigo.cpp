@@ -51,4 +51,9 @@ void Enemigo::setAnimacionActual(int c, SDL_RendererFlip flip) {
 	spriteFlip = flip;
 }
 
+void Enemigo::setFlip(SDL_RendererFlip flip){
+
+	spriteFlip = flip;
+}
+
 

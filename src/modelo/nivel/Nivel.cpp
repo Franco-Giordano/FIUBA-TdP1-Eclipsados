@@ -171,6 +171,8 @@ void Nivel::moverEnemigos(){
 
 				enemigos[i]->moverGlobalIzquierda();
 				enemigos[i]->moverLocalIzquierda();
+				Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
+				enemigoActual->setFlip(SDL_FLIP_HORIZONTAL);
 			}
 		}
 		movimientoEnemigos+=1;
@@ -183,6 +185,8 @@ void Nivel::moverEnemigos(){
 
 					enemigos[i]->moverGlobalDerecha();
 					enemigos[i]->moverLocalDerecha();
+					Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
+					enemigoActual->setFlip(SDL_FLIP_NONE);
 				}
 			}
 			movimientoEnemigos++;
