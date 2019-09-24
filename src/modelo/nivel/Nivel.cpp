@@ -174,8 +174,6 @@ void Nivel::moverEnemigos(){
 			}
 		}
 		movimientoEnemigos+=1;
-		std::cout << movimientoEnemigos;
-
 	}
 	else{
 		if(movimientoEnemigos >=100 && movimientoEnemigos <200){
