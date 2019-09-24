@@ -23,7 +23,6 @@ Juego::Juego(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles,
 
 Juego::~Juego() {
 	// TODO Auto-generated destructor stub
-	delete nivel;
 	delete entidad;
 	delete personaje;
 }
