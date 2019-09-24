@@ -6,7 +6,7 @@
 			<barril>3</barril>
 			<canio>5</canio>
 			<caja>2</caja>
-		</cantidades>
+			<enemigo>2</enemigo></cantidades>
 		<niveles>
 			<nivel1>
 				<fondo>sprites/Nivel1-fondo1-XL.png</fondo>

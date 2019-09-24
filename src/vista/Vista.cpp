@@ -57,6 +57,8 @@ void Vista::inicializarVistaParaNivel(){
 
 
 	elementos = juego->getElementos();
+	enemigos = juego->getEnemigos();
+
 	for (uint i = 0; i < elementos.size(); i++) {
 		Dibujable* dibujable = elementos[i]->getDibujable();
 		PosicionGlobal* posicion = elementos[i]->getPosicionGlobal();
@@ -69,6 +71,21 @@ void Vista::inicializarVistaParaNivel(){
 //-->> Ojo que no todos van a tener las mismas dimensiones (source y dest cambian de acuredo al obj)
 // -> solucion: cada objeto setea su source y se le pide el ancho y el alto para dibujarlo
 		dibujable->setDest(posicionX, posicionY, dibujable->getWidth(),dibujable->getHeight());
+		//dibujable->setSource(200, 190, 100, 100);
+	}
+
+	for (uint i = 0; i < enemigos.size(); i++) {
+		Dibujable* dibujable = enemigos[i]->getDibujable();
+		PosicionGlobal* posicion = enemigos[i]->getPosicionGlobal();
+
+		posicionX = posicion->getHorizontal();
+		posicionY = posicion->getVertical();
+
+		dibujable->setImageWith(asignador, ren);
+
+//-->> Ojo que no todos van a tener las mismas dimensiones (source y dest cambian de acuredo al obj)
+// -> solucion: cada objeto setea su source y se le pide el ancho y el alto para dibujarlo
+		dibujable->setDest(posicionX, posicionY, dibujable->getWidth()*2.2,dibujable->getHeight()*2.2);
 		//dibujable->setSource(200, 190, 100, 100);
 	}
 }
@@ -133,6 +150,14 @@ void Vista::Draw(){
 		SDL_Rect sourceElemento = dibujable->getSource();
 
 		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceElemento, &destinationElemento);
+	}
+
+	for (uint i = 0; i < enemigos.size(); i++) {
+		Dibujable* dibujable = enemigos[i]->getDibujable();
+		SDL_Rect destinationEnemigo = dibujable->getDest();
+		SDL_Rect sourceEnemigo = dibujable->getSource();
+
+		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceEnemigo, &destinationEnemigo);
 	}
 
 	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, 0, NULL, jugador->getFlip());

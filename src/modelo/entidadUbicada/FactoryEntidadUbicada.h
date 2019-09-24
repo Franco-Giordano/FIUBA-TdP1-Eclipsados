@@ -23,7 +23,7 @@ public:
 
 	EntidadUbicada* crearEntidadConPersonaje();
 
-	EntidadUbicada* crearEntidadConEnemigo();
+	EntidadUbicada* crearEntidadConEnemigo(float horizontal, float vertical);
 
 	EntidadUbicada* crearEntidadConBarril();
 

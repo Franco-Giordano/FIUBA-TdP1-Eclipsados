@@ -39,6 +39,18 @@ void Nivel::moverElementosIzquierda(){
 	}
 }
 
+void Nivel::moverEnemigosIzquierda(){
+	for (uint i = 0; i < enemigos.size(); i++){
+		enemigos[i]->moverLocalIzquierda();
+	}
+}
+void Nivel::moverEnemigosDerecha(){
+
+	for (uint i = 0; i < enemigos.size(); i++){
+		enemigos[i]->moverLocalDerecha();
+	}
+}
+
 void Nivel::movimientoArriba(){
 	cody->moverLocalArriba();
 	cody->moverGlobalArriba();
@@ -66,6 +78,7 @@ void Nivel::movimientoIzquierda(){
 			pos_borde_derecha -= VELOCIDAD_CODY;
 			moverCapasDerecha();
 			moverElementosDerecha();
+			moverEnemigosDerecha();
 		}else{
 			cody->moverLocalIzquierda();
 		}
@@ -81,6 +94,7 @@ void Nivel::movimientoDerecha(){
 			pos_borde_izquierda += VELOCIDAD_CODY;
 			moverCapasIzquierda();
 			moverElementosIzquierda();
+			moverEnemigosIzquierda();
 		}else{
 			cody->moverLocalDerecha();
 		}
@@ -143,6 +157,8 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 	}
 
 	for(int i=0; i<cantEnemigos; i++){
+		EntidadUbicada* enemigo = factory.crearEntidadConEnemigo((1000 + 300*i), JUGADOR_POSICION_VERTICAL_INICIAL);
+		enemigos.push_back(enemigo);
 	}
 }
 

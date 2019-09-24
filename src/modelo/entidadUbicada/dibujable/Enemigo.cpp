@@ -18,6 +18,7 @@ Enemigo::~Enemigo() {
 
 void Enemigo::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
 	asignador.setTexture(*this, ren);
+	setSource(0,0,100,100);
 }
 
 

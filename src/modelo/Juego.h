@@ -29,6 +29,7 @@ public:
 	Capa* getCapa3(){return nivel->getCapa3();}
 
 	vector<EntidadUbicada*> getElementos(){return nivel->getElementos();}
+	vector<EntidadUbicada*> getEnemigos(){return nivel->getEnemigos();}
 
 private:
 	EntidadUbicada* entidad;

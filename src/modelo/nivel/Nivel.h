@@ -32,6 +32,7 @@ public:
 	Capa* getCapa3(){return &capa3;}
 
 	vector<EntidadUbicada*> getElementos(){return elementos;}
+	vector<EntidadUbicada*> getEnemigos(){return enemigos;}
 
 	Personaje* getPersonaje();
 
@@ -40,6 +41,8 @@ private:
 	void moverCapasIzquierda();
 	void moverElementosIzquierda();
 	void moverElementosDerecha();
+	void moverEnemigosIzquierda();
+	void moverEnemigosDerecha();
 
 	void ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos);
 

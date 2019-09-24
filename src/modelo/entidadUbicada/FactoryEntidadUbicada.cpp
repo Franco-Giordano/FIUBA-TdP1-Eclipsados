@@ -22,9 +22,9 @@ EntidadUbicada* FactoryEntidadUbicada::crearEntidadConPersonaje() {
 	return new EntidadUbicada(personaje);
 }
 
-EntidadUbicada* FactoryEntidadUbicada::crearEntidadConEnemigo() {
+EntidadUbicada* FactoryEntidadUbicada::crearEntidadConEnemigo(float horizontal, float vertical) {
 	Dibujable* enemigo = new Enemigo;
-	return new EntidadUbicada(enemigo);
+	return new EntidadUbicada(enemigo, horizontal, vertical);
 }
 
 EntidadUbicada* FactoryEntidadUbicada::crearEntidadConBarril() {

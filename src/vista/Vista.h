@@ -49,6 +49,7 @@ private:
 	Capa* capa2;
 	Capa* capa3;
 	vector<EntidadUbicada*> elementos;
+	vector<EntidadUbicada*> enemigos;
 	AsignadorDeTexturas asignador;
 	//Nivel* nivel;
 
