@@ -1,12 +1,21 @@
 #include "Sonido.h"
+#include "../Logger.h"
 
 
 Sonido::Sonido() {
 
-		SDL_Init(SDL_INIT_AUDIO);
-		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-		musicaFondoNivel1 = Mix_LoadMUS( "musica de fondo nivel 1.mp3" );
+    Logger::getInstance()->log(INFO, "Inicializando subsistema de sonido...");
+		if ( SDL_Init(SDL_INIT_AUDIO) != 0)
+        Logger::getInstance()->log(ERROR, SDL_GetError());
 
+    Logger::getInstance()->log(INFO, "Inicializando mezclador...");
+		if ( Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+        Logger::getInstance()->log(ERROR, Mix_GetError());
+
+    Logger::getInstance()->log(INFO, "Cargando música de fondo: nivel 1...");
+		musicaFondoNivel1 = Mix_LoadMUS( "musica de fondo nivel 1.mp3" );
+    if ( !musicaFondoNivel1 )
+        Logger::getInstance()->log(ERROR, Mix_GetError());
 }
 
 Sonido::~Sonido() {
@@ -25,6 +34,8 @@ Sonido::~Sonido() {
 
 void Sonido::play(){
 
-	Mix_PlayMusic(musicaFondoNivel1, -1);
+  Logger::getInstance()->log(INFO, "Reproduciendo música de fondo: nivel 1...");
+	if ( Mix_PlayMusic(musicaFondoNivel1, -1) == -1)
+    Logger::getInstance()->log(ERROR, Mix_GetError());
 }
 
