@@ -126,6 +126,22 @@ void Nivel::moverCapasIzquierda(){
 
 }
 
+int Nivel::generarXaleatorio(){
+	int x = rand()% ANCHO_CAPA_PIXELES_ESCALADA+1;
+	return x;
+}
+int Nivel::generarYaleatorio(){
+	int y = rand()% (120+1);
+	y = 600-245-y;
+	return y;
+}
+
+int Nivel::generarYaleatorioObjetos(){
+	int y = rand()% (70+1); //el 70 es por el alto del cuchilo (objeto mas chico)
+	y = 600-100-y; //el 100 es por el alto de la caja (objeto mas grande)
+	return y;
+}
+
 void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos){
 
 	FactoryEntidadUbicada factory;
@@ -140,26 +156,38 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 	elementos.push_back(canio);
 	elementos.push_back(cuchillo);
 */
+	srand(time(NULL));
+
 	for(int i=0; i<cantCuchillos; i++){
-		EntidadUbicada* cuchillo = factory.crearEntidadConCuchillo((200 + 20*i), JUGADOR_POSICION_VERTICAL_INICIAL+190);
+		int x = generarXaleatorio();
+		int y = generarYaleatorioObjetos();
+		EntidadUbicada* cuchillo = factory.crearEntidadConCuchillo(x,y);
 		elementos.push_back(cuchillo);
 	}
 	for(int i=0; i<cantCanios; i++){
-		EntidadUbicada* canio = factory.crearEntidadConCanio((400 + 20*i), JUGADOR_POSICION_VERTICAL_INICIAL+190);
+		int x = generarXaleatorio();
+		int y = generarYaleatorioObjetos();
+		EntidadUbicada* canio = factory.crearEntidadConCanio(x,y);
 		elementos.push_back(canio);
 	}
 	for(int i=0; i<cantCajas; i++){
-		EntidadUbicada* caja = factory.crearEntidadConCaja((800 + 110*i), JUGADOR_POSICION_VERTICAL_INICIAL+140);
+		int x = generarXaleatorio();
+		int y = generarYaleatorioObjetos();
+		EntidadUbicada* caja = factory.crearEntidadConCaja(x,y);
 		elementos.push_back(caja);
 	}
 
 	for(int i=0; i<cantBarriles; i++){
-		EntidadUbicada* barril = factory.crearEntidadConBarril((1500 + 110*i), JUGADOR_POSICION_VERTICAL_INICIAL+140);
+		int x = generarXaleatorio();
+		int y = generarYaleatorioObjetos();
+		EntidadUbicada* barril = factory.crearEntidadConBarril(x,y);
 		elementos.push_back(barril);
 	}
 
 	for(int i=0; i<cantEnemigos; i++){
-		EntidadUbicada* enemigo = factory.crearEntidadConEnemigo((1000 + 300*i), JUGADOR_POSICION_VERTICAL_INICIAL);
+		int x = generarXaleatorio();
+		int y = generarYaleatorio();
+		EntidadUbicada* enemigo = factory.crearEntidadConEnemigo(x, y);
 		enemigos.push_back(enemigo);
 	}
 }

@@ -9,6 +9,8 @@
 #include "../entidadUbicada/EntidadUbicada.h"
 #include "../entidadUbicada/FactoryEntidadUbicada.h"
 #include "../nivel/Capa.h"
+#include <stdlib.h>
+#include <time.h>
 
 //#include "cody.h"
 
@@ -45,6 +47,10 @@ private:
 	void moverElementosDerecha();
 	void moverEnemigosIzquierda();
 	void moverEnemigosDerecha();
+
+	int generarXaleatorio();
+	int generarYaleatorio();
+	int generarYaleatorioObjetos();
 
 	int movimientoEnemigos;
 
