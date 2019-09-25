@@ -30,6 +30,7 @@ private:
 	int accionActual;
 	bool saltando;
 	bool golpeando;
+	bool agachando;
 	int tipoSalto;
 	float alturaActualSalto;
 	float alturaMaximaSalto;
