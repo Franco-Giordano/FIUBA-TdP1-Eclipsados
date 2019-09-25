@@ -55,9 +55,6 @@ void Vista::inicializarVistaParaNivel(){
 	prepararCapa(capa2, asignador.getNivel1()->at(1).c_str());
 	prepararCapa(capa1, asignador.getNivel1()->at(0).c_str());
 
-	//TODO: aca se preparia el segundo nivel? o donde
-
-
 	elementos = juego->getElementos();
 	enemigos = juego->getEnemigos();
 

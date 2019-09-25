@@ -1,5 +1,5 @@
 <configuracion>
-	<debugLevel>ERROR</debugLevel>
+	<debugLevel>DEBUG</debugLevel>
 	<escenario>
 		<cantidades>
 			<cuchillo>7</cuchillo>
@@ -15,9 +15,9 @@
 				<fondo>sprites/Nivel1-fondo3-XL.png</fondo>
 			</nivel1>
 			<nivel2>
-				<fondo>sprites/Nivel2-fondo1-XL.png</fondo>
-				<fondo>sprites/Nivel2-fondo2-XL.png</fondo>
-				<fondo>sprites/Nivel2-fondo3-XL.png</fondo>
+				<fondo>sprites/Nivel2-fondo1.png</fondo>
+				<fondo>sprites/Nivel2-fondo2.png</fondo>
+				<fondo>sprites/Nivel2-fondo3.png</fondo>
 			</nivel2>
 		</niveles>
 	</escenario>

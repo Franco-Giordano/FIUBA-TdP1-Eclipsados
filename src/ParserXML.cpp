@@ -28,6 +28,9 @@ ParserXML::ParserXML(std::string rutaConfig){
 
 	if (eArchivo != XML_SUCCESS) {
 		Logger::getInstance()->log(ERROR, "Archivo XML personalizado no encontrado, utilizando el defecto...");
+
+		delete pConfig;
+
 		//usar default, en vez de custom
 		pConfig = &configDefault;
 	}
@@ -45,7 +48,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 
 	if (pConfig == &configDefault) {
-		//estoy parseando el default, no debo chequear errores
+		//TODO: estoy parseando el default, no debo chequear errores
 		//parsearConfigDefault(cantEnemigos, cantCuchillos, cantCajas, cantCanios, cantBarriles, nivel1, nivel2);
 	}
 
@@ -53,8 +56,28 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 	XMLHandle hRaiz = pHandler->FirstChildElement("configuracion");
 
-	//TODO: settear nivel de config en LOG, chequeando que ToElement != nullptr
-	const char* debugLevel = hRaiz.FirstChildElement("debugLevel").ToElement()->GetText();
+	XMLElement* elementDebug;
+
+	if ((elementDebug = hRaiz.FirstChildElement("debugLevel").ToElement()) != nullptr) {
+
+		const char* debugLevel = elementDebug->GetText();
+
+		if (strcmp(debugLevel, "DEBUG") == 0) {
+			Logger::getInstance()->setLevel(DEBUG);
+		}
+		else if (strcmp(debugLevel, "INFO") == 0) {
+			Logger::getInstance()->setLevel(INFO);
+		}
+		else if (strcmp(debugLevel, "ERROR") == 0) {
+			Logger::getInstance()->setLevel(ERROR);
+		}
+	}
+
+	else {
+		//FIXME: Ignora xmlDefault, usa otro.
+		Logger::getInstance()->setLevel(DEBUG);
+		Logger::getInstance()->log(ERROR, "Opcion invalida o inexistente en <debugLevel>, asumiendo el defecto: DEBUG.");
+	}
 
 	XMLHandle hEscenario = hRaiz.FirstChildElement("escenario");
 
@@ -80,7 +103,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 	if (nivel1->size() != CANT_CAPAS) {
 		//TODO: no existe <nivel1>, o se pasaron fondos de menos o de mas! avisar por log
-		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel1> (se esperban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel1> (se esperaban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
 		nivel1->clear();
 		asignarLista(nivel1, pEscenarioDEFAULT->FirstChildElement("niveles")->FirstChildElement("nivel1"), "fondo");
 	}
@@ -93,7 +116,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 	if (nivel2->size() != CANT_CAPAS) {
 		//TODO: no existe <nivel2>, o se pasaron fondos de menos o de mas! avisar por log
-		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel2> (se esperban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel2> (se esperaban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
 		nivel2->clear();
 		asignarLista(nivel2, pEscenarioDEFAULT->FirstChildElement("niveles")->FirstChildElement("nivel2"), "fondo");
 	}
@@ -107,7 +130,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 	}
 	if (sprites->size() != CANT_SPRITES) {
 		//TODO: no existe <sprites>, o se pasaron sprites de menos o de mas! avisar por log
-		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <spirtes> (se esperban 4), o etiqueta no existente. Se utilizaran sprites predeterminados.");
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <spirtes> (se esperaban 4), o etiqueta no existente. Se utilizaran sprites predeterminados.");
 		sprites->clear();
 		asignarLista(sprites, configDefault.FirstChildElement("configuracion")->FirstChildElement("sprites"), "sprite");
 	}
@@ -115,11 +138,12 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 }
 
 ParserXML::~ParserXML() {
-	// TODO Auto-generated destructor stub
 
 	delete pHandler;
 
-	delete pConfig;
+	if (pConfig != &configDefault)
+		delete pConfig;
+
 }
 
 void ParserXML::asignarValor(int* variable, const char* nombre, XMLHandle base, XMLElement* backup) {
@@ -133,7 +157,6 @@ void ParserXML::asignarValor(int* variable, const char* nombre, XMLHandle base, 
 
 	if (!pElemento || error != XML_SUCCESS) {
 
-		//TODO: avisar por log que no esta la categoria/no es de tipo int/no contiene texto
 		Logger::getInstance()->log(ERROR, "Etiqueta <" + std::string(nombre) + "> inexistente o con datos erroneos/nulos. Utilizando valor predeterminado.");
 		backup->FirstChildElement(nombre)->QueryIntText(variable);
 	}
@@ -142,7 +165,7 @@ void ParserXML::asignarValor(int* variable, const char* nombre, XMLHandle base, 
 }
 
 void ParserXML::asignarLista(std::vector<std::string> *lista, XMLElement* eBase, const char * nombreItems) {
-	//asume que los fondos estan en orden
+	//asume que los elementos estan en orden
 	for(XMLElement* e = eBase->FirstChildElement(nombreItems); e != NULL; e = e->NextSiblingElement(nombreItems)) {
 	    lista->push_back(e->GetText());
 	}
