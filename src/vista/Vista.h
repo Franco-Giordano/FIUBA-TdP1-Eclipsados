@@ -46,6 +46,8 @@ private:
 	float posicionX;
 	float posicionY;
 
+	int nivelActual;
+
 	Capa* capa1;
 	Capa* capa2;
 	Capa* capa3;

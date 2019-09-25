@@ -5,6 +5,7 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& unAsi
 	this->controlador = controlador;
 	this->asignador = unAsignador;
 	this->running = true;
+	this->nivelActual = 1;
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
 	SDL_SetWindowTitle(win, "Final Fight");
@@ -102,7 +103,7 @@ void Vista::prepararCapa(Capa* capa,char const* imagen){
 }
 void Vista::prepararSegundaCapa(Capa* capa,char const* imagen){
 	capa->setImage(ren,imagen);
-	capa->setSource(150,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
+	capa->setSource(0,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
 	capa->setDest(0,0,ANCHO_CAPA_PIXELES_ESCALADA,WINDOW_SIZE_VERTICAL+10);
 }
 
@@ -202,7 +203,7 @@ void Vista::loop() {
 		running = controlador->eventHandler();
 		juego->moverEnemigos();
 
-		if(juego->terminoElNivel()){
+		if(juego->terminoElNivel() && nivelActual == 1){
 
 			juego->cambiarDeNivel();
 			inicializarVistaParaNivel();
@@ -210,6 +211,7 @@ void Vista::loop() {
 			prepararSegundaCapa(capa2, asignador.getNivel2()->at(1).c_str());
 			prepararSegundaCapa(capa1, asignador.getNivel2()->at(0).c_str());
 
+			nivelActual = 2;
 		}
 
 		update();
