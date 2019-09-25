@@ -26,7 +26,7 @@ ParserXML::ParserXML(std::string rutaConfig){
 	XMLError eDefault = configDefault.LoadFile("xmlDefault.xml");
 
 	if (eArchivo != XML_SUCCESS) {
-		Logger::getInstance()->log(ERROR, "Archivo XML personalizado no encontrado, utilizando el defecto...");
+		Logger::getInstance()->log(ERROR, "Archivo XML personalizado no encontrado o corrupto, utilizando el defecto...");
 
 		delete pConfig;
 
@@ -63,6 +63,26 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 		if (strcmp(debugLevel, "DEBUG") == 0) {
 			Logger::getInstance()->setLevel(DEBUG);
+			Logger::getInstance()->log(INFO, "Cambiando debugLevel al indicado por xmlCustom: DEBUG");
+
+		}
+		else if (strcmp(debugLevel, "INFO") == 0) {
+			Logger::getInstance()->setLevel(INFO);
+			Logger::getInstance()->log(INFO, "Cambiando debugLevel al indicado por xmlCustom: INFO");
+
+		}
+		else if (strcmp(debugLevel, "ERROR") == 0) {
+			Logger::getInstance()->setLevel(ERROR);
+			Logger::getInstance()->log(INFO, "Cambiando debugLevel al indicado por xmlCustom: ERROR");
+		}
+	}
+
+	else {
+
+		const char* debugLevel = configDefault.FirstChildElement("configuracion")->FirstChildElement("debugLevel")->GetText();
+
+		if (strcmp(debugLevel, "DEBUG") == 0) {
+			Logger::getInstance()->setLevel(DEBUG);
 		}
 		else if (strcmp(debugLevel, "INFO") == 0) {
 			Logger::getInstance()->setLevel(INFO);
@@ -70,12 +90,8 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 		else if (strcmp(debugLevel, "ERROR") == 0) {
 			Logger::getInstance()->setLevel(ERROR);
 		}
-	}
 
-	else {
-		//FIXME: Ignora xmlDefault, usa otro.
-		Logger::getInstance()->setLevel(DEBUG);
-		Logger::getInstance()->log(ERROR, "Opcion invalida o inexistente en <debugLevel>, asumiendo el defecto: DEBUG.");
+		Logger::getInstance()->log(ERROR, "Opcion invalida o inexistente en <debugLevel>, utilizando la indicada por xmlDefault...");
 	}
 
 	XMLHandle hEscenario = hRaiz.FirstChildElement("escenario");
@@ -129,7 +145,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 	}
 	if (sprites->size() != CANT_SPRITES) {
 		//TODO: no existe <sprites>, o se pasaron sprites de menos o de mas! avisar por log
-		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <spirtes> (se esperaban 4), o etiqueta no existente. Se utilizaran sprites predeterminados.");
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <sprites> (se esperaban 5), o etiqueta no existente. Se utilizaran sprites predeterminados.");
 		sprites->clear();
 		asignarLista(sprites, configDefault.FirstChildElement("configuracion")->FirstChildElement("sprites"), "sprite");
 	}

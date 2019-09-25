@@ -127,7 +127,7 @@ void Nivel::moverCapasIzquierda(){
 }
 
 int Nivel::generarXaleatorio(){
-	int x = rand()% ANCHO_CAPA_PIXELES_ESCALADA+1;
+	int x = rand()%(static_cast<int>(ANCHO_CAPA_PIXELES_ESCALADA) - MARGEN_DERECHO);
 	return x;
 }
 int Nivel::generarYaleatorio(){

@@ -1,12 +1,13 @@
 <configuracion>
-	<debugLevel>ERRasd</debugLevel>
+	<debugLevel>INFO</debugLevel>
 	<escenario>
 		<cantidades>
 			<cuchillo>2</cuchillo>
 			<barril>3</barril>
 			<canio>5</canio>
 			<caja>2</caja>
-			<enemigo>4</enemigo></cantidades>
+			<enemigo>5</enemigo>
+		</cantidades>
 		<niveles>
 			<nivel1>
 				<fondo>sprites/Nivel1-fondo1-XL.png</fondo>
@@ -16,7 +17,9 @@
 			<nivel2>
 				<fondo>sprites/Nivel2-fondo1.png</fondo>
 				<fondo>sprites/Nivel2-fondo2.png</fondo>
-				<fondo>sprites/Nivel2-fondo3.png</fondo></nivel2></niveles>
+				<fondo>sprites/Nivel2-fondo3.png</fondo>
+			</nivel2>
+		</niveles>
 	</escenario>
 	<sprites>
 		<sprite>sprites/SpriteCodyCompleto-120x120.png</sprite>

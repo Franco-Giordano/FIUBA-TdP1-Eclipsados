@@ -18,8 +18,6 @@ std::string customXmlPath;
 
 int main(int argc, char* argv[]) {
 
-	Logger::getInstance()->createLogFile();
-
 	customXmlPath = "xmlCustom.xml";
 
 	char ch;
@@ -37,6 +35,8 @@ int main(int argc, char* argv[]) {
 	while ((ch = getopt_long(argc, argv, short_opt, long_opt, NULL)) != -1)
 		if (interpret_cmds(ch))
 			return -1;
+
+	Logger::getInstance()->createLogFile();
 
 	int cantCuchillos = 0, cantBarriles = 0, cantEnemigos = 0, cantCanios = 0, cantCajas = 0;
 
