@@ -17,7 +17,7 @@ Juego::Juego(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles,
 
 	this-> personaje = new Personaje;
 	this-> entidad = new EntidadUbicada(personaje);
-	this-> nivel = new Nivel(entidad, cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
+	this-> nivel = new Nivel(1,entidad, cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 
 }
 
@@ -73,7 +73,7 @@ void Juego::cambiarDeNivel(){
 	delete(nivel);
 	//delete(entidad);
 	//entidad = new EntidadUbicada(personaje);
-	nivel = new Nivel(entidad, cuchillos, cajas, canios, barriles, enemigos);
+	nivel = new Nivel(2,entidad, cuchillos, cajas, canios, barriles, enemigos);
 
 }
 

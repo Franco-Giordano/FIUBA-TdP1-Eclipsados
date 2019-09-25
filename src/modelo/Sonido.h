@@ -7,7 +7,7 @@
 
 class Sonido {
 public:
-	Sonido();
+	Sonido(int numeroNivel);
 	virtual ~Sonido();
 	void play();
 

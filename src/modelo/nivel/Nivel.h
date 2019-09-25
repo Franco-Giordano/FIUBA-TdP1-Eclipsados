@@ -17,7 +17,7 @@
 
 class Nivel {
 public:
-	Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos);
+	Nivel(int NumeroNivel,EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos);
 	virtual ~Nivel();
 
 	void setImagesCapas(SDL_Renderer *ren, char const* imagen1, char const* imagen2, char const* imagen3);

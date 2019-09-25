@@ -2,7 +2,7 @@
 #include "../Logger.h"
 
 
-Sonido::Sonido() {
+Sonido::Sonido(int numeroNivel) {
 
     Logger::getInstance()->log(INFO, "Inicializando subsistema de sonido...");
 		if ( SDL_Init(SDL_INIT_AUDIO) != 0)
@@ -13,7 +13,11 @@ Sonido::Sonido() {
         Logger::getInstance()->log(ERROR, Mix_GetError());
 
     Logger::getInstance()->log(INFO, "Cargando música de fondo: nivel 1...");
-		musicaFondoNivel1 = Mix_LoadMUS( "musica/Nivel1-musica.mp3" );
+		if (numeroNivel == 1){
+			musicaFondoNivel1 = Mix_LoadMUS( "musica/Nivel1-musica.mp3" );
+		}else{
+			musicaFondoNivel1 = Mix_LoadMUS( "musica/Nivel2-musica.mp3" );
+		}
     if ( !musicaFondoNivel1 )
         Logger::getInstance()->log(ERROR, Mix_GetError());
 }

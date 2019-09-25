@@ -2,9 +2,9 @@
 
 #include "Nivel.h"
 
-Nivel::Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos) {
+Nivel::Nivel(int numeroNivel, EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos) {
 
-	musicaFondo = new Sonido();
+	musicaFondo = new Sonido(numeroNivel);
 	(*musicaFondo).play();
 
 	cody = jugador;
