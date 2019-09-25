@@ -90,7 +90,7 @@ void Vista::inicializarVistaParaNivel(){
 
 		Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
 
-		int caminarEnemigo = enemigoActual->crearCiclo(2, 100, 100, 6, 5);
+		int caminarEnemigo = enemigoActual->crearCiclo(2, 100, 125, 6, 5);
 
 		enemigoActual->setAnimacionActual(caminarEnemigo, SDL_FLIP_NONE);
 	}

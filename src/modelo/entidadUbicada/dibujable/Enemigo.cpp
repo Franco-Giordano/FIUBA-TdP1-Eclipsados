@@ -16,7 +16,7 @@ Enemigo::~Enemigo() {
 
 void Enemigo::setImageWith(AsignadorDeTexturas& asignador, SDL_Renderer* ren) {
 	asignador.setTexture(*this, ren);
-	setSource(0,0,100,100);
+	setSource(0,0,100,125);
 }
 
 int Enemigo::crearCiclo(int f, int w, int h, int cantSprites, int vel){
