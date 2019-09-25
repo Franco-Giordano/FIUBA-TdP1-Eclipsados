@@ -1,6 +1,8 @@
 
 #include "Capa.h"
 
+#include "../../Logger.h"
+
 Capa::Capa() {
 
 }
@@ -25,7 +27,22 @@ void Capa::setSource(int x, int y, int w, int h){
 void Capa::setImage(SDL_Renderer* ren, char const * imagen){
 
 	SDL_Surface* surf = IMG_Load(imagen);
-	tex = SDL_CreateTextureFromSurface(ren, surf);
+
+
+	if (surf == nullptr) {
+
+	    tex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, 500, 500);
+
+	    Uint32 * pixels = new Uint32[500* 500];
+
+	    memset(pixels, 50*(this->velocidad), 500* 500* sizeof(Uint32));
+
+	    SDL_UpdateTexture(tex, NULL, pixels, 500* sizeof(Uint32));
+
+	    Logger::getInstance()->log(ERROR, "No se encuentra el sprite para capa, se mostrara una textura erronea.");
+	}
+	else
+		tex = SDL_CreateTextureFromSurface(ren, surf);
 }
 
 void Capa::moverDerecha(){

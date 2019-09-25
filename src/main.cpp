@@ -69,13 +69,14 @@ int interpret_cmds(int ch) {
              "    final-fight -d\n"
              "    final-fight -i\n"
              "    final-fight -e\n"
+    		 "    final-fight -x\n"
              "Options:\n"
-             "    EMPTY            Load log level from XML.\n"
-             "    -h, --help       Print this information and quit.\n"
-             "    -d, --debug      Initialize DEBUG log level.\n"
-             "    -i, --info       Initialize INFO log level.\n"
-             "    -e, --error      Initialize ERROR log level.\n"
-    		 "    -x, --xml <file> Use <file> as custom XML.\n"); return -1;
+             "    EMPTY           	 Load log level from XML.\n"
+             "    -h, --help      	 Print this information and quit.\n"
+             "    -d, --debug     	 Initialize DEBUG log level.\n"
+             "    -i, --info      	 Initialize INFO log level.\n"
+             "    -e, --error     	 Initialize ERROR log level.\n"
+    		 "    -x, --xml <file>	 Use <file> as custom XML.\n"); return -1;
       break;
     case 'd': Logger::getInstance()->setLevel(DEBUG);
       break;
