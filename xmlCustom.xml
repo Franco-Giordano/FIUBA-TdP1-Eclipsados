@@ -19,7 +19,7 @@
 				<fondo>sprites/Nivel2-fondo3.png</fondo></nivel2></niveles>
 	</escenario>
 	<sprites>
-		<sprite>sprites/SpriteCodyCompleto.png</sprite>
+		<sprite>sprites/SpriteCodyCompleto-120x120.png</sprite>
 		<sprite>sprites/objetos_varios.png</sprite>
 		<sprite>sprites/Dug.png</sprite>
 		<sprite>sprites/AndoreJr.png</sprite>

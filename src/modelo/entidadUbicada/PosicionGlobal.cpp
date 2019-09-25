@@ -25,7 +25,7 @@ PosicionGlobal::~PosicionGlobal() {
 // Todos los valores fueron calculados para el tamaño que ocupa Cody
 
 void PosicionGlobal::moverArriba(){
-	if(y > WINDOW_SIZE_VERTICAL - 365){
+	if(y > WINDOW_SIZE_VERTICAL - MARGEN_PISO_ARRIBA){
 		y -= VELOCIDAD_CODY/2;
 	}
 }
@@ -37,7 +37,7 @@ void PosicionGlobal::moverSalto(){
 }
 
 void PosicionGlobal::moverAbajo(){
-	if(y < WINDOW_SIZE_VERTICAL - 245){
+	if(y < WINDOW_SIZE_VERTICAL - MARGEN_PISO_ABAJO){
 		y += VELOCIDAD_CODY/2;
 	}
 }

@@ -28,13 +28,13 @@ void Vista::inicializarVistaParaNivel(){
 	jugador->setImageWith(asignador,ren);
 	jugador->setDest(posicionX, posicionY, JUGADOR_SIZE_HORIZONTAL, JUGADOR_SIZE_VERTICAL); //TODO
 
-	parado = jugador->crearCiclo(1, 85, 120, 1, 10);
-	caminar = jugador->crearCiclo(2, 85, 120, 12, 5);
-	salto = jugador->crearCiclo(3, 85, 120, 8, 8);
-	golpear = jugador->crearCiclo(4, 110, 120, 2, 5);
+	parado = jugador->crearCiclo(1, 120, 120, 1, 10);
+	caminar = jugador->crearCiclo(2, 120, 120, 12, 4);
+	salto = jugador->crearCiclo(3, 120, 120, 8, 8);
+	golpear = jugador->crearCiclo(4, 120, 120, 9, 5);
 	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 12);
-	agachado = jugador->crearCiclo(1, 85, 120, 2, 5);
-	saltoVertical = jugador->crearCiclo(6, 85, 120, 6, 12);
+	agachado = jugador->crearCiclo(1, 120, 120, 4, 5);
+	saltoVertical = jugador->crearCiclo(6, 120, 120, 6, 12);
 
 
 	accionActual = parado;
@@ -102,7 +102,7 @@ void Vista::prepararCapa(Capa* capa,char const* imagen){
 }
 void Vista::prepararSegundaCapa(Capa* capa,char const* imagen){
 	capa->setImage(ren,imagen);
-	capa->setSource(0,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
+	capa->setSource(150,0,ANCHO_CAPA_PIXELES ,WINDOW_SIZE_VERTICAL+10);
 	capa->setDest(0,0,ANCHO_CAPA_PIXELES_ESCALADA,WINDOW_SIZE_VERTICAL+10);
 }
 

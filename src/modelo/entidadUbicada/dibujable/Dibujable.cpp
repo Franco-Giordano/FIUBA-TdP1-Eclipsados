@@ -38,13 +38,13 @@ void Dibujable::setImage(SDL_Renderer* ren, std::string imagen){
 }
 
 void Dibujable::moverArriba(){
-	if(dest.y > WINDOW_SIZE_VERTICAL - 365){
+	if(dest.y > WINDOW_SIZE_VERTICAL - MARGEN_PISO_ARRIBA){
 		dest.y -= VELOCIDAD_CODY/2;
 	}
 }
 
 void Dibujable::moverAbajo(){
-	if(dest.y < WINDOW_SIZE_VERTICAL - 245){
+	if(dest.y < WINDOW_SIZE_VERTICAL - MARGEN_PISO_ABAJO){
 		dest.y += VELOCIDAD_CODY/2;
 	}
 }
