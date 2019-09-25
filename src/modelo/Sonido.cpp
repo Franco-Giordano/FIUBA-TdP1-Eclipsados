@@ -13,7 +13,7 @@ Sonido::Sonido() {
         Logger::getInstance()->log(ERROR, Mix_GetError());
 
     Logger::getInstance()->log(INFO, "Cargando música de fondo: nivel 1...");
-		musicaFondoNivel1 = Mix_LoadMUS( "musica de fondo nivel 1.mp3" );
+		musicaFondoNivel1 = Mix_LoadMUS( "/musica/Nivel1-musica.mp3" );
     if ( !musicaFondoNivel1 )
         Logger::getInstance()->log(ERROR, Mix_GetError());
 }
