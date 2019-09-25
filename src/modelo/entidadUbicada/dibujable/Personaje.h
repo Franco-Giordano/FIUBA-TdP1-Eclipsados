@@ -42,6 +42,7 @@ public:
 	//SDL_Rect getSource() const {return src;}
 	//SDL_Texture* getTexture() const {return tex;}
 	SDL_RendererFlip getFlip() const {return spriteFlip;}
+	int getTicks(){return animaciones[animActual].tick;}
 	//void setDest(int x, int y, int w, int h);
 	//void setSource(int x, int y, int w, int h);
 	//void setImage(SDL_Renderer *ren);
