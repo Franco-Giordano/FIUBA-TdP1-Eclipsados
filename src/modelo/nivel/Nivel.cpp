@@ -158,6 +158,8 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 */
 	srand(time(NULL));
 
+	Logger::getInstance()->log(INFO, "Inicializando objetos");
+
 	for(int i=0; i<cantCuchillos; i++){
 		int x = generarXaleatorio();
 		int y = generarYaleatorioObjetos();
@@ -184,12 +186,14 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 		elementos.push_back(barril);
 	}
 
+	Logger::getInstance()->log(INFO, "Inicializando enemigos");
 	for(int i=0; i<cantEnemigos; i++){
 		int x = generarXaleatorio();
 		int y = generarYaleatorio();
 		EntidadUbicada* enemigo = factory.crearEntidadConEnemigo(x, y);
 		enemigos.push_back(enemigo);
 	}
+
 }
 
 void Nivel::moverEnemigos(){
