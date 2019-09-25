@@ -9,7 +9,7 @@
 
 Caja::Caja() {
 	this->imagen = "sprites/objetos_varios.png";
-	setSource(0,190,100,100);
+	setSource(0,200,100,100);
 }
 
 Caja::~Caja() {

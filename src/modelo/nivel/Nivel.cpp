@@ -5,7 +5,7 @@
 Nivel::Nivel(EntidadUbicada* jugador, int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos) {
 
 	musicaFondo = new Sonido();
-//	(*musicaFondo).play();
+	(*musicaFondo).play();
 
 	cody = jugador;
 

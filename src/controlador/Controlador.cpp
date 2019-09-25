@@ -30,6 +30,12 @@ void Controlador::setAcciones(int c, int p, int s, int sPatada, int g, int a, in
 	saltoVertical = sV;
 }
 
+void Controlador::resetearAnimaciones(){
+	this->golpeando = false;
+	this->saltando = false;
+	this->alturaActualSalto = juego->getPosicionJugador()->getVertical();
+	this->alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+40;
+}
 
 bool Controlador::eventHandler(){
 
@@ -139,7 +145,7 @@ bool Controlador::eventHandler(){
 			}
 		}
 
-		if(keystates[SDL_SCANCODE_RSHIFT]) {
+		if(keystates[SDL_SCANCODE_RSHIFT] && !saltando) {
 			golpeando = true;
 			if(accionActual != golpear){
 				jugador->setAnimacionActual(golpear, spriteFlip);

@@ -14,6 +14,7 @@ public:
 
 	void setAccionActual(int acActual);
 	void setAcciones(int c, int p, int s, int sPatada, int g, int a, int sV);
+	void resetearAnimaciones();
 
 private:
 	Juego* juego;

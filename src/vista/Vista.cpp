@@ -41,8 +41,8 @@ void Vista::inicializarVistaParaNivel(){
 	accionActual = parado;
 	jugador->setAnimacionActual(accionActual, SDL_FLIP_NONE);
 
-
-
+//se crea la funcion inicializar para que cuando se cambia de nivel en medio de una accion no la siga
+	controlador->resetearAnimaciones();
 	controlador->setAcciones(caminar, parado, salto, saltoPatada, golpear, agachado, saltoVertical);
 	controlador->setAccionActual(accionActual);
 
