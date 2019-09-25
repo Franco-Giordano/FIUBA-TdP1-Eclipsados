@@ -8,3 +8,5 @@ build
 
 # Ignore any executables
 bin/*
+
+logs/

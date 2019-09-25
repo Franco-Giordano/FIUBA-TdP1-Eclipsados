@@ -14,6 +14,7 @@ public:
     ~Logger();
     void setLevel(LogLevel level);
     void log(LogLevel level, string message);
+    void createLogFile();
 
 private:
     LogLevel Errorlevel = DEBUG;

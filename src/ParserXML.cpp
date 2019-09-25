@@ -14,7 +14,6 @@ Hay distintos tipos de errores:
 	- no se puede abrir el archivo custom
 	- no existe alguna seccion del xml (FirstChildElement == null)
 	- el valor no es del tipo correcto (se esperaba int y dio bool,string,etc)
-
 */
 
 ParserXML::ParserXML(std::string rutaConfig){

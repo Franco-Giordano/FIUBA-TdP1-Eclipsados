@@ -18,6 +18,8 @@ std::string customXmlPath;
 
 int main(int argc, char* argv[]) {
 
+	Logger::getInstance()->createLogFile();
+
 	customXmlPath = "xmlCustom.xml";
 
 	char ch;

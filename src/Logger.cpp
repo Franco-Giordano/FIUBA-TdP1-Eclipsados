@@ -19,6 +19,9 @@ Logger* Logger::getInstance() {
 void Logger::setLevel(LogLevel level) {
 
     Errorlevel = level;
+}
+
+void Logger::createLogFile() {
 
     string logfilename = "logs/logfile_" + datetime();
     logFile.open(logfilename, ios::out);
