@@ -11,6 +11,7 @@
 #include "../nivel/Capa.h"
 #include <stdlib.h>
 #include <time.h>
+#include "../../Logger.h"
 
 //#include "cody.h"
 
