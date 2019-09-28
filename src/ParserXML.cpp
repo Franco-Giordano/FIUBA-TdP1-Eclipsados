@@ -98,14 +98,19 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 
 	asignarValor(cantCuchillos, "cuchillo", hEscenario.FirstChildElement("cantidades"), pEscenarioDEFAULT->FirstChildElement("cantidades"));
+	Logger::getInstance()->log(DEBUG, std::string("Cantidad de cuchillos: " + std::to_string(*cantCuchillos)));
 
 	asignarValor(cantCajas, "caja", hEscenario.FirstChildElement("cantidades"), pEscenarioDEFAULT->FirstChildElement("cantidades"));
+	Logger::getInstance()->log(DEBUG, std::string("Cantidad de cajas: " + std::to_string(*cantCajas)));
 
 	asignarValor(cantBarriles, "barril", hEscenario.FirstChildElement("cantidades"), pEscenarioDEFAULT->FirstChildElement("cantidades"));
+	Logger::getInstance()->log(DEBUG, std::string("Cantidad de barriles: " + std::to_string(*cantBarriles)));
 
 	asignarValor(cantCanios, "canio", hEscenario.FirstChildElement("cantidades"), pEscenarioDEFAULT->FirstChildElement("cantidades"));
+	Logger::getInstance()->log(DEBUG, std::string("Cantidad de caños: " + std::to_string(*cantCanios)));
 
 	asignarValor(cantEnemigos, "enemigo", hEscenario.FirstChildElement("cantidades"), pEscenarioDEFAULT->FirstChildElement("cantidades"));
+	Logger::getInstance()->log(DEBUG, std::string("Cantidad de enemigos: " + std::to_string(*cantEnemigos)));
 
 
 
