@@ -163,18 +163,31 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 	for(int i=0; i<cantCuchillos; i++){
 		int x = generarXaleatorio();
 		int y = generarYaleatorioObjetos();
+    Logger::getInstance()->log(DEBUG, std::string("Posición de cuchillo " +
+                                                  std::to_string(i+1) + ": (" +
+                                                  std::to_string(x) + ", " +
+                                                  std::to_string(y)) + ")");
 		EntidadUbicada* cuchillo = factory.crearEntidadConCuchillo(x,y);
 		elementos.push_back(cuchillo);
 	}
 	for(int i=0; i<cantCanios; i++){
 		int x = generarXaleatorio();
 		int y = generarYaleatorioObjetos();
+    Logger::getInstance()->log(DEBUG, std::string("Posición de caño " +
+                                                  std::to_string(i+1) + ": (" +
+                                                  std::to_string(x) + ", " +
+                                                  std::to_string(y)) + ")");
+
 		EntidadUbicada* canio = factory.crearEntidadConCanio(x,y);
 		elementos.push_back(canio);
 	}
 	for(int i=0; i<cantCajas; i++){
 		int x = generarXaleatorio();
 		int y = generarYaleatorioObjetos();
+    Logger::getInstance()->log(DEBUG, std::string("Posición de caja " +
+                                                  std::to_string(i+1) + ": (" +
+                                                  std::to_string(x) + ", " +
+                                                  std::to_string(y)) + ")");
 		EntidadUbicada* caja = factory.crearEntidadConCaja(x,y);
 		elementos.push_back(caja);
 	}
@@ -182,6 +195,10 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 	for(int i=0; i<cantBarriles; i++){
 		int x = generarXaleatorio();
 		int y = generarYaleatorioObjetos();
+    Logger::getInstance()->log(DEBUG, std::string("Posición de barril " +
+                                                  std::to_string(i+1) + ": (" +
+                                                  std::to_string(x) + ", " +
+                                                  std::to_string(y)) + ")");
 		EntidadUbicada* barril = factory.crearEntidadConBarril(x,y);
 		elementos.push_back(barril);
 	}
@@ -190,6 +207,10 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 	for(int i=0; i<cantEnemigos; i++){
 		int x = generarXaleatorio();
 		int y = generarYaleatorio();
+    Logger::getInstance()->log(DEBUG, std::string("Posición inicial de enemigo " +
+                                                  std::to_string(i+1) + ": (" +
+                                                  std::to_string(x) + ", " +
+                                                  std::to_string(y)) + ")");
 		EntidadUbicada* enemigo = factory.crearEntidadConEnemigo(x, y);
 		enemigos.push_back(enemigo);
 	}
