@@ -12,10 +12,11 @@ Sonido::Sonido(int numeroNivel) {
 		if ( Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
         Logger::getInstance()->log(ERROR, Mix_GetError());
 
-    Logger::getInstance()->log(INFO, "Cargando música de fondo...");
 		if (numeroNivel == 1){
+      Logger::getInstance()->log(INFO, "Cargando música de fondo: nivel 1 (musica/Nivel1-musica.mp3)");
 			musicaFondoNivel1 = Mix_LoadMUS( "musica/Nivel1-musica.mp3" );
 		}else{
+      Logger::getInstance()->log(INFO, "Cargando música de fondo: nivel 2 (musica/Nivel2-musica.mp3)");
 			musicaFondoNivel1 = Mix_LoadMUS( "musica/Nivel2-musica.mp3" );
 		}
     if ( !musicaFondoNivel1 )
