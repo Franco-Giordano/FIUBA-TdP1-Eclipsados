@@ -26,7 +26,12 @@ ParserXML::ParserXML(std::string rutaConfig){
 	XMLError eDefault = configDefault.LoadFile("xmlDefault.xml");
 
 	if (eArchivo != XML_SUCCESS) {
-		Logger::getInstance()->log(ERROR, "Archivo XML personalizado no encontrado o corrupto, utilizando el defecto...");
+
+		//TODO: necesitara proveer mas informacion?
+		std::string lineaError = pConfig->ErrorLineNum() ? ". Linea de error: " + std::to_string(pConfig->ErrorLineNum()) : ". Linea desconocida";
+
+		Logger::getInstance()->log(ERROR, "Archivo XML personalizado no encontrado o corrupto. Error del tipo: " + std::string(pConfig->ErrorName()) +
+									lineaError + ". Se utilizara el defecto.");
 
 		delete pConfig;
 
@@ -123,7 +128,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 	if (nivel1->size() != CANT_CAPAS) {
 		//TODO: no existe <nivel1>, o se pasaron fondos de menos o de mas! avisar por log
-		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel1> (se esperaban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel1> (se esperaban " + std::to_string(CANT_CAPAS) + "), o etiqueta no existente. Se utilizaran fondos predeterminados.");
 		nivel1->clear();
 		asignarLista(nivel1, pEscenarioDEFAULT->FirstChildElement("niveles")->FirstChildElement("nivel1"), "fondo");
 	}
@@ -136,7 +141,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 
 	if (nivel2->size() != CANT_CAPAS) {
 		//TODO: no existe <nivel2>, o se pasaron fondos de menos o de mas! avisar por log
-		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel2> (se esperaban 3), o etiqueta no existente. Se utilizaran fondos predeterminados.");
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <nivel2> (se esperaban " + std::to_string(CANT_CAPAS) + "), o etiqueta no existente. Se utilizaran fondos predeterminados.");
 		nivel2->clear();
 		asignarLista(nivel2, pEscenarioDEFAULT->FirstChildElement("niveles")->FirstChildElement("nivel2"), "fondo");
 	}
@@ -150,7 +155,7 @@ void ParserXML::parsearConfig(int *cantEnemigos, int *cantCuchillos, int *cantCa
 	}
 	if (sprites->size() != CANT_SPRITES) {
 		//TODO: no existe <sprites>, o se pasaron sprites de menos o de mas! avisar por log
-		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <sprites> (se esperaban 5), o etiqueta no existente. Se utilizaran sprites predeterminados.");
+		Logger::getInstance()->log(ERROR, "Cantidad insuficiente de items en <sprites> (se esperaban " + std::to_string(CANT_SPRITES) + "), o etiqueta no existente. Se utilizaran sprites predeterminados.");
 		sprites->clear();
 		asignarLista(sprites, configDefault.FirstChildElement("configuracion")->FirstChildElement("sprites"), "sprite");
 	}

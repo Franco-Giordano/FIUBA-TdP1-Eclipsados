@@ -46,7 +46,7 @@ void Dibujable::setImage(SDL_Renderer* ren, std::string imagen){
 
 	    SDL_UpdateTexture(tex, NULL, pixels, 640 * sizeof(Uint32));
 
-	    Logger::getInstance()->log(ERROR, "No se encuentra el sprite para dibujable, se mostrara una textura erronea.");
+	    Logger::getInstance()->log(ERROR, "No se encuentra el sprite '" + imagen + "', se mostrara una textura erronea.");
 	}
 	else
 		tex = SDL_CreateTextureFromSurface(ren, surf);
