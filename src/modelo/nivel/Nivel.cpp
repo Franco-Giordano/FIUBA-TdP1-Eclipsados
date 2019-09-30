@@ -218,6 +218,35 @@ void Nivel::ubicarEnemigosYElementos(int cantCuchillos, int cantCajas, int cantC
 }
 
 void Nivel::moverEnemigos(){
+
+	for (int i = 0; i < enemigos.size(); i++){
+		Enemigo* enemigoDibujable = (Enemigo*) enemigos[i]->getDibujable();
+		SDL_RendererFlip flip = enemigoDibujable->getFlip();
+		if (flip == SDL_FLIP_HORIZONTAL){
+			if (!enemigos[i]->llegoBordeGlobalIzquierdo()){
+				enemigos[i]->moverGlobalIzquierda();
+				enemigos[i]->moverLocalIzquierda();
+			}
+			else{
+				enemigoDibujable->setFlip(SDL_FLIP_NONE);
+				enemigos[i]->moverGlobalDerecha();
+				enemigos[i]->moverLocalDerecha();
+			}
+		}
+		else{
+			if (!enemigos[i]->llegoBordeGlobalDerecho()){
+				enemigos[i]->moverGlobalDerecha();
+				enemigos[i]->moverLocalDerecha();
+			}
+			else{
+				enemigoDibujable->setFlip(SDL_FLIP_HORIZONTAL);
+				enemigos[i]->moverGlobalIzquierda();
+				enemigos[i]->moverLocalIzquierda();
+			}
+		}
+	}
+
+	/*
 	if (movimientoEnemigos < 100){
 		for (int i =0; i<enemigos.size(); i++){
 			if (!enemigos[i]->llegoBordeGlobalIzquierdo()){
@@ -248,7 +277,7 @@ void Nivel::moverEnemigos(){
 			movimientoEnemigos = 0;
 		}
 
-	}
+	}*/
 
 
 
