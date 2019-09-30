@@ -73,7 +73,7 @@ void Vista::inicializarVistaParaNivel(){
 		dibujable->setDest(posicionX, posicionY, dibujable->getWidth(),dibujable->getHeight());
 		//dibujable->setSource(200, 190, 100, 100);
 	}
-
+	srand(time(NULL));
 	for (uint i = 0; i < enemigos.size(); i++) {
 		Dibujable* dibujable = enemigos[i]->getDibujable();
 		PosicionGlobal* posicion = enemigos[i]->getPosicionGlobal();
@@ -92,7 +92,16 @@ void Vista::inicializarVistaParaNivel(){
 
 		int caminarEnemigo = enemigoActual->crearCiclo(2, 100, 125, 6, 5);
 
-		enemigoActual->setAnimacionActual(caminarEnemigo, SDL_FLIP_NONE);
+
+		int x = rand()%2;
+		std::cout << x;
+
+		if (x == 0){
+			enemigoActual->setAnimacionActual(caminarEnemigo, SDL_FLIP_NONE);
+		}
+		else{
+			enemigoActual->setAnimacionActual(caminarEnemigo, SDL_FLIP_HORIZONTAL);
+		}
 	}
 }
 

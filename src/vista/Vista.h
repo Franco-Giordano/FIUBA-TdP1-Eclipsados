@@ -8,6 +8,8 @@
 #include "../modelo/nivel/Nivel.h"
 #include "../AsignadorDeTexturas.h"
 #include "../modelo/entidadUbicada/dibujable/Enemigo.h"
+#include <stdlib.h>
+#include <time.h>
 
 class Vista {
 public:
