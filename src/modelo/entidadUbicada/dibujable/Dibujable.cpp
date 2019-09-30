@@ -1,6 +1,7 @@
 #include "Dibujable.h"
 
 #include "../../../Logger.h"
+#include "ContenedorDeTexturas.h"
 
 Dibujable::Dibujable() {
 	dest.x = JUGADOR_POSICION_HORIZONTAL_INICIAL;
@@ -34,22 +35,7 @@ void Dibujable::setImage(SDL_Renderer* ren, std::string imagen){
 
 	this->imagen = imagen.c_str();
 
-	SDL_Surface* surf = IMG_Load(this->imagen);
-
-	if (surf == nullptr) {
-
-	    tex = SDL_CreateTexture(ren, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, 640, 640);
-
-	    Uint32 * pixels = new Uint32[640 * 640];
-
-	    memset(pixels, 255, 640 * 640 * sizeof(Uint32));
-
-	    SDL_UpdateTexture(tex, NULL, pixels, 640 * sizeof(Uint32));
-
-	    Logger::getInstance()->log(ERROR, "No se encuentra el sprite '" + imagen + "', se mostrara una textura erronea.");
-	}
-	else
-		tex = SDL_CreateTextureFromSurface(ren, surf);
+	tex = ContenedorDeTexturas::getInstance()->getTexture(ren, imagen);
 
 }
 
