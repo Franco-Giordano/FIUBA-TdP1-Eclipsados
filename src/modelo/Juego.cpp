@@ -6,6 +6,7 @@
  */
 
 #include "Juego.h"
+#include "../Logger.h"
 
 Juego::Juego(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles, int cantEnemigos) {
 
@@ -17,6 +18,8 @@ Juego::Juego(int cantCuchillos, int cantCajas, int cantCanios, int cantBarriles,
 
 	this-> personaje = new Personaje;
 	this-> entidad = new EntidadUbicada(personaje);
+
+  Logger::getInstance()->log(INFO, "******** NIVEL 1 ********");
 	this-> nivel = new Nivel(1,entidad, cantCuchillos, cantCajas, cantCanios, cantBarriles, cantEnemigos);
 
 }
@@ -69,6 +72,7 @@ bool Juego::terminoElNivel(){
 }
 
 void Juego::cambiarDeNivel(){
+  Logger::getInstance()->log(INFO, "******** NIVEL 2 ********");
 	entidad->seCambioElNivel(personaje);
 	delete(nivel);
 	//delete(entidad);
