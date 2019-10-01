@@ -246,39 +246,6 @@ void Nivel::moverEnemigos(){
 		}
 	}
 
-	/*
-	if (movimientoEnemigos < 100){
-		for (int i =0; i<enemigos.size(); i++){
-			if (!enemigos[i]->llegoBordeGlobalIzquierdo()){
-
-				enemigos[i]->moverGlobalIzquierda();
-				enemigos[i]->moverLocalIzquierda();
-				Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
-				enemigoActual->setFlip(SDL_FLIP_HORIZONTAL);
-			}
-		}
-		movimientoEnemigos+=1;
-	}
-	else{
-		if(movimientoEnemigos >=100 && movimientoEnemigos <200){
-
-			for (int i =0; i<enemigos.size(); i++){
-				if (!enemigos[i]->llegoBordeGlobalDerecho()){
-
-					enemigos[i]->moverGlobalDerecha();
-					enemigos[i]->moverLocalDerecha();
-					Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
-					enemigoActual->setFlip(SDL_FLIP_NONE);
-				}
-			}
-			movimientoEnemigos++;
-			}
-		else{
-			movimientoEnemigos = 0;
-		}
-
-	}*/
-
 
 
 }

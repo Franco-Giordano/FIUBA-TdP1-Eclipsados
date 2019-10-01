@@ -94,7 +94,6 @@ void Vista::inicializarVistaParaNivel(){
 
 
 		int x = rand()%2;
-		std::cout << x;
 
 		if (x == 0){
 			enemigoActual->setAnimacionActual(caminarEnemigo, SDL_FLIP_NONE);
