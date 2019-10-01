@@ -1,4 +1,5 @@
 #include "Vista.h"
+#include "../Logger.h"
 
 Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& unAsignador) {
 	this->juego = modelo;
@@ -6,8 +7,15 @@ Vista::Vista(Juego* modelo, Controlador* controlador, AsignadorDeTexturas& unAsi
 	this->asignador = unAsignador;
 	this->running = true;
 	this->nivelActual = 1;
-	SDL_Init(SDL_INIT_VIDEO);
-	SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren);
+
+  Logger::getInstance()->log(INFO, "Inicializando subsistema de video...");
+	if ( SDL_Init(SDL_INIT_VIDEO) != 0)
+    Logger::getInstance()->log(ERROR, SDL_GetError());
+
+  Logger::getInstance()->log(INFO, "Inicializando ventana...");
+	if ( SDL_CreateWindowAndRenderer(WINDOW_SIZE_HORIZONTAL, WINDOW_SIZE_VERTICAL, 0, &win, &ren) )
+    Logger::getInstance()->log(ERROR, SDL_GetError());
+
 	SDL_SetWindowTitle(win, "Final Fight");
 
 	inicializarVistaParaNivel();
