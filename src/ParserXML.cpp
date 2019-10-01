@@ -191,7 +191,9 @@ void ParserXML::asignarValor(int* variable, const char* nombre, XMLHandle base, 
 
 void ParserXML::asignarLista(std::vector<std::string> *lista, XMLElement* eBase, const char * nombreItems) {
 	//asume que los elementos estan en orden
+  Logger::getInstance()->log(DEBUG, "Leyendo rutas: " + std::string(nombreItems) + "...");
 	for(XMLElement* e = eBase->FirstChildElement(nombreItems); e != NULL; e = e->NextSiblingElement(nombreItems)) {
+      Logger::getInstance()->log(DEBUG, "Sprite a cargar: " + std::string(e->GetText()));
 	    lista->push_back(e->GetText());
 	}
 }
