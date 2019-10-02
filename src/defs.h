@@ -23,9 +23,9 @@
 #define MARGEN_PISO_ABAJO 270
 
 #define VELOCIDAD_CODY 6
-#define VELOCIDAD_SALTO_INICIAL 30
+#define VELOCIDAD_SALTO_INICIAL 45
 #define ALTURA_MAXIMA 200 //Lo maximo que puede saltar cody
-#define GRAVEDAD -5
+#define GRAVEDAD -10
 #define DELTA_T 0.16
 
 

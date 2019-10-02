@@ -10,6 +10,18 @@
 #include "../modelo/entidadUbicada/dibujable/Enemigo.h"
 #include <stdlib.h>
 #include <time.h>
+#include <algorithm>
+
+struct renderizable {
+	SDL_Texture* textura;
+	SDL_Rect source;
+	SDL_Rect destination;
+	SDL_RendererFlip flip;
+	bool operator < (const renderizable& a) const {
+
+		return (destination.y + destination.h) < (a.destination.y + a.destination.h);
+	    }
+} ;
 
 class Vista {
 public:
@@ -24,6 +36,7 @@ private:
 	void prepararCapa(Capa* capa,char const* imagen);
 	void prepararSegundaCapa(Capa* capa,char const* imagen);
 	void inicializarVistaParaNivel();
+
 
 	Juego* juego;
 	Controlador* controlador;
@@ -57,7 +70,7 @@ private:
 	vector<EntidadUbicada*> enemigos;
 	AsignadorDeTexturas asignador;
 	//Nivel* nivel;
-
+	vector<renderizable> renderizables;
 };
 
 #endif /* VISTA_H_ */

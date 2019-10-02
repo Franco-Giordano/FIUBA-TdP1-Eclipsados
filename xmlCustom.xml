@@ -2,11 +2,11 @@
 	<debugLevel>INFO</debugLevel>
 	<escenario>
 		<cantidades>
-			<cuchillo>2</cuchillo>
-			<barril>3</barril>
-			<canio>5</canio>
-			<caja>2</caja>
-			<enemigo>5</enemigo>
+			<cuchillo>4</cuchillo>
+			<barril>4</barril>
+			<canio>4</canio>
+			<caja>4</caja>
+			<enemigo>6</enemigo>
 		</cantidades>
 		<niveles>
 			<nivel1>

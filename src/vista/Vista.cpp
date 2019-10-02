@@ -39,11 +39,11 @@ void Vista::inicializarVistaParaNivel(){
 
 	parado = jugador->crearCiclo(1, 120, 120, 1, 10);
 	caminar = jugador->crearCiclo(2, 120, 120, 12, 4);
-	salto = jugador->crearCiclo(3, 120, 120, 8, 8);
+	salto = jugador->crearCiclo(3, 120, 120, 8, 6);
 	golpear = jugador->crearCiclo(4, 120, 120, 9, 5);
-	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 12);
+	saltoPatada = jugador->crearCiclo(5, 120, 120, 6, 9);
 	agachado = jugador->crearCiclo(1, 120, 120, 4, 5);
-	saltoVertical = jugador->crearCiclo(6, 120, 120, 6, 12);
+	saltoVertical = jugador->crearCiclo(6, 120, 120, 6, 8);
 
 
 	accionActual = parado;
@@ -168,25 +168,52 @@ void Vista::Draw(){
 
 	for (uint i = 0; i < elementos.size(); i++) {
 		Dibujable* dibujable = elementos[i]->getDibujable();
-		SDL_Rect destinationElemento = dibujable->getDest();
-		SDL_Rect sourceElemento = dibujable->getSource();
+		renderizable renderizableActual;
+		renderizableActual.textura = dibujable->getTexture();
+		renderizableActual.source = dibujable->getSource();
+		renderizableActual.destination = dibujable->getDest();
+		renderizableActual.flip = SDL_FLIP_NONE;
+		renderizables.push_back(renderizableActual);
 
-		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceElemento, &destinationElemento);
+//		SDL_Rect destinationElemento = dibujable->getDest();
+//		SDL_Rect sourceElemento = dibujable->getSource();
+
+//		SDL_RenderCopy(ren, dibujable->getTexture(), &sourceElemento, &destinationElemento);
 	}
 
 	for (uint i = 0; i < enemigos.size(); i++) {
 		Dibujable* dibujable = enemigos[i]->getDibujable();
-		SDL_Rect destinationEnemigo = dibujable->getDest();
-		SDL_Rect sourceEnemigo = dibujable->getSource();
+//		SDL_Rect destinationEnemigo = dibujable->getDest();
+//		SDL_Rect sourceEnemigo = dibujable->getSource();
 		Enemigo* enemigoActual = (Enemigo*) enemigos[i]->getDibujable();
 
-		SDL_RenderCopyEx(ren, dibujable->getTexture(), &sourceEnemigo, &destinationEnemigo, 0, NULL, enemigoActual->getFlip());
+		renderizable renderizableActual;
+		renderizableActual.textura = dibujable->getTexture();
+		renderizableActual.source = dibujable->getSource();
+		renderizableActual.destination = dibujable->getDest();
+		renderizableActual.flip = enemigoActual->getFlip();
+		renderizables.push_back(renderizableActual);
+
+//		SDL_RenderCopyEx(ren, dibujable->getTexture(), &sourceEnemigo, &destinationEnemigo, 0, NULL, enemigoActual->getFlip());
 	}
 
-	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, 0, NULL, jugador->getFlip());
-	//TODO: no se como meter la renderizacion de objetos/enemigos aca
-	//deberia poderse buscar que objetos estan en la vista actual, y renderizarse solo esos
+//	SDL_RenderCopyEx(ren, jugador->getTexture(), &sourceJugador, &destinationJugador, 0, NULL, jugador->getFlip());
+	renderizable renderizableActual;
+	renderizableActual.textura = jugador->getTexture();
+	renderizableActual.source = jugador->getSource();
+	renderizableActual.destination = jugador->getDest();
+	renderizableActual.flip = jugador->getFlip();
+	renderizables.push_back(renderizableActual);
 
+	//tengo todos los renderizables en un vector, ordeno de acuerdo a la posicion vertical
+	std::sort(renderizables.begin(), renderizables.end());
+
+
+	for (uint i = 0; i < renderizables.size(); i++) {
+		SDL_RenderCopyEx(ren, renderizables[i].textura, &renderizables[i].source, &renderizables[i].destination, 0, NULL, renderizables[i].flip);
+	}
+
+	renderizables.clear();
 }
 
 
@@ -238,3 +265,4 @@ void Vista::loop() {
 
 	}
 }
+
