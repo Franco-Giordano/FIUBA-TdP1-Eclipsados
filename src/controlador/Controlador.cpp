@@ -99,7 +99,7 @@ bool Controlador::eventHandler(){
 			}
 		}
 
-		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_SPACE] && !(keystates[SDL_SCANCODE_RCTRL]) && !golpeando && !agachando) {
+		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_SPACE] && !golpeando && !agachando) {
 			saltando = true;
 			tipoSalto = 1;
 			alturaActualSalto = juego->getPosicionJugador()->getVertical();
@@ -111,7 +111,7 @@ bool Controlador::eventHandler(){
 			}
 		}
 
-		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_SPACE] && keystates[SDL_SCANCODE_RCTRL] && !golpeando && !agachando) {
+		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_LALT] && !golpeando && !agachando) {
 			saltando = true;
 			tipoSalto = 1;
 			alturaActualSalto = juego->getPosicionJugador()->getVertical();
@@ -123,7 +123,7 @@ bool Controlador::eventHandler(){
 			}
 		}
 
-		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_SPACE] && !(keystates[SDL_SCANCODE_RCTRL]) && !golpeando && !agachando) {
+		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_SPACE] && !golpeando && !agachando) {
 			saltando = true;
 			tipoSalto = 2;
 			alturaActualSalto = juego->getPosicionJugador()->getVertical();
@@ -135,7 +135,7 @@ bool Controlador::eventHandler(){
 			}
 		}
 
-		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_SPACE] && keystates[SDL_SCANCODE_RCTRL] && !golpeando && !agachando) {
+		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_LALT] && !golpeando && !agachando) {
 			saltando = true;
 			tipoSalto = 2;
 			alturaActualSalto = juego->getPosicionJugador()->getVertical();
@@ -147,7 +147,7 @@ bool Controlador::eventHandler(){
 			}
 		}
 
-		if(keystates[SDL_SCANCODE_RSHIFT] && !saltando && !agachando) {
+		if(keystates[SDL_SCANCODE_LSHIFT] && !saltando && !agachando) {
 			golpeando = true;
 			if(accionActual != golpear){
 				jugador->setAnimacionActual(golpear, spriteFlip);
@@ -161,7 +161,7 @@ bool Controlador::eventHandler(){
 			accionActual = parado;
 		}
 
-		if(keystates[SDL_SCANCODE_RALT] && !(keystates[SDL_SCANCODE_SPACE]) && !golpeando) {
+		if(keystates[SDL_SCANCODE_LCTRL] && !saltando && !golpeando) {
 				if(accionActual != agachado){
 					jugador->setAnimacionActual(agachado, spriteFlip);
 					accionActual = agachado;
