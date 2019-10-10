@@ -9,10 +9,10 @@ int main(int argc, char *argv[]) {
 
 	Cliente cliente(&servidor);
 
-	/*while(1){
+	while(1){
 
-		client_reply[1000] = cliente.respuesta();
-		printf("Mensaje Cliente: ");
+		cliente.respuesta(&client_reply[1000]);
+		puts("Mensaje Cliente: ");
 		printf("%s\n",client_reply);
 
 		if( strcmp(client_reply, "quit\n") == 0){
@@ -23,9 +23,7 @@ int main(int argc, char *argv[]) {
 
 
 
-	}*/
-
-	for(;;);
+	}
 
 	servidor.~Servidor();
 	cliente.~Cliente();
