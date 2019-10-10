@@ -11,11 +11,11 @@ int main(int argc, char *argv[]) {
 
 	while(1){
 
-		cliente.respuesta(&client_reply[1000]);
+		cliente.respuesta(client_reply);
 		puts("Mensaje Cliente: ");
 		printf("%s\n",client_reply);
 
-		if( strcmp(client_reply, "quit\n") == 0){
+		if( strcmp(client_reply, "quit \n") == 0){
 			break;
 		}
 

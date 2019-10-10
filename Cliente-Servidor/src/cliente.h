@@ -7,7 +7,7 @@ class Cliente {
 public:
 	Cliente(Servidor* server);
 	~Cliente();
-	void respuesta(char *replay);
+	void respuesta(char replay[1000]);
 
 private:
 	struct sockaddr_in cliente;

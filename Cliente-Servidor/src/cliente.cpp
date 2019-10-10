@@ -26,7 +26,7 @@ Cliente::~Cliente(){
 }
 
 
-void Cliente::respuesta(char *reply){
+void Cliente::respuesta(char reply[1000]){
 
 	bzero(reply, 1000);
 	read(sock, reply, 1000);
