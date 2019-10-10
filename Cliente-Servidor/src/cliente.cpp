@@ -21,7 +21,7 @@ Cliente::Cliente(Servidor* server){
 Cliente::~Cliente(){
 
 	close(sock);
-	printf("Socket numero %d Closed\n", sock);
+	printf("Socket numero: %d Closed\n", sock);
 
 }
 

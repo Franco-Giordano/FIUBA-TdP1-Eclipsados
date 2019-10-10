@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		cliente.respuesta(client_reply);
-		puts("Mensaje Cliente: ");
+		printf("Mensaje Cliente: ");
 		printf("%s\n",client_reply);
 
 

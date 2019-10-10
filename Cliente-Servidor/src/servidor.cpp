@@ -45,10 +45,6 @@ void Servidor::sendInfo(char info[1000], int sock){
 
 	bzero(info, 1000);
 	fgets(info, 1000, stdin);
-	if( strcmp(info, "quit\n") == 0){
-		exit(-1);
-	}
 	write(sock, info, strlen(info));
-	bzero(info, 1000);
 
 }
