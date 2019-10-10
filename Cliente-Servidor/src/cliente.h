@@ -8,6 +8,7 @@ public:
 	Cliente(Servidor* server);
 	~Cliente();
 	void respuesta(char replay[1000]);
+	int getSocket(){return sock;}
 
 private:
 	struct sockaddr_in cliente;

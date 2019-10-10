@@ -15,6 +15,7 @@ public:
 	~Servidor();
 
 	int getSocketDesc(){return socket_desc;}
+	void sendInfo(char info[1000], int sock);
 
 private:
 	struct sockaddr_in server;

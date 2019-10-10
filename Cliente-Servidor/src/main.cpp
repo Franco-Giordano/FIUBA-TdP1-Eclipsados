@@ -11,15 +11,16 @@ int main(int argc, char *argv[]) {
 
 	while(1){
 
-		cliente.respuesta(client_reply);
-		puts("Mensaje Cliente: ");
-		printf("%s\n",client_reply);
+		printf("Enter message:\n");
+		servidor.sendInfo(mensaje, cliente.getSocket());
 
-		if( strcmp(client_reply, "quit \n") == 0){
+		if( strcmp(mensaje, "quit\n") == 0){
 			break;
 		}
 
-
+		cliente.respuesta(client_reply);
+		puts("Mensaje Cliente: ");
+		printf("%s\n",client_reply);
 
 
 

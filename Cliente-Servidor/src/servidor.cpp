@@ -29,7 +29,7 @@ Servidor::Servidor(char *puerto){
 	}
 
 	//Listen
-	printf("Listening on port %s. Waiting for acceptance. \n", puerto);
+	printf("Listening on port %s. Waiting for acceptance... \n", puerto);
 	listen(socket_desc, 4);
 	fflush(stdout);
 
@@ -38,5 +38,17 @@ Servidor::Servidor(char *puerto){
 Servidor::~Servidor(){
 
 	close(socket_desc);
+
+}
+
+void Servidor::sendInfo(char info[1000], int sock){
+
+	bzero(info, 1000);
+	fgets(info, 1000, stdin);
+	if( strcmp(info, "quit\n") == 0){
+		exit(-1);
+	}
+	write(sock, info, strlen(info));
+	bzero(info, 1000);
 
 }
