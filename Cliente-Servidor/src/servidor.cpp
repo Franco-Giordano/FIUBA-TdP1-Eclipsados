@@ -14,7 +14,7 @@ Servidor::Servidor(char *puerto){
 		perror("Could not create socket. Error \n");
 		exit(-1);
 	}
-	printf("Socket created:  %d\n", socket_desc);
+	printf("Socket created: %d\n", socket_desc);
 
 	//Esto es para poder reusar el address sin esperar a que se resetee en caso de no cerrarlo bien
 	int activado = 1;
@@ -41,10 +41,15 @@ Servidor::~Servidor(){
 
 }
 
-void Servidor::sendInfo(char info[1000], int sock){
+void Servidor::sendInfo(int clientSocket){
 
+	printf("Mensaje Server:\n");
 	bzero(info, 1000);
 	fgets(info, 1000, stdin);
-	write(sock, info, strlen(info));
+	send(clientSocket, info, strlen(info), 0);
+
+}
+
+void Servidor::reciveInfo(){
 
 }

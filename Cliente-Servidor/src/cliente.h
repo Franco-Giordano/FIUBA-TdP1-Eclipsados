@@ -7,7 +7,7 @@ class Cliente {
 public:
 	Cliente(Servidor* server);
 	~Cliente();
-	void respuesta(char replay[1000]);
+	void recibirMensaje(char replay[1000]);
 	int getSocket(){return sock;}
 
 private:

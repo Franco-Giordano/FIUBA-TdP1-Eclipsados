@@ -3,6 +3,7 @@
 
 int main(int argc, char *argv[]) {
 
+	int bytesRecibidos;
 	char mensaje[1000], client_reply[1000];
 
 	Servidor servidor(argv[1]);
@@ -11,18 +12,13 @@ int main(int argc, char *argv[]) {
 
 	while(1){
 
-		printf("Enter message:\n");
-		servidor.sendInfo(mensaje, cliente.getSocket());
+		cliente.recibirMensaje(client_reply);
 
-		if( strcmp(mensaje, "quit\n") == 0){
+		servidor.sendInfo(cliente.getSocket());
+
+		if( strcmp(mensaje, "quit\n") == 0 || strcmp(client_reply, "quit\n") == 0){
 			break;
 		}
-
-		cliente.respuesta(client_reply);
-		printf("Mensaje Cliente: ");
-		printf("%s\n",client_reply);
-
-
 
 	}
 

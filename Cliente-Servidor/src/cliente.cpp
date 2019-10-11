@@ -26,9 +26,11 @@ Cliente::~Cliente(){
 }
 
 
-void Cliente::respuesta(char reply[1000]){
+void Cliente::recibirMensaje(char reply[1000]){
 
 	bzero(reply, 1000);
-	read(sock, reply, 1000);
+	recv(sock, reply, 1000, 0);
+	printf("Cliente:\n");
+	printf("%s\n", reply);
 
 }

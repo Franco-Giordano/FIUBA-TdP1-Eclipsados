@@ -15,11 +15,13 @@ public:
 	~Servidor();
 
 	int getSocketDesc(){return socket_desc;}
-	void sendInfo(char info[1000], int sock);
+	void sendInfo(int clientSocket);
+	void reciveInfo();
 
 private:
 	struct sockaddr_in server;
 	int socket_desc;
+	char info[1000];
 
 };
 
