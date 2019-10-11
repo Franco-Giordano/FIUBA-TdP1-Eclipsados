@@ -8,8 +8,8 @@ int main(int argc, char *argv[]){
 
 	while(1){
 
-		cliente.enviarMensaje(mensaje);
 		cliente.recibirMensaje(mensaje);
+		cliente.enviarMensaje(mensaje);
 
 		if( strcmp(mensaje, "quit\n") == 0){
 			break;
