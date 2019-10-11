@@ -8,12 +8,12 @@ public:
 	Cliente(Servidor* server);
 	~Cliente();
 	void recibirMensaje(char replay[1000]);
-	int getSocket(){return sock;}
+	int getSocket(){return socks;}
 
 private:
 	struct sockaddr_in cliente;
 	int c;
-	int sock;
+	int socks;
 	char reply[1000];
 
 };

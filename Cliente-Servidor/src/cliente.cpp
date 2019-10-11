@@ -6,10 +6,10 @@ Cliente::Cliente(Servidor* server){
 	c = sizeof(struct sockaddr_in);
 
 	//Accept
-	sock = accept( server->getSocketDesc(), (struct sockaddr *)&cliente, (socklen_t *) &c);
-	if (sock < 0){
+	socks = (accept( server->getSocketDesc(), (struct	 sockaddr *)&cliente, (socklen_t *) &c));
+	if (socks < 0){
 		perror("Acceptance Failed. Error");
-		close(sock);
+		close(socks);
 		exit(-1);
 	}else{
 		puts("Connection Accepted");
@@ -20,8 +20,8 @@ Cliente::Cliente(Servidor* server){
 
 Cliente::~Cliente(){
 
-	close(sock);
-	printf("Socket numero: %d Closed\n", sock);
+	close(socks);
+	printf("Socket numero: %d Closed\n", socks);
 
 }
 
@@ -29,7 +29,7 @@ Cliente::~Cliente(){
 void Cliente::recibirMensaje(char reply[1000]){
 
 	bzero(reply, 1000);
-	recv(sock, reply, 1000, 0);
+	recv(socks, reply, 1000, 0);
 	printf("Cliente:\n");
 	printf("%s\n", reply);
 

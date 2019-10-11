@@ -1,20 +1,30 @@
 #include "servidor.h"
 #include "cliente.h"
 
+
 int main(int argc, char *argv[]) {
 
-	int bytesRecibidos;
+
+	vector<Cliente*> clientes;
 	char mensaje[1000], client_reply[1000];
+
 
 	Servidor servidor(argv[1]);
 
-	Cliente cliente(&servidor);
+	for(int i = 0; i < 2; i++){
+
+		Cliente* cliente = new Cliente(&servidor);
+		clientes.push_back(cliente);
+
+	}
 
 	while(1){
 
-		cliente.recibirMensaje(client_reply);
+		for(int i = 0; i < 2; i++){
+			servidor.sendInfo(clientes[i]->getSocket());
 
-		servidor.sendInfo(cliente.getSocket());
+			clientes[i]->recibirMensaje(client_reply);
+		}
 
 		if( strcmp(mensaje, "quit\n") == 0 || strcmp(client_reply, "quit\n") == 0){
 			break;
@@ -23,7 +33,10 @@ int main(int argc, char *argv[]) {
 	}
 
 	servidor.~Servidor();
-	cliente.~Cliente();
+	for(int i =0; i < 2; i++){
+		clientes[i]->~Cliente();
+	}
+
 
 	return 0;
 }
