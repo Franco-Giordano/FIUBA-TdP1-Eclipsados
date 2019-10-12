@@ -9,7 +9,7 @@ Controlador::Controlador(Juego* juego) {
 	golpeando = false;
 	agachando = false;
 	gameController = NULL;
-	teclado = false;
+	teclado = true;
 
 	SDL_Init(SDL_INIT_JOYSTICK);
 
@@ -35,7 +35,7 @@ Controlador::Controlador(Juego* juego) {
 
 Controlador::~Controlador() {
 	// TODO Auto-generated destructor stub
-    //Close game controller
+
 }
 
 void Controlador::setAccionActual(int acActual){
@@ -92,18 +92,18 @@ void Controlador::verificarJoystick(){
 
 	//X axis motion
 	//Right of dead zone
-	if( x_move > JOYSTICK_DEAD_ZONE ){
+	if( x_move > JOYSTICK_DEAD_ZONE && !golpeando && !agachando ){
 		moviendoDerecha(caminar);
 		teclado = false;
 	}
 	//Left of dead zone
-	if( x_move < -JOYSTICK_DEAD_ZONE ){
+	if( x_move < -JOYSTICK_DEAD_ZONE && !golpeando && !agachando ){
 	   	moviendoIzquierda(caminar);
 	   	teclado = false;
 	}
 	//Y axis motion
 	//Up of dead zone
-	if( y_move > JOYSTICK_DEAD_ZONE ){
+	if( y_move > JOYSTICK_DEAD_ZONE && !golpeando && !agachando ){
 	   	juego->movimientoAbajo();
 	   	teclado = false;
 	   	if(accionActual != caminar){
@@ -112,7 +112,7 @@ void Controlador::verificarJoystick(){
 		}
 	}
 	//Down of dead zone
-	if( y_move < -JOYSTICK_DEAD_ZONE ){
+	if( y_move < -JOYSTICK_DEAD_ZONE && !golpeando && !agachando ){
 		juego->movimientoArriba();
 		teclado = false;
 		if(accionActual != caminar){
@@ -120,7 +120,7 @@ void Controlador::verificarJoystick(){
 			accionActual = caminar;
 		}
 	}
-	if( ( y_move > -JOYSTICK_DEAD_ZONE && y_move < JOYSTICK_DEAD_ZONE ) && ( x_move < JOYSTICK_DEAD_ZONE && x_move > -JOYSTICK_DEAD_ZONE) && !(teclado) && !(golpeando) ){
+	if( ( y_move > -JOYSTICK_DEAD_ZONE && y_move < JOYSTICK_DEAD_ZONE ) && ( x_move < JOYSTICK_DEAD_ZONE && x_move > -JOYSTICK_DEAD_ZONE) && !(teclado) && !(golpeando) && !(agachando) ){
 	    jugador->setAnimacionActual(parado, spriteFlip);
 	    accionActual = parado;
 	}
@@ -167,18 +167,18 @@ bool Controlador::eventHandler(){
 						teclado = false;
 					}
 			break;
-			/*case (0 && 1):if( x_move > JOYSTICK_DEAD_ZONE ){
-							preparoSalto(SALTO_DERECHA, saltoPatada);
-							teclado = false;
-						}
-						if( x_move < -JOYSTICK_DEAD_ZONE ){
-							preparoSalto(SALTO_IZQUIERDA, saltoPatada);
-							teclado = false;
-						}
-			break;*/
-			case 1: goto pegar;
+			case 1: goto agacharse;
 			break;
-			case 2: goto agacharse;
+			case 2: goto pegar;
+			break;
+			case 3: if( x_move > JOYSTICK_DEAD_ZONE ){
+						preparoSalto(SALTO_DERECHA, saltoPatada);
+						teclado = false;
+					}
+					if( x_move < -JOYSTICK_DEAD_ZONE ){
+						preparoSalto(SALTO_IZQUIERDA, saltoPatada);
+						teclado = false;
+					}
 			break;
 			}
 		}
@@ -273,7 +273,7 @@ bool Controlador::eventHandler(){
 			return running;
 		}
 
-		if(e.type == SDL_KEYUP && !golpeando && !agachando){
+		if(e.type == SDL_KEYUP && !golpeando && !agachando ){
 			jugador->setAnimacionActual(parado, spriteFlip);
 			accionActual = parado;
 		}
