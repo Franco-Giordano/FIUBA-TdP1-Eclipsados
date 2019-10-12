@@ -171,15 +171,6 @@ bool Controlador::eventHandler(){
 			break;
 			case 2: goto pegar;
 			break;
-			case 3: if( x_move > JOYSTICK_DEAD_ZONE ){
-						preparoSalto(SALTO_DERECHA, saltoPatada);
-						teclado = false;
-					}
-					if( x_move < -JOYSTICK_DEAD_ZONE ){
-						preparoSalto(SALTO_IZQUIERDA, saltoPatada);
-						teclado = false;
-					}
-			break;
 			}
 		}
 
@@ -273,12 +264,16 @@ bool Controlador::eventHandler(){
 			return running;
 		}
 
-		if(e.type == SDL_KEYUP && !golpeando && !agachando ){
+		if(e.type == SDL_KEYUP && !golpeando && !agachando){
 			jugador->setAnimacionActual(parado, spriteFlip);
 			accionActual = parado;
 		}
 
 		return running;
+	}
+	if(e.jbutton.button == 3 && accionActual != saltoPatada || keystates[SDL_SCANCODE_LSHIFT]){
+		jugador->setAnimacionActual(saltoPatada, spriteFlip);
+		accionActual = saltoPatada;
 	}
 	if(alturaActualSalto < alturaMaximaSalto ){
 		juego->movimientoSalto();
