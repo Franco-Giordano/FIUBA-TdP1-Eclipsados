@@ -8,16 +8,45 @@ Controlador::Controlador(Juego* juego) {
 	saltando = false;
 	golpeando = false;
 	agachando = false;
+	gameController = NULL;
+	teclado = false;
 
+	SDL_Init(SDL_INIT_JOYSTICK);
+
+	//Check for joysticks
+	if( SDL_NumJoysticks() < 1 ){
+		//Loggear error
+		printf( "Warning: No joysticks connected!\n" );
+	}
+	else{
+		//Load joystick
+		SDL_JoystickEventState(SDL_ENABLE);
+		gameController = SDL_JoystickOpen( 0 );
+		if( gameController == NULL ){
+			//Loggear error
+			printf( "Warning: Unable to open game controller! SDL Error: %s\n", SDL_GetError() );
+		}
+	}
+	//Cosas Para Loggear
+	std::cout << "Controller Name: " << SDL_JoystickName(gameController) << std::endl;
+	std::cout << "Cant Axes: " << SDL_JoystickNumAxes(gameController) << std::endl;
+	std::cout << "Cant Buttons: " << SDL_JoystickNumButtons(gameController) << std::endl;
 }
 
 Controlador::~Controlador() {
 	// TODO Auto-generated destructor stub
+    //Close game controller
 }
 
 void Controlador::setAccionActual(int acActual){
 
 	accionActual = acActual;
+}
+
+void Controlador::closeController(){
+
+	SDL_JoystickClose( gameController );
+	gameController = NULL;
 }
 
 void Controlador::setAcciones(int c, int p, int s, int sPatada, int g, int a, int sV){
@@ -39,40 +68,133 @@ void Controlador::resetearAnimaciones(){
 	this->alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+25;
 }
 
+void Controlador::moviendoDerecha(int setAction){
+	juego->movimientoDerecha();
+	spriteFlip = SDL_FLIP_NONE;
+	if(accionActual != setAction){
+		jugador->setAnimacionActual(setAction, spriteFlip);
+		accionActual = setAction;
+	}
+}
+
+void Controlador::moviendoIzquierda(int setAction){
+	juego->movimientoIzquierda();
+	spriteFlip = SDL_FLIP_HORIZONTAL;
+	if(accionActual != setAction){
+		jugador->setAnimacionActual(setAction, spriteFlip);
+		accionActual = setAction;
+	}
+}
+
+void Controlador::verificarJoystick(){
+
+	//Joystciks
+
+	//X axis motion
+	//Right of dead zone
+	if( x_move > JOYSTICK_DEAD_ZONE ){
+		moviendoDerecha(caminar);
+		teclado = false;
+	}
+	//Left of dead zone
+	if( x_move < -JOYSTICK_DEAD_ZONE ){
+	   	moviendoIzquierda(caminar);
+	   	teclado = false;
+	}
+	//Y axis motion
+	//Up of dead zone
+	if( y_move > JOYSTICK_DEAD_ZONE ){
+	   	juego->movimientoAbajo();
+	   	teclado = false;
+	   	if(accionActual != caminar){
+	   		jugador->setAnimacionActual(caminar, spriteFlip);
+	   		accionActual = caminar;
+		}
+	}
+	//Down of dead zone
+	if( y_move < -JOYSTICK_DEAD_ZONE ){
+		juego->movimientoArriba();
+		teclado = false;
+		if(accionActual != caminar){
+			jugador->setAnimacionActual(caminar, spriteFlip);
+			accionActual = caminar;
+		}
+	}
+	if( ( y_move > -JOYSTICK_DEAD_ZONE && y_move < JOYSTICK_DEAD_ZONE ) && ( x_move < JOYSTICK_DEAD_ZONE && x_move > -JOYSTICK_DEAD_ZONE) && !(teclado) && !(golpeando) ){
+	    jugador->setAnimacionActual(parado, spriteFlip);
+	    accionActual = parado;
+	}
+
+}
+
+void Controlador::preparoSalto(int tipoDeSalto, int setAction){
+	saltando = true;
+	tipoSalto = tipoDeSalto;
+	alturaActualSalto = juego->getPosicionJugador()->getVertical();
+	alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+25;
+	if(accionActual != setAction){
+		jugador->setAnimacionActual(setAction, spriteFlip);
+		accionActual = setAction;
+	}
+}
+
 bool Controlador::eventHandler(){
 
 	//actualizar el array de estados (para GetKeyboardState)
 	SDL_PumpEvents();
 
-	SDL_Event e;
-
-	SDL_PollEvent(&e);
-
 	bool running = true;
 
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
+	SDL_JoystickEventState(1);
+	SDL_PollEvent(&e);
+	x_move = SDL_JoystickGetAxis(gameController, 0);
+	y_move = SDL_JoystickGetAxis(gameController, 1);
+
 	if(!saltando){
 
-		if(keystates[SDL_SCANCODE_RIGHT] && !(keystates[SDL_SCANCODE_SPACE]) && !golpeando && !agachando) {
-			juego->movimientoDerecha();
-			spriteFlip = SDL_FLIP_NONE;
-			if(accionActual != caminar){
-				jugador->setAnimacionActual(caminar, spriteFlip);
-				accionActual = caminar;
-				}
-			}
-
-		if(keystates[SDL_SCANCODE_LEFT] && !(keystates[SDL_SCANCODE_SPACE]) && !golpeando && !agachando) {
-			juego->movimientoIzquierda();
-			spriteFlip = SDL_FLIP_HORIZONTAL;
-			if(accionActual != caminar){
-				jugador->setAnimacionActual(caminar, spriteFlip);
-				accionActual = caminar;
+		verificarJoystick();
+		if(e.type == SDL_JOYBUTTONDOWN){
+			switch(e.jbutton.button){
+			case 0: preparoSalto(SALTO_VERTICAL, saltoVertical);
+					if( x_move > JOYSTICK_DEAD_ZONE ){
+						preparoSalto(SALTO_DERECHA, salto);
+						teclado = false;
+					}
+					if( x_move < -JOYSTICK_DEAD_ZONE ){
+						preparoSalto(SALTO_IZQUIERDA, salto);
+						teclado = false;
+					}
+			break;
+			/*case (0 && 1):if( x_move > JOYSTICK_DEAD_ZONE ){
+							preparoSalto(SALTO_DERECHA, saltoPatada);
+							teclado = false;
+						}
+						if( x_move < -JOYSTICK_DEAD_ZONE ){
+							preparoSalto(SALTO_IZQUIERDA, saltoPatada);
+							teclado = false;
+						}
+			break;*/
+			case 1: goto pegar;
+			break;
+			case 2: goto agacharse;
+			break;
 			}
 		}
 
+		if(keystates[SDL_SCANCODE_RIGHT] && !(keystates[SDL_SCANCODE_SPACE]) && !golpeando && !agachando) {
+			teclado = true;
+			moviendoDerecha(caminar);
+		}
+
+		if(keystates[SDL_SCANCODE_LEFT] && !(keystates[SDL_SCANCODE_SPACE]) && !golpeando && !agachando) {
+			teclado = true;
+			moviendoIzquierda(caminar);
+		}
+
 		if(keystates[SDL_SCANCODE_UP] && !golpeando && !agachando) {
+			teclado = true;
 			juego->movimientoArriba();
 			if(accionActual != caminar){
 				jugador->setAnimacionActual(caminar, spriteFlip);
@@ -81,6 +203,7 @@ bool Controlador::eventHandler(){
 		}
 
 		if(keystates[SDL_SCANCODE_DOWN] && !golpeando && !agachando) {
+			teclado = true;
 			juego->movimientoAbajo();
 			if(accionActual != caminar){
 				jugador->setAnimacionActual(caminar, spriteFlip);
@@ -89,79 +212,45 @@ bool Controlador::eventHandler(){
 		}
 
 		if(keystates[SDL_SCANCODE_SPACE] && !golpeando && !agachando) {
-			saltando = true;
-			tipoSalto = 0;
-			alturaActualSalto = juego->getPosicionJugador()->getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+25;
-			if(accionActual != saltoVertical){
-				jugador->setAnimacionActual(saltoVertical, spriteFlip);
-				accionActual = saltoVertical;
-			}
+			preparoSalto(SALTO_VERTICAL, saltoVertical);
 		}
 
-		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_SPACE] && !golpeando && !agachando) {
-			saltando = true;
-			tipoSalto = 1;
-			alturaActualSalto = juego->getPosicionJugador()->getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+25;
+		if( ( keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_SPACE] && !golpeando && !agachando ) ) {
+			preparoSalto(SALTO_DERECHA, salto);
 			spriteFlip = SDL_FLIP_NONE;
-			if(accionActual != salto){
-				jugador->setAnimacionActual(salto, spriteFlip);
-				accionActual = salto;
-			}
 		}
 
 		if(keystates[SDL_SCANCODE_RIGHT] && keystates[SDL_SCANCODE_LALT] && !golpeando && !agachando) {
-			saltando = true;
-			tipoSalto = 1;
-			alturaActualSalto = juego->getPosicionJugador()->getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+25;
+			preparoSalto(SALTO_DERECHA, saltoPatada);
 			spriteFlip = SDL_FLIP_NONE;
-			if(accionActual != saltoPatada){
-				jugador->setAnimacionActual(saltoPatada, spriteFlip);
-				accionActual = saltoPatada;
-			}
 		}
 
 		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_SPACE] && !golpeando && !agachando) {
-			saltando = true;
-			tipoSalto = 2;
-			alturaActualSalto = juego->getPosicionJugador()->getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+25;
+			preparoSalto(SALTO_IZQUIERDA, salto);
 			spriteFlip = SDL_FLIP_HORIZONTAL;
-			if(accionActual != salto){
-				jugador->setAnimacionActual(salto, spriteFlip);
-				accionActual = salto;
-			}
 		}
 
 		if(keystates[SDL_SCANCODE_LEFT] && keystates[SDL_SCANCODE_LALT] && !golpeando && !agachando) {
-			saltando = true;
-			tipoSalto = 2;
-			alturaActualSalto = juego->getPosicionJugador()->getVertical();
-			alturaMaximaSalto = juego->getPosicionJugador()->getVertical()+25;
+			preparoSalto(SALTO_IZQUIERDA, saltoPatada);
 			spriteFlip = SDL_FLIP_HORIZONTAL;
-			if(accionActual != saltoPatada){
-				jugador->setAnimacionActual(saltoPatada, spriteFlip);
-				accionActual = saltoPatada;
-			}
 		}
 
 		if(keystates[SDL_SCANCODE_LSHIFT] && !saltando && !agachando) {
+			pegar:
 			golpeando = true;
 			if(accionActual != golpear){
 				jugador->setAnimacionActual(golpear, spriteFlip);
 				accionActual = golpear;
 			}
 		}
-
-		if((7 - jugador->getTicks()) < 0 && golpeando){
+		if((4 - jugador->getTicks()) < 0 && golpeando){
 			golpeando = false;
 			jugador->setAnimacionActual(parado, spriteFlip);
 			accionActual = parado;
 		}
 
 		if(keystates[SDL_SCANCODE_LCTRL] && !saltando && !golpeando) {
+			agacharse:
 				if(accionActual != agachado){
 					jugador->setAnimacionActual(agachado, spriteFlip);
 					accionActual = agachado;
@@ -176,10 +265,12 @@ bool Controlador::eventHandler(){
 
 		if(keystates[SDL_SCANCODE_ESCAPE]) {
 			running = false;
+			return running;
 		}
 
 		if(e.type == SDL_QUIT){
-				running =false;
+			running =false;
+			return running;
 		}
 
 		if(e.type == SDL_KEYUP && !golpeando && !agachando){
@@ -187,18 +278,17 @@ bool Controlador::eventHandler(){
 			accionActual = parado;
 		}
 
-
 		return running;
 	}
 	if(alturaActualSalto < alturaMaximaSalto ){
 		juego->movimientoSalto();
 		alturaActualSalto = juego->getPosicionJugador()->getVertical();
 		switch(tipoSalto){
-			case 0: return running;						//Salta en vertical
+			case SALTO_VERTICAL: return running;				//Salta en vertical
 			break;
-			case 1: juego->movimientoDerecha();
+			case SALTO_DERECHA: juego->movimientoDerecha();
 			break;
-			case 2: juego->movimientoIzquierda();
+			case SALTO_IZQUIERDA: juego->movimientoIzquierda();
 			break;
 		}
 		return running;
