@@ -28,5 +28,9 @@
 #define GRAVEDAD -10
 #define DELTA_T 0.16
 
+#define SALTO_VERTICAL 0
+#define SALTO_DERECHA 1
+#define SALTO_IZQUIERDA 2
+
 
 #endif /* SRC_DEFS_H_ */
